@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --avora-navy: #0F2444;
+    --avora-gold: #C9973A;
+    --avora-cream: #F8F7F3;
+    --avora-dark: #080C16;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Outfit', Arial, sans-serif;
+    background-color: #F8F7F3;
+    color: #1A1A2E;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #C9973A;
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #F8F7F3;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #C9973A;
+    border-radius: 3px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-display {
+    font-family: 'Outfit', Arial, sans-serif;
+  }
+
+  .clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glass {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .bento-shadow {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);
+  }
+
+  .gold-gradient {
+    background: linear-gradient(135deg, #C9973A 0%, #E5B85A 50%, #C9973A 100%);
+  }
+
+  .navy-gradient {
+    background: linear-gradient(135deg, #0F2444 0%, #1A3558 100%);
+  }
+}
+
+/* Animated fill button */
+.btn-fill {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  transition: color 0.35s ease;
+}
+.btn-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.4s cubic-bezier(0.65, 0.05, 0.35, 0.95);
+  z-index: -1;
+}
+.btn-fill:hover::after {
+  transform: scaleX(1);
+}
+.btn-fill-gold::after { background: #C9973A; }
+.btn-fill-navy::after { background: #0F2444; }
+.btn-fill-white::after { background: #ffffff; }
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
