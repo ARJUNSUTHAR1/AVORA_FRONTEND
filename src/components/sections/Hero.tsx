@@ -1,173 +1,194 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowDown, ArrowUpRight } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, TrendingUp, Cpu, Users, CheckCircle2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
-const floatVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.9, delay, ease: [0.25, 0.46, 0.45, 0.94] },
-  }),
-}
+const trustPoints = [
+  'Empowering growth for clients worldwide',
+  '500+ businesses served globally',
+  'Free 30-min discovery call',
+]
+
+const pillars = [
+  { icon: TrendingUp, label: 'Finance', color: '#B8A996', href: '/finance' },
+  { icon: Cpu, label: 'Digital', color: '#334155', href: '/digital' },
+  { icon: Users, label: 'People', color: '#64748B', href: '/people' },
+]
+
+const stats = [
+  { value: '500+', label: 'Businesses' },
+  { value: '20+', label: 'Countries' },
+  { value: '98%', label: 'Retention' },
+]
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end start'] })
-  const y = useTransform(scrollYProgress, [0, 1], [0, -120])
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
+  const textY = useTransform(scrollYProgress, [0, 1], [0, -40])
+  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen bg-avora-cream flex flex-col overflow-hidden"
+      className="relative min-h-[90vh] lg:min-h-screen bg-aw-cream overflow-hidden flex flex-col justify-between"
     >
-      {/* Grid overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.025] pointer-events-none z-10"
-        style={{
-          backgroundImage:
-            'linear-gradient(#0F2444 1px, transparent 1px), linear-gradient(90deg, #0F2444 1px, transparent 1px)',
-          backgroundSize: '72px 72px',
-        }}
-      />
+      {/* Modern Subtle Grid Background with Radial Glow Mask */}
+      <div className="absolute inset-0 modern-grid radial-mask opacity-80 pointer-events-none" />
 
-      {/* Mobile/tablet background image — full bleed at low opacity */}
-      <div className="absolute inset-0 lg:hidden">
-        <img
-          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80"
-          alt=""
-          className="w-full h-full object-cover opacity-[0.18]"
-        />
-      </div>
+      {/* Ambient Gradient Glows */}
+      <div className="absolute top-[-5%] right-[-5%] w-[500px] h-[500px] rounded-full bg-aw-tan/[0.07] blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[10%] left-[-5%] w-[400px] h-[400px] rounded-full bg-aw-mid/[0.04] blur-[100px] pointer-events-none" />
 
-      {/* Desktop right-side image panel */}
-      <div className="absolute top-0 right-0 w-[52%] h-full hidden lg:block">
+      {/* Desktop Architectural Corporate Building Image Panel */}
+      <div className="absolute top-0 right-0 w-[46%] h-full hidden lg:block pointer-events-none overflow-hidden">
         <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.2 }}
           className="h-full relative"
         >
           <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=85"
-            alt="Professional skyline"
-            className="w-full h-full object-cover opacity-85"
+            alt="Awooraa Global Professional Services Headquarters"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-avora-cream via-avora-cream/50 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-avora-cream/30 via-transparent to-avora-cream/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-aw-cream via-aw-cream/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-aw-cream/40 via-transparent to-aw-cream/50" />
         </motion.div>
       </div>
 
+      {/* Mobile Screen Background: Architectural Building with Low Opacity strictly matching request */}
+      <div className="absolute inset-0 lg:hidden pointer-events-none overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=75"
+          alt=""
+          className="w-full h-full object-cover object-center opacity-15"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-aw-cream/80 via-aw-cream/90 to-aw-cream" />
+      </div>
+
+      {/* Main Hero Content */}
       <motion.div
-        style={{ y, opacity }}
-        className="relative z-10 flex-1 flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-28 pb-20"
+        style={{ y: textY, opacity }}
+        className="relative z-10 flex-1 flex items-center pt-24 sm:pt-28 pb-12"
       >
-        <div className="max-w-screen-xl mx-auto w-full">
-          <div className="max-w-2xl">
+        <div className="aw-container w-full">
+          <div className="max-w-[560px]">
+
+            {/* Pill Badge */}
             <motion.div
-              custom={0.4}
-              variants={floatVariants}
-              initial="hidden"
-              animate="visible"
-              className="inline-flex items-center gap-3 mb-8 md:mb-10"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mb-6"
             >
-              <span className="w-8 md:w-10 h-px bg-avora-gold" />
-              <span className="text-avora-gold text-[10px] md:text-xs font-semibold tracking-[0.2em] uppercase">
-                India's Premier Business Services
+              <span className="aw-pill font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-aw-tan animate-pulse" />
+                Global Professional Services
               </span>
             </motion.div>
 
+            {/* Refined Headline */}
             <motion.h1
-              custom={0.55}
-              variants={floatVariants}
-              initial="hidden"
-              animate="visible"
-              className="font-display text-[clamp(52px,10vw,96px)] leading-[1.0] tracking-[-0.02em] text-avora-navy mb-6 md:mb-8"
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="font-display font-light text-[clamp(36px,6.5vw,72px)] leading-[1.06] tracking-[-0.02em] text-aw-navy mb-6"
             >
-              Where
-              <br />
-              <em className="not-italic text-avora-gold">Strategy</em>
-              <br />
-              Meets
-              <br />
-              Execution
+              Your Business,<br />
+              <span className="font-semibold italic text-gradient-tan">Brilliantly</span><br />
+              <span className="font-normal">Managed.</span>
             </motion.h1>
 
+            {/* Subtitle */}
             <motion.p
-              custom={0.7}
-              variants={floatVariants}
-              initial="hidden"
-              animate="visible"
-              className="text-avora-muted text-base md:text-xl leading-relaxed max-w-lg mb-8 md:mb-12"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-aw-slate text-base md:text-lg font-normal leading-relaxed max-w-[460px] mb-6"
             >
-              One trusted partner for all your business needs — from company registration
-              to global scaling. Finance, compliance, growth, and beyond.
+              Finance, Digital & People — three essential pillars built to scale your business with absolute clarity and control.
             </motion.p>
 
+            {/* Global Trust Points — City names completely removed */}
             <motion.div
-              custom={0.85}
-              variants={floatVariants}
-              initial="hidden"
-              animate="visible"
-              className="flex flex-wrap items-center gap-3 md:gap-4"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="flex flex-col gap-2.5 mb-8"
+            >
+              {trustPoints.map((pt) => (
+                <div key={pt} className="flex items-center gap-2.5 text-sm font-medium text-aw-mid">
+                  <CheckCircle2 className="w-4 h-4 text-aw-tan shrink-0" />
+                  {pt}
+                </div>
+              ))}
+            </motion.div>
+
+            {/* Action Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="flex flex-wrap items-center gap-3.5"
             >
               <Link
-                to="/services"
-                className="btn-fill btn-fill-gold group flex items-center gap-2 px-5 md:px-8 py-3 md:py-4 bg-avora-navy text-white rounded-full font-semibold text-xs md:text-sm hover:bg-avora-gold transition-colors duration-300 shadow-lg shadow-avora-navy/20"
+                to="/contact"
+                className="btn-aw btn-aw-tan flex items-center gap-2 px-7 py-3.5 bg-aw-navy text-white rounded-full font-medium text-xs tracking-wider uppercase hover:text-aw-navy shadow-premium transition-colors duration-300"
               >
-                Explore Services
-                <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+                Talk to an Expert
+                <ArrowUpRight className="w-4 h-4" />
               </Link>
               <Link
-                to="/about"
-                className="btn-fill btn-fill-navy flex items-center gap-2 px-5 md:px-8 py-3 md:py-4 border-2 border-avora-navy text-avora-navy rounded-full font-semibold text-xs md:text-sm hover:text-white transition-colors duration-300"
+                to="/services"
+                className="btn-aw btn-aw-navy flex items-center gap-2 px-7 py-3.5 border border-aw-navy/40 text-aw-navy rounded-full font-medium text-xs tracking-wider uppercase hover:text-white transition-colors duration-300"
               >
-                Our Story
+                Explore Solutions
               </Link>
             </motion.div>
           </div>
         </div>
       </motion.div>
 
-      {/* Scroll indicator */}
+      {/* Hero Stats Footer Bar */}
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-        className="absolute bottom-8 inset-x-0 flex flex-col items-center gap-2 text-avora-navy/40 text-xs tracking-widest uppercase z-10"
+        transition={{ duration: 0.6, delay: 0.7 }}
+        className="relative z-10 border-t border-aw-light/60 bg-white/60 backdrop-blur-md py-4"
       >
+        <div className="aw-container flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-8 md:gap-12">
+            {stats.map((s, i) => (
+              <div key={i} className="flex items-baseline gap-2">
+                <span className="font-display font-semibold text-2xl md:text-3xl text-aw-navy">{s.value}</span>
+                <span className="text-aw-slate text-xs font-medium">{s.label}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-2">
+            {pillars.map((p) => {
+              const Icon = p.icon
+              return (
+                <Link
+                  key={p.label}
+                  to={p.href}
+                  className="flex items-center gap-1.5 bg-white border border-aw-light rounded-full px-3.5 py-1.5 shadow-card hover:border-aw-tan/40 transition-all duration-200"
+                >
+                  <Icon className="w-3.5 h-3.5" style={{ color: p.color }} />
+                  <span className="font-medium text-aw-navy text-xs">{p.label}</span>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+      </motion.div>
+
+      <div className="hidden lg:flex absolute bottom-16 right-10 flex-col items-center gap-1 text-aw-slate/30 text-[9px] tracking-widest uppercase pointer-events-none">
         <span>Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <ArrowDown className="w-4 h-4" />
-        </motion.div>
-      </motion.div>
-
-      {/* Stat bubbles — desktop only */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="absolute bottom-20 right-8 md:right-16 lg:right-[calc(52%-260px)] z-20 bg-white rounded-2xl shadow-2xl shadow-black/10 p-5 max-w-[180px] hidden lg:block"
-      >
-        <div className="text-4xl font-display font-bold text-avora-navy leading-none">500+</div>
-        <div className="text-avora-muted text-xs mt-2 leading-snug">Businesses Empowered Globally</div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9, y: -20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ delay: 1.4, duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="absolute top-32 right-8 md:right-16 z-20 hidden lg:block bg-avora-gold rounded-2xl p-5 max-w-[150px]"
-      >
-        <div className="text-3xl font-display font-bold text-white leading-none">20+</div>
-        <div className="text-white/80 text-xs mt-2 leading-snug">Countries Served</div>
-      </motion.div>
+        <ArrowDown className="w-3 h-3 animate-bounce" />
+      </div>
     </section>
   )
 }

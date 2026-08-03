@@ -1,352 +1,375 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ArrowUpRight, ChevronRight } from 'lucide-react'
+import { X, ArrowUpRight, ChevronDown, TrendingUp, Cpu, Users, ChevronRight } from 'lucide-react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 import { useAuth } from '@/context/AuthContext'
+import Logo from '@/components/ui/Logo'
 
-interface NavPanel {
-  badge: string
-  heading: string
-  text: string
-  cta: string
-  ctaHref: string
-  image: string
-  stats?: { num: string; label: string }[]
-}
-
-const navLinks = [
+// All 3 pillars with their services
+const pillars = [
   {
-    label: 'About',
-    href: '/about',
-    desc: 'Our story and team',
-    panel: {
-      badge: 'WHO WE ARE',
-      heading: 'Built on trust,\ndriven by expertise.',
-      text: 'A team of seasoned professionals helping Indian businesses start, manage, and scale — from a single trusted partner.',
-      cta: 'Meet Our Team',
-      ctaHref: '/about',
-      image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=900&q=80',
-      stats: [{ num: '15+', label: 'Years combined expertise' }, { num: '4', label: 'Core service domains' }],
-    } as NavPanel,
+    id: 'finance',
+    icon: TrendingUp,
+    name: 'Awooraa Finance',
+    sub: 'Finance & Accounting',
+    href: '/finance',
+    color: '#B8A996',
+    services: [
+      { label: 'Accounting & Bookkeeping', href: '/finance#accounting' },
+      { label: 'GST & Tax Filing', href: '/finance#gst' },
+      { label: 'Virtual CFO Services', href: '/finance#cfo' },
+      { label: 'MIS Reporting & Financial Planning', href: '/finance#mis' },
+      { label: 'ROC & Corporate Compliance', href: '/finance#compliance' },
+    ],
   },
   {
-    label: 'Services',
-    href: '/services',
-    desc: 'What we offer',
-    panel: {
-      badge: 'WHAT WE OFFER',
-      heading: 'Every service\nyour business needs.',
-      text: 'Finance, compliance, growth strategy, and real estate advisory — all under one roof with a single point of contact.',
-      cta: 'Explore Services',
-      ctaHref: '/services',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&q=80',
-      stats: [{ num: '500+', label: 'Businesses empowered' }, { num: '20+', label: 'Countries served' }],
-    } as NavPanel,
+    id: 'digital',
+    icon: Cpu,
+    name: 'Awooraa Digital',
+    sub: 'Digital & IT Solutions',
+    href: '/digital',
+    color: '#334155',
+    services: [
+      { label: 'Full-Stack Web Development', href: '/digital#web' },
+      { label: 'Software & Mobile Apps', href: '/digital#app' },
+      { label: 'SEO & Growth Management', href: '/digital#seo' },
+      { label: 'ERP & CRM Implementation', href: '/digital#erp' },
+    ],
   },
   {
-    label: 'Insights',
-    href: '/insights',
-    desc: 'Thought leadership',
-    panel: {
-      badge: 'THOUGHT LEADERSHIP',
-      heading: 'Expert perspectives\non Indian business.',
-      text: 'In-depth guides, analysis, and perspectives on finance, compliance, and growth from our senior practitioners.',
-      cta: 'Read Insights',
-      ctaHref: '/insights',
-      image: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=900&q=80',
-      stats: [],
-    } as NavPanel,
-  },
-  {
-    label: 'Contact',
-    href: '/contact',
-    desc: 'Get in touch',
-    panel: {
-      badge: 'GET IN TOUCH',
-      heading: 'Start a conversation\ntoday.',
-      text: 'Our team responds within 2–4 business hours. Free 30-minute discovery call — no commitment, no charge.',
-      cta: 'Start a Conversation',
-      ctaHref: '/contact',
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=80',
-      stats: [{ num: '< 4h', label: 'Average response time' }, { num: 'Free', label: 'Initial consultation' }],
-    } as NavPanel,
+    id: 'people',
+    icon: Users,
+    name: 'Awooraa People',
+    sub: 'HR, Hiring & Payroll',
+    href: '/people',
+    color: '#64748B',
+    services: [
+      { label: 'Recruitment & Talent Acquisition', href: '/people#recruitment' },
+      { label: 'Payroll & Employee Management', href: '/people#payroll' },
+      { label: 'HR Compliance & Policies', href: '/people#compliance' },
+      { label: 'Performance & Growth Strategy', href: '/people#performance' },
+    ],
   },
 ]
 
-const menuVariants = {
-  closed: { opacity: 0 },
-  open: { opacity: 1, transition: { duration: 0.25 } },
-}
-
-const linkVariants = {
-  closed: { opacity: 0, x: -40 },
-  open: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: { delay: 0.1 + i * 0.07, duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] },
-  }),
-}
+const navLinks = [
+  { label: 'Solutions', href: '/services', hasMega: true },
+  { label: 'Why We Exist', href: '/about' },
+  { label: 'Insights', href: '/insights' },
+  { label: 'Contact', href: '/contact' },
+]
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-  const lockedIndex = useRef<number>(1)
+  const [megaOpen, setMegaOpen] = useState(false)
+  const [mobileExpanded, setMobileExpanded] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
   const { isAuthenticated, user, logout } = useAuth()
+  const megaTimerRef = useRef<ReturnType<typeof setTimeout>>()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30)
+    const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [isMenuOpen])
-
-  useEffect(() => {
     setIsMenuOpen(false)
+    setMegaOpen(false)
   }, [location.pathname])
 
-  const panelIndex = hoveredIndex ?? lockedIndex.current
-  const activePanel = navLinks[panelIndex].panel
+  const handleNavClick = (href: string) => {
+    setIsMenuOpen(false)
+    setMegaOpen(false)
+    navigate(href)
+    window.scrollTo(0, 0)
+    document.documentElement.scrollTop = 0
+  }
+
+  const openMega = () => { clearTimeout(megaTimerRef.current); setMegaOpen(true) }
+  const closeMega = () => { megaTimerRef.current = setTimeout(() => setMegaOpen(false), 180) }
 
   return (
     <>
+      {/* ─────── Desktop & Mobile Header ─────── */}
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 px-5 py-4 transition-all duration-500',
-          scrolled && 'py-3'
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          scrolled
+            ? 'bg-white/95 backdrop-blur-md border-b border-aw-light shadow-card'
+            : 'bg-white/0'
         )}
       >
-        <div className="flex items-center justify-between max-w-screen-2xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className={cn(
-              'flex items-center gap-0 rounded-full overflow-hidden',
-              'transition-all duration-300',
-              scrolled
-                ? 'bg-avora-navy shadow-lg shadow-avora-navy/20'
-                : 'bg-avora-navy/90 backdrop-blur-sm'
-            )}
-          >
-            {/* Hamburger icon — opens menu */}
-            <button
-              onClick={() => setIsMenuOpen(true)}
-              className="flex items-center justify-center px-4 py-3 group"
-              aria-label="Open menu"
-            >
-              <span className="w-5 h-5 flex flex-col justify-center gap-[5px] group-hover:gap-[7px] transition-all duration-300">
-                <span className="block h-[1.5px] w-5 bg-white rounded-full" />
-                <span className="block h-[1.5px] w-3.5 bg-white/70 rounded-full group-hover:w-5 transition-all duration-300" />
-              </span>
-            </button>
-            {/* Brand link — navigates home */}
-            <Link
-              to="/"
-              className="pr-5 py-3 text-white text-xs font-semibold tracking-[0.15em] uppercase hover:text-avora-gold transition-colors duration-200"
-            >
-              Avora & Co
-            </Link>
-          </motion.div>
+        <div className="aw-container flex items-center justify-between h-16 sm:h-18 md:h-20 gap-2">
 
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex items-center gap-3"
-          >
+          {/* Logo with compact responsive monogram */}
+          <Logo size="md" />
+
+          {/* Desktop Nav Links */}
+          <nav className="hidden lg:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <div
+                key={link.label}
+                className="relative"
+                onMouseEnter={() => link.hasMega && openMega()}
+                onMouseLeave={() => link.hasMega && closeMega()}
+              >
+                <Link
+                  to={link.href}
+                  className={cn(
+                    'flex items-center gap-1 px-3.5 py-2 text-sm font-medium tracking-normal transition-colors duration-200 rounded-lg whitespace-nowrap',
+                    location.pathname === link.href || (link.hasMega && location.pathname.match(/^\/(finance|digital|people|services)/))
+                      ? 'text-aw-navy font-semibold'
+                      : 'text-aw-mid hover:text-aw-navy',
+                    link.hasMega && megaOpen ? 'text-aw-navy bg-aw-cream/80' : ''
+                  )}
+                >
+                  {link.label}
+                  {link.hasMega && (
+                    <ChevronDown
+                      className={cn(
+                        'w-3.5 h-3.5 transition-transform duration-200 text-aw-slate',
+                        megaOpen ? 'rotate-180 text-aw-tan' : ''
+                      )}
+                    />
+                  )}
+                </Link>
+
+                {/* Active Underline */}
+                {location.pathname === link.href && !link.hasMega && (
+                  <motion.div layoutId="nav-active" className="absolute bottom-0 inset-x-3 h-[2px] bg-aw-tan rounded-full" />
+                )}
+              </div>
+            ))}
+          </nav>
+
+          {/* Right Action Buttons */}
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             {isAuthenticated ? (
               <>
-                <span className="text-avora-navy text-sm font-medium hidden sm:block">
+                <span className="text-aw-navy text-xs sm:text-sm font-medium hidden sm:block">
                   {user?.name || user?.email?.split('@')[0]}
                 </span>
                 <button
                   onClick={() => { logout(); navigate('/') }}
-                  className="btn-fill btn-fill-navy flex items-center gap-2 px-5 py-3 rounded-full border-2 border-avora-navy text-avora-navy text-sm font-semibold hover:text-white transition-colors duration-300"
+                  className="px-3 sm:px-5 py-1.5 sm:py-2 rounded-full border border-aw-navy text-aw-navy text-[11px] sm:text-xs font-semibold hover:bg-aw-navy hover:text-white transition-all duration-200 whitespace-nowrap"
                 >
                   Sign Out
                 </button>
               </>
             ) : (
-              <button
-                onClick={() => navigate('/login')}
-                className={cn(
-                  'btn-fill btn-fill-navy flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold',
-                  'transition-colors duration-300',
-                  scrolled
-                    ? 'border-2 border-avora-navy text-avora-navy hover:text-white'
-                    : 'border-2 border-avora-navy/80 text-avora-navy hover:text-white'
-                )}
-              >
-                Client Login
-                <ArrowUpRight className="w-4 h-4" />
-              </button>
+              <>
+                <button
+                  onClick={() => navigate('/login')}
+                  className="hidden md:block px-3 py-1.5 text-xs font-semibold tracking-wider uppercase text-aw-slate hover:text-aw-navy transition-colors whitespace-nowrap"
+                >
+                  Client Login
+                </button>
+                <Link
+                  to="/contact"
+                  className="flex items-center gap-1 px-3 sm:px-4 py-1.5 sm:py-2 bg-aw-navy text-white text-[11px] sm:text-xs font-semibold tracking-wider uppercase rounded-full hover:bg-aw-mid transition-colors duration-200 shadow-sm whitespace-nowrap shrink-0"
+                >
+                  <span>Talk to Us</span>
+                  <ArrowUpRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
+                </Link>
+              </>
             )}
-          </motion.div>
+
+            {/* Mobile Hamburger */}
+            <button
+              onClick={() => setIsMenuOpen(true)}
+              className="lg:hidden flex flex-col justify-center items-center gap-[4px] w-8 h-8 sm:w-9 sm:h-9 rounded-lg hover:bg-aw-cream transition-colors shrink-0"
+              aria-label="Open menu"
+            >
+              <span className="block h-[1.5px] w-4 bg-aw-navy rounded-full" />
+              <span className="block h-[1.5px] w-3 bg-aw-slate rounded-full" />
+            </button>
+          </div>
         </div>
+
+        {/* ── Mega Dropdown ── */}
+        <AnimatePresence>
+          {megaOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
+              className="absolute left-0 right-0 bg-white border-b border-aw-light shadow-premium overflow-hidden"
+              onMouseEnter={openMega}
+              onMouseLeave={closeMega}
+            >
+              <div className="aw-container py-7">
+                <div className="flex items-center justify-between pb-4 mb-6 border-b border-aw-light/60">
+                  <span className="text-aw-tan text-xs font-semibold tracking-[0.18em] uppercase">Core Solutions & Practices</span>
+                  <Link
+                    to="/services"
+                    className="text-aw-navy text-xs font-semibold tracking-wider uppercase hover:text-aw-tan transition-colors flex items-center gap-1"
+                  >
+                    View All Services <ArrowUpRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+
+                <div className="grid grid-cols-3 gap-10">
+                  {pillars.map((pillar) => {
+                    const Icon = pillar.icon
+                    return (
+                      <div key={pillar.id} className="space-y-4">
+                        <Link
+                          to={pillar.href}
+                          className="group flex items-start gap-3 hover:opacity-80 transition-opacity"
+                        >
+                          <div
+                            className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                            style={{ background: `${pillar.color}15`, border: `1px solid ${pillar.color}30` }}
+                          >
+                            <Icon className="w-4 h-4" style={{ color: pillar.color }} />
+                          </div>
+                          <div>
+                            <h4 className="font-display font-semibold text-aw-navy text-base leading-tight group-hover:text-aw-tan transition-colors">
+                              {pillar.name}
+                            </h4>
+                            <p className="text-aw-slate text-xs font-normal mt-0.5">{pillar.sub}</p>
+                          </div>
+                        </Link>
+
+                        <ul className="space-y-2.5 border-l border-aw-light ml-4 pl-4 pt-1">
+                          {pillar.services.map((svc) => (
+                            <li key={svc.label}>
+                              <Link
+                                to={svc.href}
+                                className="block text-xs font-medium text-aw-slate hover:text-aw-navy transition-colors link-underline"
+                              >
+                                {svc.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )
+                  })}
+                </div>
+
+                <div className="mt-8 pt-4 border-t border-aw-light/60 flex items-center justify-between text-xs text-aw-slate">
+                  <div className="flex items-center gap-2 font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-aw-tan" />
+                    <span>Serving Clients Worldwide · Head Office: Mumbai · Chittorgarh (Rajasthan)</span>
+                  </div>
+                  <Link
+                    to="/contact"
+                    className="text-aw-navy font-semibold hover:text-aw-tan transition-colors flex items-center gap-1"
+                  >
+                    Book a free 30-min discovery call <ArrowUpRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
+      {/* ─────── Mobile Full-Screen Scrollable Drawer — Guaranteed Smooth Touch Scroll ─────── */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            variants={menuVariants}
-            initial="closed"
-            animate="open"
-            exit="closed"
-            className="fixed inset-0 z-[200] bg-avora-900 flex overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.18 }}
+            className="fixed inset-0 z-[200] bg-aw-navy overflow-y-scroll max-h-[100dvh] h-[100dvh] w-full touch-pan-y"
+            style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-y' }}
           >
-            {/* Left nav panel */}
-            <div className="flex-1 flex flex-col justify-between px-8 md:px-16 py-8 md:py-12 min-h-screen">
-              <div className="flex items-center justify-between">
-                <Link to="/" className="font-display text-white text-xl tracking-[0.15em] uppercase">
-                  Avora & Co
-                </Link>
+            <div className="aw-container py-6 pb-40 min-h-full">
+              {/* Header inside Drawer */}
+              <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/10">
+                <Logo dark size="md" />
                 <button
                   onClick={() => setIsMenuOpen(false)}
-                  className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-avora-gold hover:text-avora-gold transition-all duration-300"
+                  className="w-9 h-9 rounded-xl border border-white/15 flex items-center justify-center text-white hover:border-aw-tan transition-colors"
+                  aria-label="Close menu"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
 
-              <nav className="flex flex-col gap-0 py-8">
-                {navLinks.map((link, i) => {
-                  const isHovered = hoveredIndex === i
-                  return (
-                    <motion.div
-                      key={link.label}
-                      custom={i}
-                      variants={linkVariants}
-                      initial="closed"
-                      animate="open"
-                      exit={{ opacity: 0, x: -30, transition: { duration: 0.15, delay: i * 0.02 } }}
-                    >
-                      <Link
-                        to={link.href}
-                        onMouseEnter={() => { setHoveredIndex(i); lockedIndex.current = i }}
-                        onMouseLeave={() => setHoveredIndex(null)}
-                        className="group flex items-center justify-between py-4 border-b border-white/10 hover:border-avora-gold/40 transition-all duration-300"
-                      >
-                        <div className="flex items-center gap-6">
-                          <span className={cn(
-                            'text-sm font-mono transition-colors duration-300',
-                            isHovered ? 'text-avora-gold' : 'text-avora-gold/50'
-                          )}>
-                            0{i + 1}
-                          </span>
-                          <div>
-                            <span className={cn(
-                              'block text-4xl md:text-5xl font-display leading-none transition-all duration-300',
-                              isHovered ? 'text-white translate-x-2' : 'text-white/20'
-                            )}>
-                              {link.label}
-                            </span>
-                            <span className={cn(
-                              'text-sm mt-1 block transition-colors duration-300',
-                              isHovered ? 'text-white/60' : 'text-white/25'
-                            )}>
-                              {link.desc}
-                            </span>
-                          </div>
-                        </div>
-                        <ChevronRight className={cn(
-                          'w-6 h-6 transition-all duration-300',
-                          isHovered ? 'text-avora-gold translate-x-1' : 'text-white/15'
-                        )} />
-                      </Link>
-                    </motion.div>
-                  )
-                })}
-              </nav>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-6">
-                  {['LinkedIn', 'Twitter', 'Instagram'].map((social) => (
-                    <span
-                      key={social}
-                      className="text-white/30 text-sm hover:text-avora-gold cursor-pointer transition-colors duration-200"
-                    >
-                      {social}
-                    </span>
-                  ))}
-                </div>
-                <span className="text-white/20 text-xs">© 2024 Avora & Co</span>
-              </div>
-            </div>
-
-            {/* Right dynamic panel */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, transition: { duration: 0.15 } }}
-              transition={{ delay: 0.2, duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="hidden lg:flex w-[40%] relative overflow-hidden flex-col justify-end"
-            >
-              {/* Background image — fades between panels */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={panelIndex}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.35 }}
-                  className="absolute inset-0"
+              {/* Mobile Solutions Accordion */}
+              <div className="border-b border-white/10 pb-4 mb-3">
+                <button
+                  onClick={() => setMobileExpanded(!mobileExpanded)}
+                  className="flex items-center justify-between w-full py-3 text-white text-base font-semibold"
                 >
-                  <img
-                    src={activePanel.image}
-                    alt=""
-                    className="w-full h-full object-cover opacity-25"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-l from-transparent via-avora-900/60 to-avora-900" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-avora-900 via-transparent to-transparent" />
-                </motion.div>
-              </AnimatePresence>
+                  <span>Solutions</span>
+                  <ChevronDown className={cn('w-4 h-4 transition-transform duration-200', mobileExpanded && 'rotate-180 text-aw-tan')} />
+                </button>
 
-              {/* Panel content — slides between panels */}
-              <div className="relative z-10 p-12 pb-16">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={panelIndex}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -12 }}
-                    transition={{ duration: 0.3, ease: 'easeOut' }}
-                  >
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-avora-gold/30 bg-avora-gold/10 mb-6">
-                      <span className="w-1.5 h-1.5 rounded-full bg-avora-gold animate-pulse" />
-                      <span className="text-avora-gold text-xs tracking-widest uppercase">{activePanel.badge}</span>
-                    </div>
-                    <p className="text-white text-2xl font-display leading-relaxed mb-3 whitespace-pre-line">
-                      {activePanel.heading}
-                    </p>
-                    <p className="text-white/50 text-sm leading-relaxed mb-6 max-w-xs">{activePanel.text}</p>
-                    {activePanel.stats && activePanel.stats.length > 0 && (
-                      <div className="flex gap-6 mb-6">
-                        {activePanel.stats.map((s) => (
-                          <div key={s.label}>
-                            <div className="text-2xl font-display font-bold text-avora-gold">{s.num}</div>
-                            <div className="text-white/40 text-xs mt-0.5">{s.label}</div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                    <button
-                      onClick={() => { setIsMenuOpen(false); navigate(activePanel.ctaHref) }}
-                      className="flex items-center gap-2 text-avora-gold font-medium text-sm hover:gap-3 transition-all duration-300"
+                <AnimatePresence>
+                  {mobileExpanded && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25 }}
+                      className="overflow-hidden space-y-5 pt-3"
                     >
-                      {activePanel.cta} <ArrowUpRight className="w-4 h-4" />
-                    </button>
-                  </motion.div>
+                      {pillars.map((pillar) => {
+                        const Icon = pillar.icon
+                        return (
+                          <div key={pillar.id} className="pl-3 border-l border-white/15">
+                            <button
+                              onClick={() => handleNavClick(pillar.href)}
+                              className="flex items-center gap-2 mb-2 text-aw-tan font-semibold text-sm text-left w-full"
+                            >
+                              <Icon className="w-4 h-4 shrink-0 text-aw-tan" />
+                              <span>{pillar.name}</span>
+                            </button>
+
+                            <div className="space-y-2.5 pl-6">
+                              {pillar.services.map((svc) => (
+                                <button
+                                  key={svc.label}
+                                  onClick={() => handleNavClick(svc.href)}
+                                  className="block text-white/70 hover:text-white text-xs text-left w-full py-1 leading-snug font-normal"
+                                >
+                                  {svc.label}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </motion.div>
+                  )}
                 </AnimatePresence>
               </div>
-            </motion.div>
+
+              {/* Other Navigation Links */}
+              {navLinks.filter(l => !l.hasMega).map((link) => (
+                <button
+                  key={link.label}
+                  onClick={() => handleNavClick(link.href)}
+                  className="flex items-center justify-between w-full py-4 border-b border-white/10 text-white/85 text-base font-medium hover:text-white text-left"
+                >
+                  <span>{link.label}</span>
+                  <ChevronRight className="w-4 h-4 text-white/30" />
+                </button>
+              ))}
+
+              {/* Discovery CTA Box */}
+              <div className="mt-8 p-6 rounded-2xl border border-white/10 bg-white/5">
+                <span className="aw-pill mb-4">Discovery Call</span>
+                <p className="text-white text-lg font-semibold mb-1">Not sure where to start?</p>
+                <p className="text-white/40 text-xs mb-5">Talk to our senior advisory team directly.</p>
+                <button
+                  onClick={() => handleNavClick('/contact')}
+                  className="w-full flex items-center justify-center gap-2 bg-aw-tan text-aw-navy font-bold text-xs tracking-wider uppercase px-6 py-3.5 rounded-full hover:bg-aw-tan-light"
+                >
+                  Book a Call <ArrowUpRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

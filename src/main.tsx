@@ -41,15 +41,15 @@ function Root() {
             position="top-right"
             toastOptions={{
               style: {
-                fontFamily: '"DM Sans", sans-serif',
+                fontFamily: '"Montserrat", sans-serif',
                 fontSize: '14px',
-                background: '#0F2444',
+                background: '#0D1B2A',
                 color: '#fff',
                 borderRadius: '12px',
-                border: '1px solid rgba(201,151,58,0.3)',
+                border: '1px solid rgba(184,169,150,0.3)',
               },
               success: {
-                iconTheme: { primary: '#C9973A', secondary: '#0F2444' },
+                iconTheme: { primary: '#B8A996', secondary: '#0D1B2A' },
               },
             }}
           />

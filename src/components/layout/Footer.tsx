@@ -1,171 +1,138 @@
-import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react'
+import { ArrowUpRight, Mail, Phone, MapPin, TrendingUp, Cpu, Users, Building2 } from 'lucide-react'
+import Logo from '@/components/ui/Logo'
 
 const footerLinks = {
-  Services: [
-    { label: 'Finance & Accounting', href: '/services#finance' },
-    { label: 'Compliance', href: '/services#compliance' },
-    { label: 'Business Growth', href: '/services#growth' },
-    { label: 'Real Estate Advisory', href: '/services#realestate' },
+  'Awooraa Finance': [
+    { label: 'Accounting & Bookkeeping', href: '/finance#accounting' },
+    { label: 'GST & Tax Filing', href: '/finance#gst' },
+    { label: 'Virtual CFO Services', href: '/finance#cfo' },
+    { label: 'MIS Reporting & Financial Planning', href: '/finance#mis' },
+    { label: 'ROC & Corporate Compliance', href: '/finance#compliance' },
+  ],
+  'Awooraa Digital': [
+    { label: 'Full-Stack Web Development', href: '/digital#web' },
+    { label: 'Software & Mobile Apps', href: '/digital#app' },
+    { label: 'SEO & Growth Management', href: '/digital#seo' },
+    { label: 'ERP & CRM Implementation', href: '/digital#erp' },
+  ],
+  'Awooraa People': [
+    { label: 'Recruitment & Hiring', href: '/people#recruitment' },
+    { label: 'Payroll & Employee Management', href: '/people#payroll' },
+    { label: 'HR Compliance & Policies', href: '/people#compliance' },
+    { label: 'Performance Management', href: '/people#performance' },
   ],
   Company: [
-    { label: 'About Us', href: '/about' },
+    { label: 'Why We Exist', href: '/about' },
     { label: 'Our Team', href: '/about#team' },
     { label: 'Insights', href: '/insights' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Contact Us', href: '/contact' },
   ],
 }
 
-// Per-character parallax amplitudes for "AVORA & CO"
-// Positive = moves right when cursor right, negative = moves left
-const CHARS = ['A', 'V', 'O', 'R', 'A', ' ', '&', ' ', 'C', 'O']
-const AMPLITUDES = [28, -18, 22, -30, 16, 0, -38, 0, 24, -20]
+const pillarIcons = { 'Awooraa Finance': TrendingUp, 'Awooraa Digital': Cpu, 'Awooraa People': Users }
 
 export default function Footer() {
-  const footerRef = useRef<HTMLDivElement>(null)
-  const letterRefs = useRef<(HTMLSpanElement | null)[]>([])
-  const mouse = useRef({ x: 0.5 })
-  const current = useRef({ x: 0.5 })
-  const raf = useRef<number>(0)
-
-  useEffect(() => {
-    const tick = () => {
-      // Smooth lerp toward mouse target
-      current.current.x += (mouse.current.x - current.current.x) * 0.06
-      const delta = current.current.x - 0.5
-
-      letterRefs.current.forEach((el, i) => {
-        if (!el || AMPLITUDES[i] === 0) return
-        const tx = delta * AMPLITUDES[i]
-        const ty = Math.abs(delta) * AMPLITUDES[i] * 0.15
-        el.style.transform = `translate(${tx}px, ${ty}px)`
-      })
-      raf.current = requestAnimationFrame(tick)
-    }
-    raf.current = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf.current)
-  }, [])
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!footerRef.current) return
-    const rect = footerRef.current.getBoundingClientRect()
-    mouse.current.x = (e.clientX - rect.left) / rect.width
-  }
-
-  const handleMouseLeave = () => {
-    mouse.current.x = 0.5
-  }
-
   return (
-    <footer
-      ref={footerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="bg-avora-900 text-white"
-    >
-      <div className="max-w-screen-xl mx-auto px-6 md:px-12 pt-20 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
-          {/* Brand block */}
-          <div className="lg:col-span-2">
-            <h2 className="font-display text-3xl text-white mb-4">Avora & Co</h2>
-            <p className="text-white/50 text-sm leading-relaxed max-w-xs mb-8">
-              India's premier professional services company. We help businesses start, manage, grow and scale — all under one roof.
+    <footer className="bg-aw-navy text-white relative overflow-hidden pt-16 md:pt-20 pb-12 border-t border-white/10">
+      {/* Modern subtle grid overlay */}
+      <div className="absolute inset-0 modern-grid-dark opacity-30 pointer-events-none" />
+
+      <div className="aw-container relative z-10">
+
+        {/* Top Brand + Links Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 md:gap-12 mb-14">
+
+          {/* Brand Block & 2 Physical Company Addresses */}
+          <div className="lg:col-span-2 space-y-6">
+            <Logo dark size="lg" />
+
+            <p className="text-white/50 text-sm leading-relaxed max-w-sm font-normal">
+              Awooraa Global Professional Services provides integrated Finance, Digital, and People solutions that empower companies to operate and scale worldwide.
             </p>
-            <div className="space-y-3">
-              <a
-                href="mailto:hello@avoraandco.com"
-                className="flex items-center gap-3 text-white/40 hover:text-avora-gold transition-colors text-sm"
-              >
-                <Mail className="w-4 h-4 shrink-0" />
-                <span>hello@avoraandco.com</span>
-              </a>
-              <a
-                href="tel:+911234567890"
-                className="flex items-center gap-3 text-white/40 hover:text-avora-gold transition-colors text-sm"
-              >
-                <Phone className="w-4 h-4 shrink-0" />
-                <span>+91 12345 67890</span>
-              </a>
-              <div className="flex items-start gap-3 text-white/40 text-sm">
-                <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>Mumbai, Maharashtra, India</span>
+
+            {/* Exactly TWO Physical Company Offices: Head Office Mumbai & Office Chittorgarh */}
+            <div className="space-y-4 pt-2">
+              <div className="flex items-start gap-3 text-white/70 text-xs font-medium">
+                <Building2 className="w-4 h-4 text-aw-tan shrink-0 mt-0.5" />
+                <div>
+                  <span className="text-white font-semibold block mb-0.5">Head Office (Mumbai)</span>
+                  <span className="text-white/50 font-normal">Mumbai, Maharashtra, India</span>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 text-white/70 text-xs font-medium">
+                <MapPin className="w-4 h-4 text-aw-tan shrink-0 mt-0.5" />
+                <div>
+                  <span className="text-white font-semibold block mb-0.5">Rajasthan Office (Chittorgarh)</span>
+                  <span className="text-white/50 font-normal">Chittorgarh, Rajasthan, India</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-6 pt-1 text-xs">
+                <a href="mailto:hello@awooraa.com" className="flex items-center gap-2 text-white/60 hover:text-aw-tan transition-colors font-medium">
+                  <Mail className="w-3.5 h-3.5 text-aw-tan" />
+                  <span>hello@awooraa.com</span>
+                </a>
+                <a href="tel:+911234567890" className="flex items-center gap-2 text-white/60 hover:text-aw-tan transition-colors font-medium">
+                  <Phone className="w-3.5 h-3.5 text-aw-tan" />
+                  <span>+91 12345 67890</span>
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Nav link groups */}
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
-              <h3 className="text-white/30 text-xs tracking-[0.15em] uppercase font-semibold mb-6">
-                {category}
-              </h3>
-              <ul className="space-y-4">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      to={link.href}
-                      className="text-white/55 hover:text-white text-sm transition-colors duration-200 flex items-center gap-1 group"
-                    >
-                      {link.label}
-                      <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-0.5 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Service Category Link Columns */}
+          {Object.entries(footerLinks).map(([category, links]) => {
+            const Icon = pillarIcons[category as keyof typeof pillarIcons]
+            return (
+              <div key={category} className="space-y-3.5">
+                <h4 className="text-aw-tan text-xs tracking-[0.18em] uppercase font-semibold flex items-center gap-2">
+                  {Icon && <Icon className="w-3.5 h-3.5" />}
+                  {category}
+                </h4>
+                <div className="w-6 h-[1px] bg-aw-tan/30" />
+                <ul className="space-y-2.5">
+                  {links.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        to={link.href}
+                        className="text-white/50 hover:text-white text-xs transition-colors duration-200 flex items-center gap-1 group link-underline font-normal"
+                      >
+                        {link.label}
+                        <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          })}
         </div>
 
-        {/* Social + legal */}
-        <div className="border-t border-white/10 pt-10 mb-4">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-4">
-            <div className="flex items-center gap-6">
-              {['LinkedIn', 'Twitter', 'Instagram', 'YouTube'].map((social) => (
-                <span
-                  key={social}
-                  className="text-white/30 text-sm hover:text-avora-gold cursor-pointer transition-colors duration-200"
-                >
-                  {social}
-                </span>
-              ))}
+        {/* Global Footprint Banner */}
+        <div className="pt-6 border-t border-white/10 mb-8">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-aw-tan animate-pulse" />
+              <span className="text-white/50 text-xs font-medium">Serving Clients Globally · Pan-India & Worldwide Operations</span>
             </div>
-            <div className="flex items-center gap-6 text-white/30 text-xs">
-              <span className="hover:text-white/60 cursor-pointer transition-colors">Privacy Policy</span>
-              <span className="hover:text-white/60 cursor-pointer transition-colors">Terms of Use</span>
-              <span className="hover:text-white/60 cursor-pointer transition-colors">Cookie Policy</span>
+            <div className="flex items-center gap-5 text-white/40 text-xs font-medium">
+              <span className="hover:text-white cursor-pointer transition-colors">LinkedIn</span>
+              <span className="hover:text-white cursor-pointer transition-colors">Twitter</span>
+              <span className="hover:text-white cursor-pointer transition-colors">Instagram</span>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Per-letter animated AVORA & CO */}
-      <div className="overflow-hidden border-t border-white/5 select-none cursor-none">
-        <div className="py-4 md:py-8 flex items-center justify-center">
-          <div className="flex items-center" aria-hidden="true">
-            {CHARS.map((char, i) => (
-              <span
-                key={i}
-                ref={(el) => { letterRefs.current[i] = el }}
-                className="inline-block text-[11vw] md:text-[9vw] font-display font-bold text-white/[0.05] leading-none tracking-[0.04em] will-change-transform"
-                style={{ transition: 'none' }}
-              >
-                {char}
-              </span>
-            ))}
+        {/* Bottom Copyright Bar */}
+        <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30 font-normal">
+          <p>© 2025 Awooraa Global Professional Services. All rights reserved.</p>
+          <div className="flex items-center gap-6">
+            <span className="hover:text-white/60 cursor-pointer transition-colors">Privacy Policy</span>
+            <span className="hover:text-white/60 cursor-pointer transition-colors">Terms of Service</span>
+            <span className="hover:text-white/60 cursor-pointer transition-colors">Cookie Policy</span>
           </div>
-        </div>
-      </div>
-
-      {/* Copyright bar */}
-      <div className="border-t border-white/5 px-6 md:px-12 py-6">
-        <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/20 text-xs">
-            © 2024 Avora & Co. All rights reserved. One Partner. Every Solution.
-          </p>
-          <p className="text-white/20 text-xs">
-            Building India's Next Professional Services Company
-          </p>
         </div>
       </div>
     </footer>

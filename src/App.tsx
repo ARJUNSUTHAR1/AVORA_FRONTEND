@@ -12,9 +12,17 @@ import ContactPage from './pages/ContactPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' })
+    // Disable smooth scroll temporarily for instant page top reset
+    const originalScrollBehavior = document.documentElement.style.scrollBehavior
+    document.documentElement.style.scrollBehavior = 'auto'
+    window.scrollTo(0, 0)
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+    document.documentElement.style.scrollBehavior = originalScrollBehavior
   }, [pathname])
+
   return null
 }
 
@@ -23,7 +31,7 @@ function App() {
   const isLoginPage = location.pathname === '/login'
 
   return (
-    <div className="flex flex-col min-h-screen bg-avora-cream">
+    <div className="flex flex-col min-h-screen bg-aw-cream">
       <ScrollToTop />
       {!isLoginPage && <Navbar />}
       <main className="flex-1">
