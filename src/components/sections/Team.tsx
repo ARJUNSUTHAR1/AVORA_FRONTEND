@@ -44,16 +44,7 @@ const team = [
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85',
     expertise: ['Lead Gen', 'Business Dev', 'Market Entry'],
   },
-  {
-    name: 'Ankit',
-    role: 'Operations & Finance',
-    pillar: 'Finance',
-    Icon: TrendingUp,
-    color: '#B8A996',
-    quote: 'Operational excellence is the foundation of financial health.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=85',
-    expertise: ['Operations', 'CFO Support', 'Process Design'],
-  },
+
   {
     name: 'Manas',
     role: 'Advisory & Planning',
