@@ -19,7 +19,7 @@ export default function Logo({ dark = false, className, size = 'md' }: LogoProps
       to="/"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={cn('flex items-center gap-2.5 group select-none shrink-0', className)}
+      className={cn('relative flex items-center gap-2.5 group select-none shrink-0', className)}
     >
       {/* Monogram Icon */}
       <div className="relative shrink-0 flex items-center justify-center">
@@ -38,8 +38,8 @@ export default function Logo({ dark = false, className, size = 'md' }: LogoProps
         </svg>
       </div>
 
-      {/* Logo Text with Subtitle Reveal ON HOVER strictly matching user request */}
-      <div className="flex flex-col justify-center leading-none">
+      {/* Logo Text - Fixed width container preventing flex shift */}
+      <div className="relative flex flex-col justify-center leading-none">
         <span
           className={cn(
             'font-display font-semibold tracking-[0.26em] uppercase transition-colors duration-200 whitespace-nowrap',
@@ -50,21 +50,21 @@ export default function Logo({ dark = false, className, size = 'md' }: LogoProps
           AWOORAA
         </span>
 
-        {/* Subtitle slides in below ONLY on HOVER */}
+        {/* Subtitle reveal on hover positioned absolutely beneath text so no layout shift occurs */}
         <AnimatePresence>
           {isHovered && (
             <motion.div
-              initial={{ opacity: 0, height: 0, y: -2 }}
-              animate={{ opacity: 1, height: 'auto', y: 0 }}
-              exit={{ opacity: 0, height: 0, y: -2 }}
+              initial={{ opacity: 0, y: -2 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -2 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
-              className="overflow-hidden"
+              className="absolute left-0 top-full pt-1 pointer-events-none z-30 whitespace-nowrap"
             >
-              <div className="flex items-center gap-1 mt-1 opacity-90">
+              <div className="flex items-center gap-1 opacity-95 bg-white/95 dark:bg-aw-navy/95 backdrop-blur-xs px-1.5 py-0.5 rounded shadow-sm border border-aw-light/40 dark:border-white/10">
                 <span className="h-[0.5px] w-1.5 bg-aw-tan" />
                 <span
                   className={cn(
-                    'font-display font-medium tracking-[0.16em] uppercase text-aw-tan whitespace-nowrap',
+                    'font-display font-semibold tracking-[0.14em] uppercase text-aw-tan whitespace-nowrap',
                     size === 'sm' ? 'text-[6px]' : size === 'lg' ? 'text-[9.5px]' : 'text-[7.5px]'
                   )}
                 >
@@ -79,3 +79,4 @@ export default function Logo({ dark = false, className, size = 'md' }: LogoProps
     </Link>
   )
 }
+

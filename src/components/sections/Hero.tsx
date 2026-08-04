@@ -155,29 +155,29 @@ export default function Hero() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.7 }}
-        className="relative z-10 border-t border-aw-light/60 bg-white/60 backdrop-blur-md py-4"
+        className="relative z-10 border-t border-aw-light/60 bg-white/80 backdrop-blur-md py-4 sm:py-5 overflow-hidden"
       >
-        <div className="aw-container flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-8 md:gap-12">
+        <div className="aw-container flex flex-col sm:flex-row items-center justify-between gap-4 px-4 sm:px-6">
+          <div className="flex items-center justify-between sm:justify-start w-full sm:w-auto gap-2 sm:gap-6 md:gap-12">
             {stats.map((s, i) => (
-              <div key={i} className="flex items-baseline gap-2">
-                <span className="font-display font-semibold text-2xl md:text-3xl text-aw-navy">{s.value}</span>
-                <span className="text-aw-slate text-xs font-medium">{s.label}</span>
+              <div key={i} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-2 text-center sm:text-left">
+                <span className="font-display font-semibold text-lg sm:text-2xl md:text-3xl text-aw-navy">{s.value}</span>
+                <span className="text-aw-slate text-[11px] sm:text-xs font-medium whitespace-nowrap">{s.label}</span>
               </div>
             ))}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center flex-wrap gap-2 w-full sm:w-auto">
             {pillars.map((p) => {
               const Icon = p.icon
               return (
                 <Link
                   key={p.label}
                   to={p.href}
-                  className="flex items-center gap-1.5 bg-white border border-aw-light rounded-full px-3.5 py-1.5 shadow-card hover:border-aw-tan/40 transition-all duration-200"
+                  className="flex items-center gap-1.5 bg-white border border-aw-light rounded-full px-3 sm:px-3.5 py-1.5 shadow-card hover:border-aw-tan/60 hover:shadow-md transition-all duration-200"
                 >
-                  <Icon className="w-3.5 h-3.5" style={{ color: p.color }} />
-                  <span className="font-medium text-aw-navy text-xs">{p.label}</span>
+                  <Icon className="w-3.5 h-3.5 shrink-0" style={{ color: p.color }} />
+                  <span className="font-medium text-aw-navy text-xs whitespace-nowrap">{p.label}</span>
                 </Link>
               )
             })}

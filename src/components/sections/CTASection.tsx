@@ -30,7 +30,7 @@ export default function CTASection() {
         </h2>
 
         <p className="text-white/50 text-lg md:text-xl max-w-xl mx-auto leading-relaxed mb-12">
-          Join 500+ businesses that trust Avora & Co for their finance, compliance, growth, and advisory needs.
+          Join 500+ businesses that trust Awooraa Global Professional Services for their finance, compliance, growth, and advisory needs.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4">

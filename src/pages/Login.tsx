@@ -87,7 +87,7 @@ export default function Login() {
         setStep('set-password')
       } else {
         login(data.token, data.user)
-        toast.success('Welcome to Avora & Co!')
+        toast.success('Welcome to Awooraa!')
         navigate('/')
       }
     } catch (err: unknown) {
@@ -132,7 +132,7 @@ export default function Login() {
     try {
       const { data } = await authAPI.setPassword(tempToken, newPassword)
       login(data.token, data.user)
-      toast.success('Account created! Welcome to Avora & Co!')
+      toast.success('Account created! Welcome to Awooraa Global Professional Services!')
       navigate('/')
     } catch (err: unknown) {
       const error = err as { response?: { data?: { message?: string } } }
@@ -177,9 +177,9 @@ export default function Login() {
         <div className="absolute inset-0 bg-gradient-to-r from-avora-900/20 to-avora-900" />
 
         <div className="relative z-10 p-16 flex flex-col justify-between h-full">
-          <Link to="/" className="font-display text-white text-xl tracking-[0.15em] uppercase flex items-center gap-3">
+          <Link to="/" className="font-display text-white text-lg tracking-[0.15em] uppercase flex items-center gap-3">
             <ArrowLeft className="w-5 h-5" />
-            Avora & Co
+            Awooraa
           </Link>
 
           <div>
@@ -205,7 +205,7 @@ export default function Login() {
             </div>
           </div>
 
-          <p className="text-white/20 text-xs">© 2024 Avora & Co. All rights reserved.</p>
+          <p className="text-white/20 text-xs">© 2025 Awooraa Global Professional Services. All rights reserved.</p>
         </div>
       </div>
 
@@ -234,7 +234,7 @@ export default function Login() {
                 <div className="mb-10">
                   <h1 className="font-display text-4xl text-white mb-3">Welcome Back</h1>
                   <p className="text-white/40 text-sm leading-relaxed">
-                    Enter your email to continue to your Avora dashboard.
+                    Enter your email to continue to your Awooraa dashboard.
                   </p>
                 </div>
 
@@ -271,7 +271,7 @@ export default function Login() {
                 </div>
 
                 <p className="text-center text-white/30 text-xs mt-8">
-                  New to Avora & Co?{' '}
+                  New to Awooraa?{' '}
                   <span className="text-avora-gold cursor-pointer hover:underline" onClick={handleSendOTP}>
                     Create your account
                   </span>
@@ -432,7 +432,7 @@ export default function Login() {
                   <h1 className="font-display text-4xl text-white mb-3">Set Your Password</h1>
                   <p className="text-white/40 text-sm leading-relaxed">
                     {isNewUser
-                      ? 'Create a password to secure your new Avora account.'
+                      ? 'Create a password to secure your new Awooraa account.'
                       : 'Set a password for faster future sign-ins.'}
                   </p>
                 </div>

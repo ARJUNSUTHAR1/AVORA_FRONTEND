@@ -18,9 +18,11 @@ const pillars = [
     services: [
       { label: 'Accounting & Bookkeeping', href: '/finance#accounting' },
       { label: 'GST & Tax Filing', href: '/finance#gst' },
+      { label: 'Income Tax Return (ITR) Filing', href: '/finance#itr' },
       { label: 'Virtual CFO Services', href: '/finance#cfo' },
       { label: 'MIS Reporting & Financial Planning', href: '/finance#mis' },
       { label: 'ROC & Corporate Compliance', href: '/finance#compliance' },
+      { label: 'Company / LLP / Startup Registration', href: '/finance#registration' },
     ],
   },
   {
@@ -32,9 +34,10 @@ const pillars = [
     color: '#334155',
     services: [
       { label: 'Full-Stack Web Development', href: '/digital#web' },
-      { label: 'Software & Mobile Apps', href: '/digital#app' },
+      { label: 'Software & Mobile App Development', href: '/digital#app' },
       { label: 'SEO & Growth Management', href: '/digital#seo' },
       { label: 'ERP & CRM Implementation', href: '/digital#erp' },
+      { label: 'AI Automation & Chatbot Development', href: '/digital#ai' },
     ],
   },
   {
@@ -49,6 +52,8 @@ const pillars = [
       { label: 'Payroll & Employee Management', href: '/people#payroll' },
       { label: 'HR Compliance & Policies', href: '/people#compliance' },
       { label: 'Performance & Growth Strategy', href: '/people#performance' },
+      { label: 'Contract Staffing', href: '/people#staffing' },
+      { label: 'Executive Search', href: '/people#executive' },
     ],
   },
 ]
