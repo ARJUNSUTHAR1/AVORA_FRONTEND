@@ -37,7 +37,7 @@ const teamMembers: TeamMember[] = [
     pillar: 'Leadership',
     Icon: Award,
     color: '#B8A996',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85',
+    image: '/ganesh.jpeg',
     expertise: ['Partner', 'Business Development', 'Global Partnerships'],
     quote: 'Building long-term client trust through transparent, scalable solutions.',
   },
