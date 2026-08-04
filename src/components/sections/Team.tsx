@@ -1,80 +1,222 @@
 import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { TrendingUp, Cpu, Users, ArrowUpRight } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { TrendingUp, Cpu, Users, Shield, Award } from 'lucide-react'
 
-const team = [
+export interface TeamMember {
+  name: string
+  role: string
+  category: 'leadership' | 'legal' | 'accounts' | 'it' | 'sales'
+  categoryLabel: string
+  pillar: 'Leadership' | 'Legal' | 'Finance' | 'Digital' | 'Sales'
+  Icon: any
+  color: string
+  image: string
+  expertise: string[]
+  quote: string
+}
+
+const teamMembers: TeamMember[] = [
+  // 1. Leadership & Partners (First)
   {
-    name: 'Yash',
-    role: 'Head of Accounting',
+    name: 'Neha Rathor',
+    role: 'Partner',
+    category: 'leadership',
+    categoryLabel: 'Partners & Leadership',
+    pillar: 'Leadership',
+    Icon: Award,
+    color: '#B8A996',
+    image: '/neha.jpeg',
+    expertise: ['Executive Leadership', 'Strategic Growth', 'Business Operations'],
+    quote: 'Empowering enterprise growth with absolute integrity and clear direction.',
+  },
+  {
+    name: 'Ganesh Gupta',
+    role: 'Partner',
+    category: 'leadership',
+    categoryLabel: 'Partners & Leadership',
+    pillar: 'Leadership',
+    Icon: Award,
+    color: '#B8A996',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85',
+    expertise: ['Partner', 'Business Development', 'Global Partnerships'],
+    quote: 'Building long-term client trust through transparent, scalable solutions.',
+  },
+
+  // 2. Legal Advisory
+  {
+    name: 'Mr. Giriraj Kumar Rathor',
+    role: 'Legal Advisor',
+    category: 'legal',
+    categoryLabel: 'Legal Advisory',
+    pillar: 'Legal',
+    Icon: Shield,
+    color: '#D97706',
+    image: '/giriraj.jpeg',
+    expertise: ['Corporate Law', 'Statutory Compliance', 'Legal Advisory'],
+    quote: 'Proactive legal guidance ensures sustainable, risk-free enterprise scaling.',
+  },
+
+  // 3. Accounts Team
+  {
+    name: 'CA Kala Maheshwari',
+    role: 'Lead CA & Financial Advisor',
+    category: 'accounts',
+    categoryLabel: 'Accounts Team',
     pillar: 'Finance',
     Icon: TrendingUp,
     color: '#B8A996',
-    quote: 'Every number tells a story. We make sure yours tells the right one.',
+    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=85',
+    expertise: ['Chartered Accountant', 'Tax Strategy', 'Audit & Compliance'],
+    quote: 'Financial clarity and compliance are non-negotiable pillars of business health.',
+  },
+  {
+    name: 'Yash Sawant',
+    role: 'Accounting Executive',
+    category: 'accounts',
+    categoryLabel: 'Accounts Team',
+    pillar: 'Finance',
+    Icon: TrendingUp,
+    color: '#B8A996',
     image: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=85',
-    expertise: ['Bookkeeping', 'GST Filing', 'MIS Reports'],
+    expertise: ['Bookkeeping', 'GST Filing', 'MIS Reporting'],
+    quote: 'Precision in every ledger entry powers sound executive decisions.',
   },
   {
-    name: 'Neha',
-    role: 'HR & People Lead',
-    pillar: 'People',
-    Icon: Users,
-    color: '#64748B',
-    quote: 'The right hire at the right time changes everything.',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=85',
-    expertise: ['Recruitment', 'HR Policy', 'Compliance'],
+    name: 'Mansi',
+    role: 'Accounts Executive',
+    category: 'accounts',
+    categoryLabel: 'Accounts Team',
+    pillar: 'Finance',
+    Icon: TrendingUp,
+    color: '#B8A996',
+    image: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=600&q=85',
+    expertise: ['Financial Accounting', 'Tax Return Filing', 'Reconciliation'],
+    quote: 'Timely reporting keeps businesses agile and audit-ready.',
   },
   {
-    name: 'Arjun',
+    name: 'Shruti',
+    role: 'Accounts Executive',
+    category: 'accounts',
+    categoryLabel: 'Accounts Team',
+    pillar: 'Finance',
+    Icon: TrendingUp,
+    color: '#B8A996',
+    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=85',
+    expertise: ['Payroll Processing', 'Compliance Filing', 'Accounts Receivable'],
+    quote: 'Flawless financial maintenance builds institutional trust.',
+  },
+
+  // 4. IT Team
+  {
+    name: 'Arjun Suthar',
     role: 'Technology Lead',
+    category: 'it',
+    categoryLabel: 'IT & Digital Team',
     pillar: 'Digital',
     Icon: Cpu,
-    color: '#334155',
-    quote: 'Tech should solve problems, not create new ones.',
+    color: '#38BDF8',
     image: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=600&q=85',
-    expertise: ['Web Dev', 'Mobile Apps', 'ERP / CRM'],
+    expertise: ['Web Engineering', 'Mobile Apps', 'ERP & CRM'],
+    quote: 'Tech should eliminate operational friction and accelerate growth.',
   },
+  {
+    name: 'Pranav',
+    role: 'Full-Stack Engineer',
+    category: 'it',
+    categoryLabel: 'IT & Digital Team',
+    pillar: 'Digital',
+    Icon: Cpu,
+    color: '#38BDF8',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=85',
+    expertise: ['Frontend & Backend', 'API Development', 'Database Architecture'],
+    quote: 'Robust software architectures scale businesses effortlessly.',
+  },
+  {
+    name: 'Shiv Saini',
+    role: 'Software Engineer',
+    category: 'it',
+    categoryLabel: 'IT & Digital Team',
+    pillar: 'Digital',
+    Icon: Cpu,
+    color: '#38BDF8',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=85',
+    expertise: ['UI/UX Development', 'Software Architecture', 'Cloud Services'],
+    quote: 'Clean code and intuitive design create superior user experiences.',
+  },
+
+  // 5. Sales & Growth Team
   {
     name: 'Indrajeet',
-    role: 'Growth & Outreach',
-    pillar: 'Digital',
-    Icon: Cpu,
-    color: '#334155',
-    quote: 'Growth isn\'t accidental. It\'s engineered.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85',
-    expertise: ['Lead Gen', 'Business Dev', 'Market Entry'],
+    role: 'Sales & Growth Lead',
+    category: 'sales',
+    categoryLabel: 'Sales & Growth Team',
+    pillar: 'Sales',
+    Icon: Users,
+    color: '#10B981',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=85',
+    expertise: ['Growth Strategy', 'Lead Generation', 'Client Relations'],
+    quote: 'Sustainable sales growth stems from understanding true customer value.',
   },
+  {
+    name: 'Manali',
+    role: 'Sales Executive',
+    category: 'sales',
+    categoryLabel: 'Sales & Growth Team',
+    pillar: 'Sales',
+    Icon: Users,
+    color: '#10B981',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=85',
+    expertise: ['Client Acquisition', 'Sales Operations', 'Market Outreach'],
+    quote: 'Connecting businesses with the exact solutions they need.',
+  },
+  {
+    name: 'Sheetal',
+    role: 'Sales Executive',
+    category: 'sales',
+    categoryLabel: 'Sales & Growth Team',
+    pillar: 'Sales',
+    Icon: Users,
+    color: '#10B981',
+    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&q=85',
+    expertise: ['Key Account Mgmt', 'Consultative Sales', 'Partnerships'],
+    quote: 'Building long-term client relationships through trusted solutions.',
+  },
+]
 
-  {
-    name: 'Manas',
-    role: 'Advisory & Planning',
-    pillar: 'Finance',
-    Icon: TrendingUp,
-    color: '#B8A996',
-    quote: 'The best investments start with knowing the market inside-out.',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=85',
-    expertise: ['Advisory', 'Due Diligence', 'Investment'],
-  },
-  {
-    name: 'Ganesh',
-    role: 'Business Development',
-    pillar: 'Digital',
-    Icon: Cpu,
-    color: '#334155',
-    quote: 'Your next growth lever is hiding in plain sight.',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=85',
-    expertise: ['BD Strategy', 'Partnerships', 'Sales'],
-  },
+const categories = [
+  { id: 'all', label: 'All Team Members' },
+  { id: 'leadership', label: 'Partners & Leadership' },
+  { id: 'legal', label: 'Legal Advisory' },
+  { id: 'accounts', label: 'Accounts Team' },
+  { id: 'it', label: 'IT Team' },
+  { id: 'sales', label: 'Sales & Growth' },
 ]
 
 export default function Team() {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-10%' })
-  const [hovered, setHovered] = useState<number | null>(null)
+  const inView = useInView(ref, { once: true, margin: '-8%' })
+  const [activeCategory, setActiveCategory] = useState<string>('all')
+  const [hoveredMember, setHoveredMember] = useState<string | null>(null)
+
+  const filteredMembers = activeCategory === 'all'
+    ? teamMembers
+    : teamMembers.filter((m) => m.category === activeCategory)
+
+  // Group by category when 'all' is selected for partitioned layout
+  const groupedSections = [
+    { title: 'Partners & Leadership', items: teamMembers.filter(m => m.category === 'leadership') },
+    { title: 'Legal Advisory', items: teamMembers.filter(m => m.category === 'legal') },
+    { title: 'Accounts & Finance Team', items: teamMembers.filter(m => m.category === 'accounts') },
+    { title: 'IT & Digital Technology Team', items: teamMembers.filter(m => m.category === 'it') },
+    { title: 'Sales & Growth Team', items: teamMembers.filter(m => m.category === 'sales') },
+  ]
 
   return (
-    <section ref={ref} className="py-20 md:py-32 bg-[#060F1A]">
-      <div className="aw-container">
+    <section ref={ref} id="team" className="py-20 md:py-32 bg-[#060F1A] relative overflow-hidden">
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-aw-tan/[0.03] rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="aw-container relative z-10">
 
         {/* Section Header */}
         <motion.div
@@ -85,111 +227,169 @@ export default function Team() {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="w-10 h-px bg-aw-tan" />
-            <span className="text-aw-tan text-xs font-semibold tracking-[0.2em] uppercase">The Leadership & Practitioners</span>
+            <span className="text-aw-tan text-xs font-semibold tracking-[0.2em] uppercase">Our Organization & Talent</span>
           </div>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <h2 className="font-display font-light text-3xl sm:text-4xl md:text-5xl text-white leading-tight max-w-md">
-              Real Experts.<br />
-              <span className="font-semibold italic text-gradient-tan">Direct Accountability.</span>
+            <h2 className="font-display font-light text-3xl sm:text-4xl md:text-5xl text-white leading-tight max-w-xl">
+              Leadership & Specialist Teams<br />
+              <span className="font-semibold italic text-gradient-tan">Dedicated to Your Growth</span>
             </h2>
             <p className="text-white/40 text-sm font-normal max-w-xs leading-relaxed">
-              You get experienced domain leads responsible for your outcomes by name.
+              Structured teams in Leadership, Legal Advisory, Accounts, IT, and Sales delivering direct accountability.
             </p>
           </div>
         </motion.div>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {team.map((member, i) => {
-            const PillarIcon = member.Icon
-            return (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.04 + i * 0.06 }}
-                onMouseEnter={() => setHovered(i)}
-                onMouseLeave={() => setHovered(null)}
-                className="group relative rounded-xl overflow-hidden cursor-pointer bg-aw-navy"
-                style={{ aspectRatio: '3/4' }}
-              >
-                {/* Photo */}
-                <div className="absolute inset-0">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover object-top transition-transform duration-600 group-hover:scale-105"
-                    style={{ filter: 'brightness(0.85) saturate(0.9)' }}
-                  />
-                </div>
-
-                {/* Shading Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#060F1A] via-[#060F1A]/40 to-transparent" />
-
-                {/* Top Badge */}
-                <div className="absolute top-3 right-3 z-10">
-                  <div
-                    className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-semibold backdrop-blur-sm"
-                    style={{ background: `${member.color}25`, border: `1px solid ${member.color}40`, color: member.color }}
-                  >
-                    <PillarIcon className="w-3 h-3" />
-                    {member.pillar}
-                  </div>
-                </div>
-
-                {/* Member Info */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
-                  <div className="text-white font-semibold text-sm">{member.name}</div>
-                  <div className="text-white/50 text-xs font-normal mt-0.5">{member.role}</div>
-
-                  <AnimatePresence>
-                    {hovered === i && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="flex flex-wrap gap-1 mt-2.5 mb-1.5">
-                          {member.expertise.map((e) => (
-                            <span
-                              key={e}
-                              className="text-[9px] px-2 py-0.5 rounded-full font-medium"
-                              style={{ background: `${member.color}20`, color: member.color, border: `1px solid ${member.color}35` }}
-                            >
-                              {e}
-                            </span>
-                          ))}
-                        </div>
-                        <p className="text-white/40 text-[10px] italic leading-relaxed">"{member.quote}"</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </motion.div>
-            )
-          })}
-
-          {/* CTA Tile */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            style={{ aspectRatio: '3/4' }}
-          >
-            <Link
-              to="/about"
-              className="flex flex-col items-center justify-center h-full rounded-xl border border-aw-tan/20 bg-aw-tan/5 hover:border-aw-tan/40 hover:bg-aw-tan/10 transition-all duration-300 group p-6 text-center"
+        {/* Category Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar"
+        >
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-all duration-200 ${
+                activeCategory === cat.id
+                  ? 'bg-aw-tan text-aw-navy font-semibold shadow-md'
+                  : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white border border-white/10'
+              }`}
             >
-              <div className="w-10 h-10 rounded-full border border-aw-tan/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                <ArrowUpRight className="w-4 h-4 text-aw-tan" />
+              {cat.label}
+            </button>
+          ))}
+        </motion.div>
+
+        {/* Partitioned Team Rendering */}
+        {activeCategory === 'all' ? (
+          <div className="space-y-16">
+            {groupedSections.map((sec, idx) => (
+              <div key={sec.title} className="space-y-6">
+                <div className="flex items-center gap-3 pb-2 border-b border-white/10">
+                  <span className="w-2 h-2 rounded-full bg-aw-tan" />
+                  <h3 className="text-white font-display font-semibold text-xl sm:text-2xl">{sec.title}</h3>
+                  <span className="text-white/40 text-xs font-medium ml-auto">{sec.items.length} members</span>
+                </div>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+                  {sec.items.map((member, i) => (
+                    <MemberCard
+                      key={member.name}
+                      member={member}
+                      index={i + idx * 2}
+                      inView={inView}
+                      isHovered={hoveredMember === member.name}
+                      onHover={() => setHoveredMember(member.name)}
+                      onLeave={() => setHoveredMember(null)}
+                    />
+                  ))}
+                </div>
               </div>
-              <p className="text-white/60 text-xs font-medium">Meet full leadership</p>
-            </Link>
-          </motion.div>
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+            {filteredMembers.map((member, i) => (
+              <MemberCard
+                key={member.name}
+                member={member}
+                index={i}
+                inView={inView}
+                isHovered={hoveredMember === member.name}
+                onHover={() => setHoveredMember(member.name)}
+                onLeave={() => setHoveredMember(null)}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )
 }
+
+function MemberCard({
+  member,
+  index,
+  inView,
+  isHovered,
+  onHover,
+  onLeave,
+}: {
+  member: TeamMember
+  index: number
+  inView: boolean
+  isHovered: boolean
+  onHover: () => void
+  onLeave: () => void
+}) {
+  const PillarIcon = member.Icon
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: 0.04 + index * 0.05 }}
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
+      className="group relative rounded-2xl overflow-hidden cursor-pointer bg-aw-navy border border-white/10 hover:border-aw-tan/40 transition-all duration-300 shadow-card"
+      style={{ aspectRatio: '3/4' }}
+    >
+      {/* Photo */}
+      <div className="absolute inset-0 overflow-hidden">
+        <img
+          src={member.image}
+          alt={member.name}
+          className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          style={{ filter: 'brightness(0.9) saturate(0.95)' }}
+        />
+      </div>
+
+      {/* Shading Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#060F1A] via-[#060F1A]/50 to-transparent opacity-90" />
+
+      {/* Top Department Badge */}
+      <div className="absolute top-3 right-3 z-10">
+        <div
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-semibold backdrop-blur-md"
+          style={{ background: `${member.color}25`, border: `1px solid ${member.color}40`, color: member.color }}
+        >
+          <PillarIcon className="w-3 h-3" />
+          {member.pillar}
+        </div>
+      </div>
+
+      {/* Member Details */}
+      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 z-10">
+        <div className="text-white font-display font-semibold text-base sm:text-lg leading-tight mb-0.5">{member.name}</div>
+        <div className="text-aw-tan text-xs font-medium">{member.role}</div>
+
+        <AnimatePresence>
+          {isHovered && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="overflow-hidden"
+            >
+              <div className="flex flex-wrap gap-1 mt-2.5 mb-2">
+                {member.expertise.map((e) => (
+                  <span
+                    key={e}
+                    className="text-[9px] px-2 py-0.5 rounded-full font-medium"
+                    style={{ background: `${member.color}20`, color: member.color, border: `1px solid ${member.color}35` }}
+                  >
+                    {e}
+                  </span>
+                ))}
+              </div>
+              <p className="text-white/60 text-[10px] italic leading-relaxed">"{member.quote}"</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  )
+}
+

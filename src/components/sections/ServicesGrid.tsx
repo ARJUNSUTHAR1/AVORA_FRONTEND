@@ -27,7 +27,7 @@ const pillars = [
       'Company / LLP / Startup Registration',
     ],
     image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80',
-    team: { name: 'Yash', role: 'Head of Accounting', img: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=200&q=80' },
+    team: { name: 'Yash Sawant', role: 'Accounting Executive', img: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=200&q=80' },
   },
   {
     id: 'digital',
@@ -49,7 +49,7 @@ const pillars = [
       'AI Automation & Chatbot Development',
     ],
     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&q=80',
-    team: { name: 'Arjun', role: 'Technology Lead', img: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=200&q=80' },
+    team: { name: 'Arjun Suthar', role: 'Technology Lead', img: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=200&q=80' },
   },
   {
     id: 'people',
@@ -71,8 +71,8 @@ const pillars = [
       'Contract Staffing',
       'Executive Search',
     ],
-    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&q=80',
-    team: { name: 'Neha', role: 'HR & People Lead', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80' },
+    image: '/neha.jpeg',
+    team: { name: 'Neha Rathor', role: 'Partner', img: '/neha.jpeg' },
   },
 ]
 
