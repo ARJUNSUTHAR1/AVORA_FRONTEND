@@ -65,7 +65,7 @@ const teamMembers: TeamMember[] = [
     pillar: 'Finance',
     Icon: TrendingUp,
     color: '#B8A996',
-    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=85',
+    image: '/kala.png',
     expertise: ['Chartered Accountant', 'Tax Strategy', 'Audit & Compliance'],
     quote: 'Financial clarity and compliance are non-negotiable pillars of business health.',
   },
