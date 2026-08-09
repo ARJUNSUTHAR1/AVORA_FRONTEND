@@ -75,9 +75,9 @@ export default function Footer() {
               </div>
 
               <div className="flex items-center gap-6 pt-1 text-xs">
-                <a href="mailto:hello@awooraa.com" className="flex items-center gap-2 text-white/60 hover:text-aw-tan transition-colors font-medium">
+                <a href="mailto:info@awoora.com" className="flex items-center gap-2 text-white/60 hover:text-aw-tan transition-colors font-medium">
                   <Mail className="w-3.5 h-3.5 text-aw-tan" />
-                  <span>hello@awooraa.com</span>
+                  <span>info@awoora.com</span>
                 </a>
                 <a href="tel:+911234567890" className="flex items-center gap-2 text-white/60 hover:text-aw-tan transition-colors font-medium">
                   <Phone className="w-3.5 h-3.5 text-aw-tan" />

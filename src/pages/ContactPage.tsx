@@ -197,11 +197,11 @@ export default function ContactPage() {
               {/* Contact Channels */}
               <div className="space-y-3 pt-2">
                 <a
-                  href="mailto:hello@awooraa.com"
+                  href="mailto:info@awoora.com"
                   className="flex items-center gap-3 p-3.5 bg-white rounded-xl border border-aw-light hover:border-aw-tan/30 transition-all text-xs font-medium text-aw-navy group"
                 >
                   <Mail className="w-4 h-4 text-aw-tan shrink-0" />
-                  <span>hello@awooraa.com</span>
+                  <span>info@awoora.com</span>
                   <ArrowUpRight className="w-3.5 h-3.5 ml-auto text-aw-slate/50 group-hover:text-aw-tan" />
                 </a>
 

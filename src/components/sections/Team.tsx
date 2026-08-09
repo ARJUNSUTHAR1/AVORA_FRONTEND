@@ -42,12 +42,12 @@ const teamMembers: TeamMember[] = [
     quote: 'Building long-term client trust through transparent, scalable solutions.',
   },
 
-  // 2. Legal Advisory
+  // 2. Legal Advisory & Land Facilitation
   {
     name: 'Mr. Giriraj Kumar Rathor',
     role: 'Legal Advisor',
     category: 'legal',
-    categoryLabel: 'Legal Advisory',
+    categoryLabel: 'Legal & Land Advisory',
     pillar: 'Legal',
     Icon: Shield,
     color: '#D97706',
@@ -55,13 +55,25 @@ const teamMembers: TeamMember[] = [
     expertise: ['Corporate Law', 'Statutory Compliance', 'Legal Advisory'],
     quote: 'Proactive legal guidance ensures sustainable, risk-free enterprise scaling.',
   },
+  {
+    name: 'Vaibhav Mishra',
+    role: 'Land Facilitator',
+    category: 'legal',
+    categoryLabel: 'Legal & Land Advisory',
+    pillar: 'Legal',
+    Icon: Shield,
+    color: '#D97706',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85',
+    expertise: ['Land Facilitation', 'Property Due Diligence', 'Regulatory Liaison'],
+    quote: 'Seamless land and property facilitation navigating regulatory frameworks with precision.',
+  },
 
-  // 3. Accounts Team
+  // 3. Accounts & Tax Team
   {
     name: 'CA Kala Maheshwari',
     role: 'Lead CA & Financial Advisor',
     category: 'accounts',
-    categoryLabel: 'Accounts Team',
+    categoryLabel: 'Accounts & Tax Team',
     pillar: 'Finance',
     Icon: TrendingUp,
     color: '#B8A996',
@@ -70,10 +82,22 @@ const teamMembers: TeamMember[] = [
     quote: 'Financial clarity and compliance are non-negotiable pillars of business health.',
   },
   {
+    name: 'CA Prasant Inani',
+    role: 'Tax Advisor',
+    category: 'accounts',
+    categoryLabel: 'Accounts & Tax Team',
+    pillar: 'Finance',
+    Icon: TrendingUp,
+    color: '#B8A996',
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=85',
+    expertise: ['Direct & Indirect Tax', 'Tax Advisory', 'Statutory Compliance'],
+    quote: 'Strategic tax planning and robust advisory to optimize corporate growth.',
+  },
+  {
     name: 'Yash Sawant',
     role: 'Accounting Executive',
     category: 'accounts',
-    categoryLabel: 'Accounts Team',
+    categoryLabel: 'Accounts & Tax Team',
     pillar: 'Finance',
     Icon: TrendingUp,
     color: '#B8A996',
@@ -82,22 +106,10 @@ const teamMembers: TeamMember[] = [
     quote: 'Precision in every ledger entry powers sound executive decisions.',
   },
   {
-    name: 'Mansi',
-    role: 'Accounts Executive',
-    category: 'accounts',
-    categoryLabel: 'Accounts Team',
-    pillar: 'Finance',
-    Icon: TrendingUp,
-    color: '#B8A996',
-    image: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=600&q=85',
-    expertise: ['Financial Accounting', 'Tax Return Filing', 'Reconciliation'],
-    quote: 'Timely reporting keeps businesses agile and audit-ready.',
-  },
-  {
     name: 'Shruti',
     role: 'Accounts Executive',
     category: 'accounts',
-    categoryLabel: 'Accounts Team',
+    categoryLabel: 'Accounts & Tax Team',
     pillar: 'Finance',
     Icon: TrendingUp,
     color: '#B8A996',
@@ -186,8 +198,8 @@ const teamMembers: TeamMember[] = [
 const categories = [
   { id: 'all', label: 'All Team Members' },
   { id: 'leadership', label: 'Partners & Leadership' },
-  { id: 'legal', label: 'Legal Advisory' },
-  { id: 'accounts', label: 'Accounts Team' },
+  { id: 'legal', label: 'Legal & Land Advisory' },
+  { id: 'accounts', label: 'Accounts & Tax Team' },
   { id: 'it', label: 'IT Team' },
   { id: 'sales', label: 'Sales & Growth' },
 ]
@@ -205,8 +217,8 @@ export default function Team() {
   // Group by category when 'all' is selected for partitioned layout
   const groupedSections = [
     { title: 'Partners & Leadership', items: teamMembers.filter(m => m.category === 'leadership') },
-    { title: 'Legal Advisory', items: teamMembers.filter(m => m.category === 'legal') },
-    { title: 'Accounts & Finance Team', items: teamMembers.filter(m => m.category === 'accounts') },
+    { title: 'Legal & Land Advisory', items: teamMembers.filter(m => m.category === 'legal') },
+    { title: 'Accounts & Tax Advisory Team', items: teamMembers.filter(m => m.category === 'accounts') },
     { title: 'IT & Digital Technology Team', items: teamMembers.filter(m => m.category === 'it') },
     { title: 'Sales & Growth Team', items: teamMembers.filter(m => m.category === 'sales') },
   ]
