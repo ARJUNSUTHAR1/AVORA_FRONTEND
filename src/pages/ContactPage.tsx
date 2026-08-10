@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, ArrowUpRight, Send, MessageCircle, Building2 } from 'lucide-react'
+import { Mail, Phone, MapPin, ArrowUpRight, Send, MessageCircle, Building2, Globe } from 'lucide-react'
 import toast from 'react-hot-toast'
 
 const services = [
@@ -174,6 +174,15 @@ export default function ContactPage() {
                 <p className="text-aw-slate text-xs leading-relaxed font-normal">
                   Our core operations are managed from our Head Office in Mumbai and Regional Office in Rajasthan.
                 </p>
+              </div>
+
+              {/* Worldwide Global */}
+              <div className="p-5 bg-aw-cream/60 rounded-xl border border-aw-light space-y-1">
+                <div className="flex items-center gap-2 text-aw-navy font-semibold text-sm">
+                  <Globe className="w-4 h-4 text-aw-tan shrink-0" />
+                  <span>Worldwide Global</span>
+                </div>
+                <p className="text-aw-slate text-xs pl-6 font-normal">Serving Clients Internationally</p>
               </div>
 
               {/* Head Office Mumbai */}

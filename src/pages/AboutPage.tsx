@@ -13,6 +13,13 @@ const values = [
 
 const offices = [
   {
+    city: 'Worldwide Global',
+    label: 'Worldwide Services',
+    sub: 'Serving Clients Internationally',
+    icon: Globe,
+    desc: 'Serving businesses across India, North America, Europe, Middle East, and Southeast Asia.',
+  },
+  {
     city: 'Mumbai',
     label: 'Head Office',
     sub: 'Mumbai, Maharashtra, India',
@@ -25,13 +32,6 @@ const offices = [
     sub: 'Chittorgarh, Rajasthan, India',
     icon: MapPin,
     desc: 'Regional center supporting corporate compliance, operations, and North-West business solutions.',
-  },
-  {
-    city: 'Global Client Network',
-    label: 'Worldwide Services',
-    sub: 'Pan-India & International',
-    icon: Globe,
-    desc: 'Serving businesses across India, North America, Europe, Middle East, and Southeast Asia.',
   },
 ]
 

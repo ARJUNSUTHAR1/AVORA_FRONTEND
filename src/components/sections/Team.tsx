@@ -82,18 +82,6 @@ const teamMembers: TeamMember[] = [
     quote: 'Financial clarity and compliance are non-negotiable pillars of business health.',
   },
   {
-    name: 'CA Prasant Inani',
-    role: 'Tax Advisor',
-    category: 'accounts',
-    categoryLabel: 'Accounts & Tax Team',
-    pillar: 'Finance',
-    Icon: TrendingUp,
-    color: '#B8A996',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=85',
-    expertise: ['Direct & Indirect Tax', 'Tax Advisory', 'Statutory Compliance'],
-    quote: 'Strategic tax planning and robust advisory to optimize corporate growth.',
-  },
-  {
     name: 'Yash Sawant',
     role: 'Accounting Executive',
     category: 'accounts',
@@ -224,9 +212,11 @@ export default function Team() {
   ]
 
   return (
-    <section ref={ref} id="team" className="py-20 md:py-32 bg-[#060F1A] relative overflow-hidden">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-aw-tan/[0.03] rounded-full blur-[140px] pointer-events-none" />
+    <section ref={ref} id="team" className="py-20 md:py-32 bg-[#050A11] relative">
+      {/* Isolated background ambient lighting to prevent horizontal scroll WITHOUT clipping card shadows */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-white/[0.02] rounded-full blur-[120px]" />
+      </div>
 
       <div className="aw-container relative z-10">
 
@@ -341,62 +331,61 @@ function MemberCard({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: 0.04 + index * 0.05 }}
+      transition={{ duration: 0.6, delay: 0.04 + index * 0.05, ease: [0.2, 0.8, 0.2, 1] }}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
-      className="group relative rounded-2xl overflow-hidden cursor-pointer bg-aw-navy border border-white/10 hover:border-aw-tan/40 transition-all duration-300 shadow-card"
-      style={{ aspectRatio: '3/4' }}
+      className="group relative rounded-2xl cursor-pointer bg-[#0A111A] border border-white/[0.04] hover:border-white/[0.15] transition-all duration-500 hover:-translate-y-1.5 shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_8px_30px_rgba(255,255,255,0.08)]"
+      style={{ aspectRatio: '3/4', minHeight: '320px' }}
     >
-      {/* Photo */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Inner wrapper for image & gradient to contain them within rounded corners, allowing outer div to be overflow-visible for shadows */}
+      <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
         <img
           src={member.image}
           alt={member.name}
           className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-          style={{ filter: 'brightness(0.9) saturate(0.95)' }}
+          style={{ filter: 'brightness(0.85) saturate(0.9)' }}
         />
+        {/* Shading Gradient Overlay - Darker at bottom for text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050A11] via-[#050A11]/60 to-transparent opacity-95 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
-
-      {/* Shading Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#060F1A] via-[#060F1A]/50 to-transparent opacity-90" />
 
       {/* Top Department Badge */}
       <div className="absolute top-3 right-3 z-10">
         <div
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-semibold backdrop-blur-md"
-          style={{ background: `${member.color}25`, border: `1px solid ${member.color}40`, color: member.color }}
+          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold backdrop-blur-md"
+          style={{ background: 'rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.9)' }}
         >
-          <PillarIcon className="w-3 h-3" />
+          <PillarIcon className="w-3 h-3" style={{ color: member.color }} />
           {member.pillar}
         </div>
       </div>
 
       {/* Member Details */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 z-10">
-        <div className="text-white font-display font-semibold text-base sm:text-lg leading-tight mb-0.5">{member.name}</div>
-        <div className="text-aw-tan text-xs font-medium">{member.role}</div>
+      <div className="relative z-10 h-full flex flex-col justify-end p-4 sm:p-5">
+        <div className="text-white/95 font-display font-medium text-base sm:text-lg leading-tight mb-1">{member.name}</div>
+        <div className="text-white/50 text-xs font-medium tracking-wide mb-2">{member.role}</div>
 
         <AnimatePresence>
           {isHovered && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
+              initial={{ opacity: 0, height: 0, marginTop: 0 }}
+              animate={{ opacity: 1, height: 'auto', marginTop: 8 }}
+              exit={{ opacity: 0, height: 0, marginTop: 0 }}
+              transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
               className="overflow-hidden"
             >
-              <div className="flex flex-wrap gap-1 mt-2.5 mb-2">
+              <div className="flex flex-wrap gap-1.5 mb-3">
                 {member.expertise.map((e) => (
                   <span
                     key={e}
-                    className="text-[9px] px-2 py-0.5 rounded-full font-medium"
-                    style={{ background: `${member.color}20`, color: member.color, border: `1px solid ${member.color}35` }}
+                    className="text-[9px] px-2 py-1 rounded-md font-medium tracking-wide"
+                    style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.08)' }}
                   >
                     {e}
                   </span>
                 ))}
               </div>
-              <p className="text-white/60 text-[10px] italic leading-relaxed">"{member.quote}"</p>
+              <p className="text-white/40 text-[11px] leading-relaxed font-light">"{member.quote}"</p>
             </motion.div>
           )}
         </AnimatePresence>

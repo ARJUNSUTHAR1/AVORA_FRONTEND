@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowUpRight, Mail, Phone, MapPin, TrendingUp, Cpu, Users, Building2 } from 'lucide-react'
+import { ArrowUpRight, Mail, Phone, MapPin, TrendingUp, Cpu, Users, Building2, Globe } from 'lucide-react'
 import Logo from '@/components/ui/Logo'
 
 const footerLinks = {
@@ -56,8 +56,16 @@ export default function Footer() {
               Awooraa Global Professional Services provides integrated Finance, Digital, and People solutions that empower companies to operate and scale worldwide.
             </p>
 
-            {/* Exactly TWO Physical Company Offices: Head Office Mumbai & Office Chittorgarh */}
+            {/* Physical Company Offices and Global Reach */}
             <div className="space-y-4 pt-2">
+              <div className="flex items-start gap-3 text-white/70 text-xs font-medium">
+                <Globe className="w-4 h-4 text-aw-tan shrink-0 mt-0.5" />
+                <div>
+                  <span className="text-white font-semibold block mb-0.5">Worldwide Global</span>
+                  <span className="text-white/50 font-normal">Serving Clients Internationally</span>
+                </div>
+              </div>
+
               <div className="flex items-start gap-3 text-white/70 text-xs font-medium">
                 <Building2 className="w-4 h-4 text-aw-tan shrink-0 mt-0.5" />
                 <div>
