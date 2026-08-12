@@ -16,7 +16,7 @@ const pillars = [
     subline: 'Get absolute clarity & audit-ready books.',
     body: 'Most founders discover their cash crisis when it\'s already too late. Our Finance team delivers real-time bookkeeping, proactive GST & tax management, and Virtual CFO thinking — so every financial decision is grounded in truth, not guesswork.',
     painLine: 'Because "we\'ll figure out the books later" is how promising companies fail.',
-    callout: { icon: BarChart3, value: '₹10Cr+', label: 'Managed annually' },
+    callout: { icon: BarChart3, value: '₹100Cr+', label: 'Managed annually' },
     services: [
       'Accounting & Bookkeeping',
       'GST & Tax Filing',

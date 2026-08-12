@@ -275,7 +275,7 @@ export default function Team() {
                   <span className="text-white/40 text-xs font-medium ml-auto">{sec.items.length} members</span>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                   {sec.items.map((member, i) => (
                     <MemberCard
                       key={member.name}
@@ -292,7 +292,7 @@ export default function Team() {
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {filteredMembers.map((member, i) => (
               <MemberCard
                 key={member.name}

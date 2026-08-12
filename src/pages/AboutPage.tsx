@@ -13,9 +13,9 @@ const values = [
 
 const offices = [
   {
-    city: 'Worldwide Global',
+    city: 'Worldwide (USA, UK, Europe, Australia)',
     label: 'Worldwide Services',
-    sub: 'Serving Clients Internationally',
+    sub: 'Serving Clients Internationally (USA, UK, Europe, Australia)',
     icon: Globe,
     desc: 'Serving businesses across India, North America, Europe, Middle East, and Southeast Asia.',
   },

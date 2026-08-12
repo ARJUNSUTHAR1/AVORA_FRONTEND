@@ -176,13 +176,13 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              {/* Worldwide Global */}
+              {/* Worldwide (USA, UK, Europe, Australia) */}
               <div className="p-5 bg-aw-cream/60 rounded-xl border border-aw-light space-y-1">
                 <div className="flex items-center gap-2 text-aw-navy font-semibold text-sm">
                   <Globe className="w-4 h-4 text-aw-tan shrink-0" />
-                  <span>Worldwide Global</span>
+                  <span>Worldwide (USA, UK, Europe, Australia)</span>
                 </div>
-                <p className="text-aw-slate text-xs pl-6 font-normal">Serving Clients Internationally</p>
+                <p className="text-aw-slate text-xs pl-6 font-normal">Serving Clients Internationally (USA, UK, Europe, Australia)</p>
               </div>
 
               {/* Head Office Mumbai */}
@@ -215,16 +215,16 @@ export default function ContactPage() {
                 </a>
 
                 <a
-                  href="tel:+911234567890"
+                  href="tel:+916376837461"
                   className="flex items-center gap-3 p-3.5 bg-white rounded-xl border border-aw-light hover:border-aw-tan/30 transition-all text-xs font-medium text-aw-navy group"
                 >
                   <Phone className="w-4 h-4 text-aw-tan shrink-0" />
-                  <span>+91 12345 67890</span>
+                  <span>+91 63768 37461</span>
                   <ArrowUpRight className="w-3.5 h-3.5 ml-auto text-aw-slate/50 group-hover:text-aw-tan" />
                 </a>
 
                 <a
-                  href="https://wa.me/911234567890"
+                  href="https://wa.me/916376837461"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-3 p-3.5 bg-white rounded-xl border border-aw-light hover:border-aw-tan/30 transition-all text-xs font-medium text-aw-navy group"
