@@ -61,7 +61,7 @@ export default function Footer() {
               <div className="flex items-start gap-3 text-white/70 text-xs font-medium">
                 <Globe className="w-4 h-4 text-aw-tan shrink-0 mt-0.5" />
                 <div>
-                  <span className="text-white font-semibold block mb-0.5">Worldwide (USA, UK, Europe, Australia)</span>
+                  <span className="text-white font-semibold block mb-0.5">Worldwide (USA, UK, Europe, Australia,Dubai,Canada)</span>
                   <span className="text-white/50 font-normal">Serving Clients Internationally (USA, UK, Europe, Australia)</span>
                 </div>
               </div>
@@ -128,7 +128,7 @@ export default function Footer() {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-aw-tan animate-pulse" />
-              <span className="text-white/50 text-xs font-medium">Serving Clients Globally · Pan-India & Worldwide Operations (USA, UK, Europe, Australia)</span>
+              <span className="text-white/50 text-xs font-medium">Serving Clients Globally · Pan-India & Worldwide Operations (USA, UK, Europe, Australia,Dubai,Canada)</span>
             </div>
             <div className="flex items-center gap-5 text-white/40 text-xs font-medium">
               <span className="hover:text-white cursor-pointer transition-colors">LinkedIn</span>

@@ -33,7 +33,7 @@ const showcaseItems = [
   },
 ]
 
-const locations = ['Worldwide (USA, UK, Europe, Australia)', 'Chittorgarh (Rajasthan)', 'Mumbai', 'Ahmedabad', 'Delhi', 'Chennai', 'Hyderabad']
+const locations = ['Worldwide (USA, UK, Europe, Australia,Dubai,Canada)', 'Chittorgarh (Rajasthan)', 'Mumbai', 'Ahmedabad', 'Delhi', 'Chennai', 'Hyderabad']
 
 export default function Marquee() {
   const [activeTab, setActiveTab] = useState(0)
@@ -76,11 +76,10 @@ export default function Marquee() {
               <motion.div
                 key={item.id}
                 onMouseEnter={() => setActiveTab(index)}
-                className={`p-6 rounded-xl border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
-                  isActive
+                className={`p-6 rounded-xl border transition-all duration-300 cursor-pointer flex flex-col justify-between ${isActive
                     ? 'bg-white/[0.07] border-aw-tan/40 shadow-card'
                     : 'bg-white/[0.03] border-white/10 hover:border-white/20'
-                }`}
+                  }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">

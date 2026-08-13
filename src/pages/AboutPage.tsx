@@ -13,11 +13,11 @@ const values = [
 
 const offices = [
   {
-    city: 'Worldwide (USA, UK, Europe, Australia)',
+    city: 'Worldwide (USA, UK, Europe, Australia,Dubai,Canada)',
     label: 'Worldwide Services',
-    sub: 'Serving Clients Internationally (USA, UK, Europe, Australia)',
+    sub: 'Serving Clients Internationally (USA, UK, Europe, Australia,Dubai,Canada)',
     icon: Globe,
-    desc: 'Serving businesses across India, North America, Europe, Middle East, and Southeast Asia.',
+    desc: 'Serving businesses across India, North America,Dubai,Canada, Europe, Middle East, and Southeast Asia.',
   },
   {
     city: 'Mumbai',

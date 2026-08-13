@@ -180,7 +180,7 @@ export default function ContactPage() {
               <div className="p-5 bg-aw-cream/60 rounded-xl border border-aw-light space-y-1">
                 <div className="flex items-center gap-2 text-aw-navy font-semibold text-sm">
                   <Globe className="w-4 h-4 text-aw-tan shrink-0" />
-                  <span>Worldwide (USA, UK, Europe, Australia)</span>
+                  <span>Worldwide (USA, UK, Europe, Australia,Dubai,Canada)</span>
                 </div>
                 <p className="text-aw-slate text-xs pl-6 font-normal">Serving Clients Internationally (USA, UK, Europe, Australia)</p>
               </div>
