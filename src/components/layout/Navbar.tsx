@@ -167,12 +167,12 @@ export default function Navbar() {
               </>
             ) : (
               <>
-                <button
+                {/* <button
                   onClick={() => navigate('/login')}
                   className="hidden md:block px-3 py-1.5 text-xs font-semibold tracking-wider uppercase text-aw-slate hover:text-aw-navy transition-colors whitespace-nowrap"
                 >
                   Client Login
-                </button>
+                </button> */}
                 <Link
                   to="/contact"
                   className="flex items-center gap-1 px-3 sm:px-4 py-1.5 sm:py-2 bg-aw-navy text-white text-[11px] sm:text-xs font-semibold tracking-wider uppercase rounded-full hover:bg-aw-mid transition-colors duration-200 shadow-sm whitespace-nowrap shrink-0"
@@ -261,7 +261,7 @@ export default function Navbar() {
                 <div className="mt-8 pt-4 border-t border-aw-light/60 flex items-center justify-between text-xs text-aw-slate">
                   <div className="flex items-center gap-2 font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-aw-tan" />
-                    <span>Serving Clients: Worldwide (Dubai,Canada,USA, UK, Europe, Australia) · Chittorgarh (Rajasthan) · Mumbai</span>
+                    <span>Serving Clients: Worldwide (USA, Canada, UK, Europe, Australia, Dubai) · Chittorgarh (Rajasthan) · Mumbai</span>
                   </div>
                   <Link
                     to="/contact"

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, ArrowUpRight, Send, MessageCircle, Building2, Globe } from 'lucide-react'
 import toast from 'react-hot-toast'
+import api from '../api/auth'
 
 const services = [
   'Awooraa Finance — Accounting & Bookkeeping',
@@ -31,10 +32,16 @@ export default function ContactPage() {
       return
     }
     setLoading(true)
-    await new Promise((r) => setTimeout(r, 1200))
-    toast.success('Message sent! Our team will respond within 2–4 hours.')
-    setForm({ name: '', email: '', phone: '', company: '', service: '', city: '', message: '' })
-    setLoading(false)
+    try {
+      await api.post('/contact', form)
+      toast.success('Message sent! Our team will respond within 2–4 hours.')
+      setForm({ name: '', email: '', phone: '', company: '', service: '', city: '', message: '' })
+    } catch (error) {
+      console.error(error)
+      toast.error('Failed to send message. Please try again later.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -180,9 +187,9 @@ export default function ContactPage() {
               <div className="p-5 bg-aw-cream/60 rounded-xl border border-aw-light space-y-1">
                 <div className="flex items-center gap-2 text-aw-navy font-semibold text-sm">
                   <Globe className="w-4 h-4 text-aw-tan shrink-0" />
-                  <span>Worldwide (USA, UK, Europe, Australia,Dubai,Canada)</span>
+                  <span>Worldwide (USA, Canada, UK, Europe, Australia, Dubai)</span>
                 </div>
-                <p className="text-aw-slate text-xs pl-6 font-normal">Serving Clients Internationally (USA, UK, Europe, Australia)</p>
+                <p className="text-aw-slate text-xs pl-6 font-normal">Serving Clients Internationally (USA, Canada, UK, Europe, Australia, Dubai)</p>
               </div>
 
               {/* Head Office Mumbai */}
@@ -206,11 +213,11 @@ export default function ContactPage() {
               {/* Contact Channels */}
               <div className="space-y-3 pt-2">
                 <a
-                  href="mailto:info@awoora.com"
+                  href="mailto:info@awooraa.com"
                   className="flex items-center gap-3 p-3.5 bg-white rounded-xl border border-aw-light hover:border-aw-tan/30 transition-all text-xs font-medium text-aw-navy group"
                 >
                   <Mail className="w-4 h-4 text-aw-tan shrink-0" />
-                  <span>info@awoora.com</span>
+                  <span>info@awooraa.com</span>
                   <ArrowUpRight className="w-3.5 h-3.5 ml-auto text-aw-slate/50 group-hover:text-aw-tan" />
                 </a>
 

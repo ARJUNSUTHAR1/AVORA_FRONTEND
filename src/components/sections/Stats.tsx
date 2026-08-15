@@ -86,7 +86,7 @@ export default function Stats() {
           className="flex items-center gap-2 text-white/50 text-xs font-medium"
         >
           <Globe2 className="w-4 h-4 text-aw-tan shrink-0" />
-          <span>Worldwide Service Operations · Serving Clients Across India, North America,Dubai,Canada, Europe & Global Markets</span>
+          <span>Worldwide Service Operations · Serving Clients Across India, North America, Canada, UK, Europe, Australia, Dubai & Global Markets</span>
         </motion.div>
       </div>
     </section>
