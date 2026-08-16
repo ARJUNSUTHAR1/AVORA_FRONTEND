@@ -21,21 +21,79 @@ const services = [
   'Integrated Solutions / Not Sure Yet',
 ]
 
+const countryCodes = [
+  { code: '+1', country: 'US/CA' },
+  { code: '+44', country: 'UK' },
+  { code: '+91', country: 'IN' },
+  { code: '+61', country: 'AU' },
+  { code: '+971', country: 'AE' },
+];
+
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', service: '', city: '', message: '' })
   const [loading, setLoading] = useState(false)
+  
+  const [otpSent, setOtpSent] = useState(false);
+  const [otpVerified, setOtpVerified] = useState(false);
+  const [otp, setOtp] = useState('');
+  const [otpLoading, setOtpLoading] = useState(false);
+  const [countryCode, setCountryCode] = useState('+91');
+
+  const handleSendOtp = async () => {
+    if (!form.email) {
+      toast.error('Please enter your email first');
+      return;
+    }
+    setOtpLoading(true);
+    try {
+      await api.post('/contact/send-otp', { email: form.email });
+      setOtpSent(true);
+      toast.success('OTP sent to your email!');
+    } catch (error) {
+      console.error(error);
+      toast.error('Failed to send OTP. Please try again.');
+    } finally {
+      setOtpLoading(false);
+    }
+  };
+
+  const handleVerifyOtp = async () => {
+    if (!otp) {
+      toast.error('Please enter the OTP');
+      return;
+    }
+    setOtpLoading(true);
+    try {
+      await api.post('/contact/verify-otp', { email: form.email, otp });
+      setOtpVerified(true);
+      toast.success('Email verified successfully!');
+    } catch (error) {
+      console.error(error);
+      toast.error('Invalid or expired OTP');
+    } finally {
+      setOtpLoading(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!otpVerified) {
+      toast.error('Please verify your email first')
+      return
+    }
     if (!form.name || !form.email || !form.message) {
       toast.error('Please fill in all required fields')
       return
     }
     setLoading(true)
     try {
-      await api.post('/contact', form)
+      const payload = { ...form, phone: form.phone ? `${countryCode} ${form.phone}` : '' };
+      await api.post('/contact', payload)
       toast.success('Message sent! Our team will respond within 2–4 hours.')
       setForm({ name: '', email: '', phone: '', company: '', service: '', city: '', message: '' })
+      setOtpSent(false)
+      setOtpVerified(false)
+      setOtp('')
     } catch (error) {
       console.error(error)
       toast.error('Failed to send message. Please try again later.')
@@ -85,39 +143,88 @@ export default function ContactPage() {
               className="lg:col-span-3"
             >
               <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-aw-navy text-xs font-semibold tracking-[0.1em] uppercase mb-2">Full Name *</label>
-                    <input
-                      type="text"
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      placeholder="Your name"
-                      className="w-full border border-aw-light rounded-xl px-4 py-3.5 text-aw-navy placeholder:text-aw-slate/40 focus:outline-none focus:border-aw-tan/50 focus:ring-2 focus:ring-aw-tan/10 transition-all text-sm"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-aw-navy text-xs font-semibold tracking-[0.1em] uppercase mb-2">Work Email *</label>
+                <div>
+                  <label className="block text-aw-navy text-xs font-semibold tracking-[0.1em] uppercase mb-2">Full Name *</label>
+                  <input
+                    type="text"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    placeholder="Your name"
+                    className="w-full border border-aw-light rounded-xl px-4 py-3.5 text-aw-navy placeholder:text-aw-slate/40 focus:outline-none focus:border-aw-tan/50 focus:ring-2 focus:ring-aw-tan/10 transition-all text-sm"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-aw-navy text-xs font-semibold tracking-[0.1em] uppercase mb-2">Work Email *</label>
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <input
                       type="email"
                       value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      onChange={(e) => { setForm({ ...form, email: e.target.value }); setOtpSent(false); setOtpVerified(false); }}
                       placeholder="you@company.com"
-                      className="w-full border border-aw-light rounded-xl px-4 py-3.5 text-aw-navy placeholder:text-aw-slate/40 focus:outline-none focus:border-aw-tan/50 focus:ring-2 focus:ring-aw-tan/10 transition-all text-sm"
+                      disabled={otpVerified}
+                      className="flex-1 border border-aw-light rounded-xl px-4 py-3.5 text-aw-navy placeholder:text-aw-slate/40 focus:outline-none focus:border-aw-tan/50 focus:ring-2 focus:ring-aw-tan/10 transition-all text-sm disabled:bg-gray-100 disabled:text-gray-500"
                     />
+                    {!otpVerified && (
+                      <button
+                        type="button"
+                        onClick={handleSendOtp}
+                        disabled={otpLoading || !form.email}
+                        className="px-6 py-3.5 bg-aw-navy text-white rounded-xl text-xs font-bold tracking-wider uppercase hover:bg-aw-tan transition-colors disabled:opacity-50"
+                      >
+                        {otpLoading && !otpSent ? 'Sending...' : (otpSent ? 'Resend OTP' : 'Send OTP')}
+                      </button>
+                    )}
                   </div>
                 </div>
+
+                {otpSent && !otpVerified && (
+                  <div className="bg-aw-cream/50 p-4 rounded-xl border border-aw-light/50 transition-all">
+                    <label className="block text-aw-navy text-xs font-semibold tracking-[0.1em] uppercase mb-2">Enter Verification Code</label>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <input
+                        type="text"
+                        value={otp}
+                        onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                        placeholder="6-digit code"
+                        className="w-full sm:w-1/2 border border-aw-light rounded-xl px-4 py-3.5 text-aw-navy text-center tracking-widest font-mono focus:outline-none focus:border-aw-tan/50 focus:ring-2 focus:ring-aw-tan/10 transition-all text-sm"
+                      />
+                      <button
+                        type="button"
+                        onClick={handleVerifyOtp}
+                        disabled={otpLoading || otp.length !== 6}
+                        className="px-6 py-3.5 bg-aw-tan text-white rounded-xl text-xs font-bold tracking-wider uppercase hover:bg-aw-navy transition-colors disabled:opacity-50"
+                      >
+                        {otpLoading ? 'Verifying...' : 'Verify OTP'}
+                      </button>
+                    </div>
+                  </div>
+                )}
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-aw-navy text-xs font-semibold tracking-[0.1em] uppercase mb-2">Phone / WhatsApp</label>
-                    <input
-                      type="tel"
-                      value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      placeholder="+91 XXXXX XXXXX"
-                      className="w-full border border-aw-light rounded-xl px-4 py-3.5 text-aw-navy placeholder:text-aw-slate/40 focus:outline-none focus:border-aw-tan/50 focus:ring-2 focus:ring-aw-tan/10 transition-all text-sm"
-                    />
+                    <div className="flex gap-2">
+                      <select
+                        value={countryCode}
+                        onChange={(e) => setCountryCode(e.target.value)}
+                        className="w-24 border border-aw-light rounded-xl px-2 py-3.5 text-aw-navy focus:outline-none focus:border-aw-tan/50 focus:ring-2 focus:ring-aw-tan/10 transition-all text-sm bg-white"
+                      >
+                        {countryCodes.map((c) => (
+                          <option key={c.code} value={c.code}>{c.code} {c.country}</option>
+                        ))}
+                      </select>
+                      <input
+                        type="tel"
+                        value={form.phone}
+                        onChange={(e) => {
+                          const val = e.target.value.replace(/\D/g, ''); // strict numeric validation
+                          setForm({ ...form, phone: val });
+                        }}
+                        placeholder="XXXXX XXXXX"
+                        className="flex-1 border border-aw-light rounded-xl px-4 py-3.5 text-aw-navy placeholder:text-aw-slate/40 focus:outline-none focus:border-aw-tan/50 focus:ring-2 focus:ring-aw-tan/10 transition-all text-sm min-w-0"
+                      />
+                    </div>
                   </div>
                   <div>
                     <label className="block text-aw-navy text-xs font-semibold tracking-[0.1em] uppercase mb-2">Company Name</label>
@@ -156,13 +263,13 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  disabled={loading}
+                  disabled={loading || !otpVerified}
                   className="btn-aw btn-aw-tan w-full flex items-center justify-center gap-2 py-4 bg-aw-navy text-white rounded-xl font-bold text-xs tracking-wider uppercase hover:text-aw-navy disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300 shadow-premium"
                 >
                   {loading ? (
                     <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                   ) : (
-                    <><Send className="w-4 h-4" /> Send Message</>
+                    <><Send className="w-4 h-4" /> {otpVerified ? 'Send Message' : 'Verify Email to Send'}</>
                   )}
                 </button>
               </form>
