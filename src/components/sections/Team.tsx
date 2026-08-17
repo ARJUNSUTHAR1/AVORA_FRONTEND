@@ -119,18 +119,7 @@ const teamMembers: TeamMember[] = [
     expertise: ['Web Engineering', 'Mobile Apps', 'ERP & CRM'],
     quote: 'Tech should eliminate operational friction and accelerate growth.',
   },
-  {
-    name: 'Pranav',
-    role: 'Full-Stack Engineer',
-    category: 'it',
-    categoryLabel: 'IT & Digital Team',
-    pillar: 'Digital',
-    Icon: Cpu,
-    color: '#38BDF8',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=85',
-    expertise: ['Frontend & Backend', 'API Development', 'Database Architecture'],
-    quote: 'Robust software architectures scale businesses effortlessly.',
-  },
+
   {
     name: 'Shiv Saini',
     role: 'Software Engineer',
@@ -145,41 +134,18 @@ const teamMembers: TeamMember[] = [
   },
 
   // 5. Sales & Growth Team
+
   {
-    name: 'Indrajeet',
-    role: 'Sales & Growth Lead',
+    name: 'Aashu Narwal',
+    role: 'Marketing and Sales Executive',
     category: 'sales',
     categoryLabel: 'Sales & Growth Team',
     pillar: 'Sales',
     Icon: Users,
     color: '#10B981',
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=85',
-    expertise: ['Growth Strategy', 'Lead Generation', 'Client Relations'],
-    quote: 'Sustainable sales growth stems from understanding true customer value.',
-  },
-  {
-    name: 'Manali',
-    role: 'Sales Executive',
-    category: 'sales',
-    categoryLabel: 'Sales & Growth Team',
-    pillar: 'Sales',
-    Icon: Users,
-    color: '#10B981',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=85',
-    expertise: ['Client Acquisition', 'Sales Operations', 'Market Outreach'],
-    quote: 'Connecting businesses with the exact solutions they need.',
-  },
-  {
-    name: 'Sheetal',
-    role: 'Sales Executive',
-    category: 'sales',
-    categoryLabel: 'Sales & Growth Team',
-    pillar: 'Sales',
-    Icon: Users,
-    color: '#10B981',
-    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&q=85',
-    expertise: ['Key Account Mgmt', 'Consultative Sales', 'Partnerships'],
-    quote: 'Building long-term client relationships through trusted solutions.',
+    expertise: ['Marketing Strategy', 'Client Acquisition', 'Brand Growth'],
+    quote: 'Driving business success through strategic marketing and sales alignment.',
   },
 ]
 

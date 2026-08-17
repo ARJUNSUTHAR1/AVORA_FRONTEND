@@ -49,7 +49,7 @@ export default function Hero() {
         >
           <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=85"
-            alt="Awooraa Global Professional Services Headquarters"
+            alt="International Finance & Accounting Advisory Firm Headquarters"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-aw-cream via-aw-cream/60 to-transparent" />

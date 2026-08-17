@@ -205,7 +205,7 @@ export default function Login() {
             </div>
           </div>
 
-          <p className="text-white/20 text-xs">© 2025 Awooraa Global Professional Services. All rights reserved.</p>
+          <p className="text-white/20 text-xs">© 2025 International Finance & Accounting Advisory Firm. All rights reserved.</p>
         </div>
       </div>
 

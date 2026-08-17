@@ -53,7 +53,7 @@ export default function Footer() {
             <Logo dark size="lg" />
 
             <p className="text-white/50 text-sm leading-relaxed max-w-sm font-normal">
-              Awooraa Global Professional Services provides integrated Finance, Digital, and People solutions that empower companies to operate and scale worldwide.
+              International Finance & Accounting Advisory Firm provides integrated Finance, Digital, and People solutions that empower companies to operate and scale worldwide.
             </p>
 
             {/* Physical Company Offices and Global Reach */}
@@ -140,7 +140,7 @@ export default function Footer() {
 
         {/* Bottom Copyright Bar */}
         <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30 font-normal">
-          <p>© 2025 Awooraa Global Professional Services. All rights reserved.</p>
+          <p>© 2025 International Finance & Accounting Advisory Firm. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <span className="hover:text-white/60 cursor-pointer transition-colors">Privacy Policy</span>
             <span className="hover:text-white/60 cursor-pointer transition-colors">Terms of Service</span>
