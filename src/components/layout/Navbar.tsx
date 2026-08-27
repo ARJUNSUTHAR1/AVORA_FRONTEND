@@ -261,7 +261,7 @@ export default function Navbar() {
                 <div className="mt-8 pt-4 border-t border-aw-light/60 flex items-center justify-between text-xs text-aw-slate">
                   <div className="flex items-center gap-2 font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-aw-tan" />
-                    <span>Serving Clients: Worldwide (USA, Canada, UK, Europe, Australia, Dubai) · Chittorgarh (Rajasthan) · Mumbai</span>
+                    <span>Serving Clients: Worldwide (USA, Canada, UK, Europe, Australia, Dubai) · Chittorgarh (Rajasthan) · Mumbai · Nagpur</span>
                   </div>
                   <Link
                     to="/contact"

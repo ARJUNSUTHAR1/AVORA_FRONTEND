@@ -93,18 +93,7 @@ const teamMembers: TeamMember[] = [
     expertise: ['Bookkeeping', 'GST Filing', 'MIS Reporting'],
     quote: 'Precision in every ledger entry powers sound executive decisions.',
   },
-  {
-    name: 'Shruti',
-    role: 'Accounts Executive',
-    category: 'accounts',
-    categoryLabel: 'Accounts & Tax Team',
-    pillar: 'Finance',
-    Icon: TrendingUp,
-    color: '#B8A996',
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=85',
-    expertise: ['Payroll Processing', 'Compliance Filing', 'Accounts Receivable'],
-    quote: 'Flawless financial maintenance builds institutional trust.',
-  },
+
 
   // 4. IT Team
   {
@@ -120,33 +109,9 @@ const teamMembers: TeamMember[] = [
     quote: 'Tech should eliminate operational friction and accelerate growth.',
   },
 
-  {
-    name: 'Shiv Saini',
-    role: 'Software Engineer',
-    category: 'it',
-    categoryLabel: 'IT & Digital Team',
-    pillar: 'Digital',
-    Icon: Cpu,
-    color: '#38BDF8',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=85',
-    expertise: ['UI/UX Development', 'Software Architecture', 'Cloud Services'],
-    quote: 'Clean code and intuitive design create superior user experiences.',
-  },
 
-  // 5. Sales & Growth Team
 
-  {
-    name: 'Aashu Narwal',
-    role: 'Marketing and Sales Executive',
-    category: 'sales',
-    categoryLabel: 'Sales & Growth Team',
-    pillar: 'Sales',
-    Icon: Users,
-    color: '#10B981',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=85',
-    expertise: ['Marketing Strategy', 'Client Acquisition', 'Brand Growth'],
-    quote: 'Driving business success through strategic marketing and sales alignment.',
-  },
+
 ]
 
 const categories = [
@@ -155,7 +120,6 @@ const categories = [
   { id: 'legal', label: 'Legal & Land Advisory' },
   { id: 'accounts', label: 'Accounts & Tax Team' },
   { id: 'it', label: 'IT Team' },
-  { id: 'sales', label: 'Sales & Growth' },
 ]
 
 export default function Team() {
@@ -174,7 +138,6 @@ export default function Team() {
     { title: 'Legal & Land Advisory', items: teamMembers.filter(m => m.category === 'legal') },
     { title: 'Accounts & Tax Advisory Team', items: teamMembers.filter(m => m.category === 'accounts') },
     { title: 'IT & Digital Technology Team', items: teamMembers.filter(m => m.category === 'it') },
-    { title: 'Sales & Growth Team', items: teamMembers.filter(m => m.category === 'sales') },
   ]
 
   return (

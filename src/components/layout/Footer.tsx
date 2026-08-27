@@ -82,6 +82,14 @@ export default function Footer() {
                 </div>
               </div>
 
+              <div className="flex items-start gap-3 text-white/70 text-xs font-medium">
+                <MapPin className="w-4 h-4 text-aw-tan shrink-0 mt-0.5" />
+                <div>
+                  <span className="text-white font-semibold block mb-0.5">Maharashtra Office (Nagpur)</span>
+                  <span className="text-white/50 font-normal">Nagpur, Maharashtra, India</span>
+                </div>
+              </div>
+
               <div className="flex items-center gap-6 pt-1 text-xs">
                 <a href="mailto:info@awooraa.com" className="flex items-center gap-2 text-white/60 hover:text-aw-tan transition-colors font-medium">
                   <Mail className="w-4 h-4 shrink-0" />

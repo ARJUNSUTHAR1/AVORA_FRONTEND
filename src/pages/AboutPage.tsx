@@ -33,6 +33,13 @@ const offices = [
     icon: MapPin,
     desc: 'Regional center supporting corporate compliance, operations, and North-West business solutions.',
   },
+  {
+    city: 'Nagpur',
+    label: 'Branch Office',
+    sub: 'Nagpur, Maharashtra, India',
+    icon: MapPin,
+    desc: 'Central India office focused on business consulting, strategy, and regional client support.',
+  },
 ]
 
 export default function AboutPage() {
@@ -134,7 +141,7 @@ export default function AboutPage() {
             <h2 className="font-display font-light text-3xl text-aw-navy">Serving Clients <span className="font-semibold italic text-gradient-tan">Globally</span></h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {offices.map((off) => {
               const Icon = off.icon
               return (
