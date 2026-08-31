@@ -33,7 +33,7 @@ const showcaseItems = [
   },
 ]
 
-const locations = ['Worldwide (USA, Canada, UK, Europe, Australia, Dubai)', 'Chittorgarh (Rajasthan)', 'Mumbai', 'Ahmedabad', 'Delhi', 'Chennai', 'Hyderabad', 'Nagpur']
+const locations = ['15 Global Markets', '9 India Hubs', 'Worldwide Operations']
 
 export default function Marquee() {
   const [activeTab, setActiveTab] = useState(0)

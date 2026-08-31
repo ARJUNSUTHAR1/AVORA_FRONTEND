@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { TrendingUp, Cpu, Users, Shield, Award } from 'lucide-react'
+import { TrendingUp, Cpu, Shield, Award } from 'lucide-react'
 
 export interface TeamMember {
   name: string

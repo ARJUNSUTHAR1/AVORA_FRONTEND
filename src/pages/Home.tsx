@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import Hero from '@/components/sections/Hero'
 import Marquee from '@/components/sections/Marquee'
+import GlobalPresence from '@/components/sections/GlobalPresence'
 import ServicesGrid from '@/components/sections/ServicesGrid'
 import Stats from '@/components/sections/Stats'
 import WhoWeServe from '@/components/sections/WhoWeServe'
@@ -18,6 +19,7 @@ export default function Home() {
     >
       <Hero />
       <Marquee />
+      <GlobalPresence />
       <ServicesGrid />
       <Stats />
       <WhoWeServe />

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import Team from '@/components/sections/Team'
+import GlobalPresence from '@/components/sections/GlobalPresence'
 import { ArrowUpRight, MapPin, Building2, Globe } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Logo from '@/components/ui/Logo'
@@ -162,6 +163,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <GlobalPresence />
       <Team />
     </motion.div>
   )
