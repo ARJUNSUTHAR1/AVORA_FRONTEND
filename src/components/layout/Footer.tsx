@@ -139,10 +139,38 @@ export default function Footer() {
               <span className="text-white/50 text-xs font-medium">Serving Clients Globally · Pan-India & Worldwide Operations (USA, Canada, UK, Europe, Australia, Dubai)</span>
             </div>
             <div className="flex items-center gap-5 text-white/40 text-xs font-medium">
-              <a href="https://www.linkedin.com/company/awooraa/" target="_blank" rel="noreferrer" className="hover:text-white cursor-pointer transition-colors">LinkedIn</a>
-              <a href="https://x.com/Awooraa_" target="_blank" rel="noreferrer" className="hover:text-white cursor-pointer transition-colors">Twitter (X)</a>
-              <a href="https://www.instagram.com/awooraa_?igsh=bzNpZ3hrMWJjdXJt&igsi=bzNpZ3hrMWJjdXJt" target="_blank" rel="noreferrer" className="hover:text-white cursor-pointer transition-colors">Instagram</a>
-              <a href="https://www.facebook.com/share/1HbyAKRNqj/" target="_blank" rel="noreferrer" className="hover:text-white cursor-pointer transition-colors">Facebook</a>
+              <a
+                href="https://www.linkedin.com/company/awooraa/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white cursor-pointer transition-colors"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://x.com/Awooraa_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white cursor-pointer transition-colors"
+              >
+                Twitter (X)
+              </a>
+              <a
+                href="https://www.instagram.com/awooraa_?igsh=bzNpZ3hrMWJjdXJt&igsi=bzNpZ3hrMWJjdXJt"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white cursor-pointer transition-colors"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://www.facebook.com/share/1HbyAKRNqj/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white cursor-pointer transition-colors"
+              >
+                Facebook
+              </a>
             </div>
           </div>
         </div>
