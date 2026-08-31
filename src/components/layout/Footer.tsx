@@ -138,11 +138,43 @@ export default function Footer() {
               <span className="w-2 h-2 rounded-full bg-aw-tan animate-pulse" />
               <span className="text-white/50 text-xs font-medium">Serving Clients Globally · Pan-India & Worldwide Operations (USA, Canada, UK, Europe, Australia, Dubai)</span>
             </div>
-            <div className="flex items-center gap-5 text-white/40 text-xs font-medium">
-              <span className="hover:text-white cursor-pointer transition-colors">LinkedIn</span>
-              <span className="hover:text-white cursor-pointer transition-colors">Twitter</span>
-              <span className="hover:text-white cursor-pointer transition-colors">Instagram</span>
-            </div>
+           <div className="flex items-center gap-5 text-white/40 text-xs font-medium">
+           
+  <a
+    href="https://www.linkedin.com/company/awooraa/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white cursor-pointer transition-colors"
+  >
+    LinkedIn
+  </a>
+
+  <a
+    href="https://x.com/Awooraa_"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white cursor-pointer transition-colors"
+  >
+    Twitter
+  </a>
+
+  <a
+    href="https://www.instagram.com/awooraa_?igsh=bzNpZ3hrMWJjdXJt&igsi=bzNpZ3hrMWJjdXJt"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white cursor-pointer transition-colors"
+  >
+    Instagram
+  </a>
+  <a
+    href="https://www.facebook.com/share/1HbyAKRNqj/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white cursor-pointer transition-colors"
+  >
+    Facebook
+  </a>
+</div>
           </div>
         </div>
 
