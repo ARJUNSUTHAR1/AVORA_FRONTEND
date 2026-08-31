@@ -68,7 +68,7 @@ export default function AboutPage() {
               <span className="font-semibold italic text-gradient-tan">Your Trusted Global Partner.</span>
             </h1>
             <p className="text-white/60 text-base md:text-lg max-w-xl leading-relaxed mb-8 font-normal">
-              International Finance & Accounting Advisory Firm was founded on a simple conviction: growing companies deserve a single integrated partner across Finance, Digital, and People — not fragmented advisors.
+              Global Professional Services was founded on a simple conviction: growing companies deserve a single integrated partner across Finance, Digital, and People — not fragmented advisors.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <Link to="/contact" className="flex items-center gap-2 px-7 py-3.5 bg-aw-tan text-aw-navy rounded-full font-semibold text-xs tracking-wider uppercase hover:bg-aw-tan-light transition-colors shadow-sm">
