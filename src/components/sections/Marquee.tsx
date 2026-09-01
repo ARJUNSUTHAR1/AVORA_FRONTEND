@@ -31,9 +31,36 @@ const showcaseItems = [
     href: '/people',
     accent: '#64748B',
   },
+  {
+    id: 'rera',
+    icon: ShieldCheck,
+    badge: 'RERA Compliance & Advisory',
+    title: 'Real Estate Compliance, Perfected.',
+    desc: 'Navigate RERA regulations with absolute certainty. Seamless project registration and ongoing compliance.',
+    href: '/rera',
+    accent: '#0F766E',
+  },
+  {
+    id: 'financial-modelling',
+    icon: TrendingUp,
+    badge: 'Financial Modelling',
+    title: 'Strategic Decision Making, Quantified.',
+    desc: 'Robust financial models designed to forecast performance, assess risk, and guide business decisions.',
+    href: '/financial-modelling',
+    accent: '#0369A1',
+  },
+  {
+    id: 'project-finance',
+    icon: Globe2,
+    badge: 'Project Finance',
+    title: 'Empowering Capital, Realized.',
+    desc: 'Structuring and securing optimal project funding. We guide you through the complexities of project finance.',
+    href: '/project-finance',
+    accent: '#4338CA',
+  },
 ]
 
-const locations = ['15 Global Markets', '6 India Hubs', 'Worldwide Operations']
+const locations = ['15 Global Markets', '3 India Hubs', 'Worldwide Operations']
 
 export default function Marquee() {
   const [activeTab, setActiveTab] = useState(0)

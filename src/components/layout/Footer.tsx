@@ -63,8 +63,8 @@ export default function Footer() {
                 <div>
                   <span className="text-white font-semibold block mb-0.5">Global Markets & India Hubs</span>
                   <span className="text-white/50 font-normal leading-relaxed">
-                    USA (New York) · Canada (Toronto) · UK (London) · Germany (Frankfurt) · France (Paris) · Italy (Milan) · Netherlands (Amsterdam) · Switzerland (Zurich) · UAE (Dubai) · Saudi Arabia (Riyadh) · South Africa (Johannesburg) · Singapore · Japan (Tokyo) · Australia (Sydney) · New Zealand (Auckland)<br/>
-                    India: Chittorgarh (HQ), Mumbai, Nagpur, Hyderabad, Ahmedabad, Chennai
+                    USA · Canada · UK · Germany · France · Italy · Netherlands · Switzerland · UAE · Saudi Arabia · South Africa · Singapore · Japan · Australia · New Zealand<br/>
+                    India: Chittorgarh (HQ), Mumbai, Nagpur
                   </span>
                 </div>
               </div>
@@ -138,8 +138,7 @@ export default function Footer() {
         <div className="pt-6 border-t border-white/10 mb-8">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-aw-tan animate-pulse" />
-              <span className="text-white/50 text-xs font-medium">Serving Clients Globally · 15 Global Markets & 6 India Hubs</span>
+              <span className="text-white/50 text-xs font-medium">Serving Clients Globally · 15 Global Markets & 3 India Hubs</span>
             </div>
             <div className="flex items-center gap-5 text-white/40 text-xs font-medium">
               <a
@@ -180,11 +179,11 @@ export default function Footer() {
 
         {/* Bottom Copyright Bar */}
         <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30 font-normal">
-          <p>© 2025 Global Professional Services. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Awooraa Global Professional Services. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <span className="hover:text-white/60 cursor-pointer transition-colors">Privacy Policy</span>
-            <span className="hover:text-white/60 cursor-pointer transition-colors">Terms of Service</span>
-            <span className="hover:text-white/60 cursor-pointer transition-colors">Cookie Policy</span>
+            <Link to="/privacy-policy" className="hover:text-white/60 cursor-pointer transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-white/60 cursor-pointer transition-colors">Terms of Service</Link>
+            <Link to="/cookie-policy" className="hover:text-white/60 cursor-pointer transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>

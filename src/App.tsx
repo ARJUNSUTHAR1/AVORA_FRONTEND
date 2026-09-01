@@ -12,7 +12,12 @@ import ContactPage from './pages/ContactPage'
 import FinancePage from './pages/FinancePage'
 import DigitalPage from './pages/DigitalPage'
 import PeoplePage from './pages/PeoplePage'
-import MahaRERAPage from './pages/MahaRERAPage'
+import RERAPage from './pages/RERAPage'
+import FinancialModellingPage from './pages/FinancialModellingPage'
+import ProjectFinancePage from './pages/ProjectFinancePage'
+import TermsAndConditionsPage from './pages/TermsAndConditionsPage'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
+import CookiePolicyPage from './pages/CookiePolicyPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -47,7 +52,12 @@ function App() {
             <Route path="/finance" element={<FinancePage />} />
             <Route path="/digital" element={<DigitalPage />} />
             <Route path="/people" element={<PeoplePage />} />
-            <Route path="/maharera" element={<MahaRERAPage />} />
+            <Route path="/rera" element={<RERAPage />} />
+            <Route path="/financial-modelling" element={<FinancialModellingPage />} />
+            <Route path="/project-finance" element={<ProjectFinancePage />} />
+            <Route path="/terms" element={<TermsAndConditionsPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/cookie-policy" element={<CookiePolicyPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/insights" element={<InsightsPage />} />
             <Route path="/contact" element={<ContactPage />} />

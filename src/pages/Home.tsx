@@ -24,9 +24,9 @@ export default function Home() {
       <ServicesGrid />
       <Stats />
       <WhoWeServe />
-      <Insights />
       <Founder />
       <Team />
+      <Insights />
       <CTASection />
     </motion.div>
   )

@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { TrendingUp, Cpu, Shield, Award } from 'lucide-react'
+import { TrendingUp, Cpu, Shield, Award, Users } from 'lucide-react'
 
 export interface TeamMember {
   name: string
   role: string
-  category: 'leadership' | 'legal' | 'accounts' | 'it' | 'sales'
+  category: 'leadership' | 'legal' | 'accounts' | 'it' | 'sales' | 'hr'
   categoryLabel: string
-  pillar: 'Leadership' | 'Legal' | 'Finance' | 'Digital' | 'Sales'
+  pillar: 'Leadership' | 'Legal' | 'Finance' | 'Digital' | 'Sales' | 'HR'
   Icon: any
   color: string
   image: string
@@ -31,7 +31,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Krunal Bhojaraj Navanage',
-    role: 'Partner',
+    role: 'Associate Partner, Nagpur',
     category: 'leadership',
     categoryLabel: 'Partners & Leadership',
     pillar: 'Leadership',
@@ -42,16 +42,28 @@ const teamMembers: TeamMember[] = [
     quote: 'Building long-term client trust through transparent, scalable solutions.',
   },
   {
-    name: 'Ganesh Gupta',
-    role: 'Partner',
+    name: 'Yash Sawant',
+    role: 'Associate Partner, Mumbai',
     category: 'leadership',
     categoryLabel: 'Partners & Leadership',
     pillar: 'Leadership',
     Icon: Award,
     color: '#B8A996',
-    image: '/ganesh.jpeg',
-    expertise: ['Partner', 'Strategic Planning', 'Operational Excellence'],
-    quote: 'Driving strategic initiatives and fostering sustainable business growth.',
+    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=85',
+    expertise: ['Bookkeeping', 'GST Filing', 'MIS Reporting'],
+    quote: 'Accurate and timely accounting to support business operations.',
+  },
+  {
+    name: 'Dr. Nidhi Saxena',
+    role: 'Chief Human Resource Officer (CHRO)',
+    category: 'hr',
+    categoryLabel: 'Human Resources',
+    pillar: 'HR',
+    Icon: Users,
+    color: '#B8A996',
+    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=85',
+    expertise: ['Executive Leadership', 'Strategic Growth', 'Business Operations'],
+    quote: 'Empowering enterprise growth with absolute integrity and clear direction.',
   },
 
   // 2. Legal Advisory & Land Facilitation
@@ -62,7 +74,7 @@ const teamMembers: TeamMember[] = [
     categoryLabel: 'Legal & Land Advisory',
     pillar: 'Legal',
     Icon: Shield,
-    color: '#D97706',
+    color: '#0F766E',
     image: '/giriraj.jpeg',
     expertise: ['Corporate Law', 'Statutory Compliance', 'Legal Advisory'],
     quote: 'Proactive legal guidance ensures sustainable, risk-free enterprise scaling.',
@@ -74,21 +86,21 @@ const teamMembers: TeamMember[] = [
     categoryLabel: 'Legal & Land Advisory',
     pillar: 'Legal',
     Icon: Shield,
-    color: '#D97706',
+    color: '#0F766E',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85',
     expertise: ['Legal Advisory', 'Property Due Diligence', 'Regulatory Liaison'],
     quote: 'Seamless legal and property facilitation navigating regulatory frameworks with precision.',
   },
   {
     name: 'Shardha Yadav',
-    role: 'MahaRERA Compliance Specialist',
+    role: 'RERA Compliance Specialist',
     category: 'legal',
     categoryLabel: 'Legal & Land Advisory',
     pillar: 'Legal',
     Icon: Shield,
-    color: '#D97706',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=85',
-    expertise: ['MahaRERA Registration', 'Form 3 & Form 5', 'Quarterly Compliance & QPR'],
+    color: '#0F766E',
+    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=85',
+    expertise: ['RERA Registration', 'Form 3 & Form 5', 'Quarterly Compliance & QPR'],
     quote: 'Ensuring absolute compliance and seamless regulatory adherence across real estate operations.',
   },
 
@@ -107,7 +119,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'CA Prasant Inani',
-    role: 'Chartered Accountant',
+    role: 'Tax Advisor',
     category: 'accounts',
     categoryLabel: 'Accounts & Tax Team',
     pillar: 'Finance',
@@ -117,23 +129,11 @@ const teamMembers: TeamMember[] = [
     expertise: ['Tax Strategy', 'Audit & Compliance', 'Financial Advisory'],
     quote: 'Precision in every ledger entry powers sound executive decisions.',
   },
-  {
-    name: 'Yash Sawant',
-    role: 'Accounting Executive',
-    category: 'accounts',
-    categoryLabel: 'Accounts & Tax Team',
-    pillar: 'Finance',
-    Icon: TrendingUp,
-    color: '#B8A996',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=85',
-    expertise: ['Bookkeeping', 'GST Filing', 'MIS Reporting'],
-    quote: 'Accurate and timely accounting to support business operations.',
-  },
 
   // 4. IT Team
   {
     name: 'Arjun Suthar',
-    role: 'Technology Lead',
+    role: 'Chief Technology Officer (CTO)',
     category: 'it',
     categoryLabel: 'IT & Digital Team',
     pillar: 'Digital',
@@ -143,6 +143,32 @@ const teamMembers: TeamMember[] = [
     expertise: ['Web Engineering', 'Mobile Apps', 'ERP & CRM'],
     quote: 'Tech should eliminate operational friction and accelerate growth.',
   },
+
+  // 5. Sales & Marketing
+  {
+    name: 'Ankit',
+    role: 'Sales & Marketing',
+    category: 'sales',
+    categoryLabel: 'Sales & Marketing',
+    pillar: 'Sales',
+    Icon: TrendingUp,
+    color: '#F59E0B',
+    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=85',
+    expertise: ['Sales Strategy', 'Market Expansion', 'Client Relations'],
+    quote: 'Connecting businesses with the solutions they need to thrive.',
+  },
+  {
+    name: 'Ritesh Gaikwad',
+    role: 'Sales & Marketing',
+    category: 'sales',
+    categoryLabel: 'Sales & Marketing',
+    pillar: 'Sales',
+    Icon: TrendingUp,
+    color: '#F59E0B',
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=85',
+    expertise: ['Marketing Campaigns', 'Brand Development', 'Lead Generation'],
+    quote: 'Crafting compelling narratives that drive engagement and conversions.',
+  },
 ]
 
 const categories = [
@@ -151,6 +177,8 @@ const categories = [
   { id: 'legal', label: 'Legal & Land Advisory' },
   { id: 'accounts', label: 'Accounts & Tax Team' },
   { id: 'it', label: 'IT Team' },
+  { id: 'sales', label: 'Sales & Marketing' },
+  { id: 'hr', label: 'Human Resources' },
 ]
 
 export default function Team() {
@@ -169,6 +197,8 @@ export default function Team() {
     { title: 'Legal & Land Advisory', items: teamMembers.filter(m => m.category === 'legal') },
     { title: 'Accounts & Tax Advisory Team', items: teamMembers.filter(m => m.category === 'accounts') },
     { title: 'IT & Digital Technology Team', items: teamMembers.filter(m => m.category === 'it') },
+    { title: 'Sales & Marketing Team', items: teamMembers.filter(m => m.category === 'sales') },
+    { title: 'Human Resources Team', items: teamMembers.filter(m => m.category === 'hr') },
   ]
 
   return (

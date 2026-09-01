@@ -2,30 +2,27 @@ import { motion } from 'framer-motion'
 import { Globe2, MapPin } from 'lucide-react'
 
 const globalMarkets = [
-  { country: 'USA', city: 'New York', flag: '🇺🇸' },
-  { country: 'Canada', city: 'Toronto', flag: '🇨🇦' },
-  { country: 'UK', city: 'London', flag: '🇬🇧' },
-  { country: 'Germany', city: 'Frankfurt', flag: '🇩🇪' },
-  { country: 'France', city: 'Paris', flag: '🇫🇷' },
-  { country: 'Italy', city: 'Milan', flag: '🇮🇹' },
-  { country: 'Netherlands', city: 'Amsterdam', flag: '🇳🇱' },
-  { country: 'Switzerland', city: 'Zurich', flag: '🇨🇭' },
-  { country: 'UAE', city: 'Dubai', flag: '🇦🇪' },
-  { country: 'Saudi Arabia', city: 'Riyadh', flag: '🇸🇦' },
-  { country: 'South Africa', city: 'Johannesburg', flag: '🇿🇦' },
-  { country: 'Singapore', city: '', flag: '🇸🇬' },
-  { country: 'Japan', city: 'Tokyo', flag: '🇯🇵' },
-  { country: 'Australia', city: 'Sydney', flag: '🇦🇺' },
-  { country: 'New Zealand', city: 'Auckland', flag: '🇳🇿' },
+  { country: 'USA', flag: '🇺🇸' },
+  { country: 'Canada', flag: '🇨🇦' },
+  { country: 'UK', flag: '🇬🇧' },
+  { country: 'Germany', flag: '🇩🇪' },
+  { country: 'France', flag: '🇫🇷' },
+  { country: 'Italy', flag: '🇮🇹' },
+  { country: 'Netherlands', flag: '🇳🇱' },
+  { country: 'Switzerland', flag: '🇨🇭' },
+  { country: 'UAE', flag: '🇦🇪' },
+  { country: 'Saudi Arabia', flag: '🇸🇦' },
+  { country: 'South Africa', flag: '🇿🇦' },
+  { country: 'Singapore', flag: '🇸🇬' },
+  { country: 'Japan', flag: '🇯🇵' },
+  { country: 'Australia', flag: '🇦🇺' },
+  { country: 'New Zealand', flag: '🇳🇿' },
 ]
 
 const indiaHubs = [
   { state: 'Rajasthan', city: 'Chittorgarh' },
   { state: 'Maharashtra', city: 'Mumbai' },
   { state: 'Maharashtra', city: 'Nagpur' },
-  { state: 'Telangana', city: 'Hyderabad' },
-  { state: 'Gujarat', city: 'Ahmedabad' },
-  { state: 'Tamil Nadu', city: 'Chennai' },
 ]
 
 export default function GlobalPresence() {
@@ -46,17 +43,18 @@ export default function GlobalPresence() {
             Worldwide <span className="font-semibold italic text-gradient-tan">Services</span>
           </h2>
           <p className="text-white/60 text-sm md:text-base leading-relaxed font-normal">
-            Awooraa operates across 15 Global Markets and 6 India Hubs, providing unified Finance, Digital, and People solutions to growing businesses anywhere in the world.
+            Awooraa operates across 15 Global Markets and 3 India Hubs, providing unified Finance, Digital, and People solutions to growing businesses anywhere in the world.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="flex flex-col gap-12 lg:gap-16">
           {/* Global Markets */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="flex-1"
           >
             <div className="flex items-center gap-3 mb-8">
               <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)]">
@@ -68,23 +66,16 @@ export default function GlobalPresence() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
               {globalMarkets.map((market, i) => (
                 <div
                   key={i}
-                  className="p-4 rounded-xl bg-white/[0.03] border border-white/5 hover:border-aw-tan/30 hover:bg-white/[0.06] transition-all group flex items-center gap-3"
+                  className="p-3 rounded-xl bg-white/[0.03] border border-white/5 hover:border-aw-tan/30 hover:bg-white/[0.06] transition-all group flex items-center gap-2"
                 >
-                  <span className="text-xl leading-none filter drop-shadow-md">{market.flag}</span>
-                  <div>
-                    <span className="block text-sm font-semibold text-white group-hover:text-aw-tan transition-colors">
-                      {market.country}
-                    </span>
-                    {market.city && (
-                      <span className="block text-xs text-white/50 font-medium mt-0.5">
-                        {market.city}
-                      </span>
-                    )}
-                  </div>
+                  <span className="text-lg leading-none filter drop-shadow-md">{market.flag}</span>
+                  <span className="text-xs sm:text-sm font-semibold text-white group-hover:text-aw-tan transition-colors">
+                    {market.country}
+                  </span>
                 </div>
               ))}
             </div>
@@ -92,22 +83,23 @@ export default function GlobalPresence() {
 
           {/* India Hubs */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-full"
           >
             <div className="flex items-center gap-3 mb-8">
               <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)]">
                 <MapPin className="w-5 h-5 text-aw-tan" />
               </div>
               <div>
-                <h3 className="text-xl font-display font-semibold text-white">6 India Hubs</h3>
+                <h3 className="text-xl font-display font-semibold text-white">3 India Hubs</h3>
                 <p className="text-xs text-white/50 font-medium">Domestic Operations</p>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
               {indiaHubs.map((hub, i) => (
                 <div
                   key={i}

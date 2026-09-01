@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { gsap } from 'gsap'
-import { Globe2 } from 'lucide-react'
+
 
 const stats = [
   { number: 500, suffix: '+', label: 'Businesses Empowered', sub: 'Worldwide clients & growth' },
@@ -78,16 +78,6 @@ export default function Stats() {
           ))}
         </div>
 
-        {/* Clean Global Footprint Banner (City pills list removed completely) */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex items-center gap-2 text-white/50 text-xs font-medium"
-        >
-          <Globe2 className="w-4 h-4 text-aw-tan shrink-0" />
-          <span>Worldwide Service Operations · Serving Clients Across India, North America, Canada, UK, Europe, Australia, Dubai & Global Markets</span>
-        </motion.div>
       </div>
     </section>
   )

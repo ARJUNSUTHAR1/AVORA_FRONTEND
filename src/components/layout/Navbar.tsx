@@ -1,78 +1,60 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ArrowUpRight, ChevronDown, TrendingUp, Cpu, Users, ChevronRight, Shield } from 'lucide-react'
+import { X, ArrowUpRight, ChevronDown, TrendingUp, Cpu, Users, ChevronRight, Shield, BarChart3, PieChart } from 'lucide-react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 import { useAuth } from '@/context/AuthContext'
 import Logo from '@/components/ui/Logo'
 
-// All 3 pillars with their services
+// Simplified pillars for cleaner Mega Menu
 const pillars = [
   {
     id: 'finance',
     icon: TrendingUp,
     name: 'Awooraa Finance',
-    sub: 'Finance & Accounting',
+    sub: 'Comprehensive Finance & Accounting Solutions',
     href: '/finance',
     color: '#B8A996',
-    services: [
-      { label: 'Accounting & Bookkeeping', href: '/finance#accounting' },
-      { label: 'GST & Tax Filing', href: '/finance#gst' },
-      { label: 'Income Tax Return (ITR) Filing', href: '/finance#itr' },
-      { label: 'Virtual CFO Services', href: '/finance#cfo' },
-      { label: 'MIS Reporting & Financial Planning', href: '/finance#mis' },
-      { label: 'ROC & Corporate Compliance', href: '/finance#compliance' },
-      { label: 'Company / LLP / Startup Registration', href: '/finance#registration' },
-    ],
   },
   {
     id: 'digital',
     icon: Cpu,
     name: 'Awooraa Digital',
-    sub: 'Digital & IT Solutions',
+    sub: 'End-to-End Digital & IT Solutions',
     href: '/digital',
     color: '#334155',
-    services: [
-      { label: 'Full-Stack Web Development', href: '/digital#web' },
-      { label: 'Software & Mobile App Development', href: '/digital#app' },
-      { label: 'SEO & Growth Management', href: '/digital#seo' },
-      { label: 'ERP & CRM Implementation', href: '/digital#erp' },
-      { label: 'AI Automation & Chatbot Development', href: '/digital#ai' },
-    ],
   },
   {
     id: 'people',
     icon: Users,
     name: 'Awooraa People',
-    sub: 'HR, Hiring & Payroll',
+    sub: 'Strategic HR, Hiring & Payroll',
     href: '/people',
     color: '#64748B',
-    services: [
-      { label: 'Recruitment & Talent Acquisition', href: '/people#recruitment' },
-      { label: 'Payroll & Employee Management', href: '/people#payroll' },
-      { label: 'HR Compliance & Policies', href: '/people#compliance' },
-      { label: 'Performance & Growth Strategy', href: '/people#performance' },
-      { label: 'Contract Staffing', href: '/people#staffing' },
-      { label: 'Executive Search', href: '/people#executive' },
-    ],
   },
   {
-    id: 'maharera',
+    id: 'rera',
     icon: Shield,
-    name: 'MahaRERA Advisory',
-    sub: 'Compliance & Registration',
-    href: '/maharera',
-    color: '#D97706',
-    services: [
-      { label: 'Project Registration', href: '/maharera#registration' },
-      { label: 'CA Certificate – Form 3 & 5', href: '/maharera#certificates' },
-      { label: 'Project Extension', href: '/maharera#extension' },
-      { label: 'Correction / Rectification', href: '/maharera#correction' },
-      { label: 'Profile Updation', href: '/maharera#updation' },
-      { label: 'Quarterly Compliance (QPR)', href: '/maharera#qpr' },
-      { label: 'Annual Compliance', href: '/maharera#annual' },
-      { label: 'Project Completion / Closure', href: '/maharera#closure' },
-    ],
+    name: 'RERA Compliance & Advisory',
+    sub: 'Navigate RERA regulations with absolute certainty',
+    href: '/rera',
+    color: '#0F766E', // Professional Teal
+  },
+  {
+    id: 'financial-modelling',
+    icon: BarChart3,
+    name: 'Financial Modelling',
+    sub: 'Robust financial models for strategic decision making',
+    href: '/financial-modelling',
+    color: '#0369A1', // Professional Blue
+  },
+  {
+    id: 'project-finance',
+    icon: PieChart,
+    name: 'Project Finance',
+    sub: 'Structuring and securing optimal project funding',
+    href: '/project-finance',
+    color: '#4338CA', // Professional Indigo
   },
 ]
 
@@ -144,7 +126,7 @@ export default function Navbar() {
                   to={link.href}
                   className={cn(
                     'flex items-center gap-1 px-3.5 py-2 text-sm font-medium tracking-normal transition-colors duration-200 rounded-lg whitespace-nowrap',
-                    location.pathname === link.href || (link.hasMega && location.pathname.match(/^\/(finance|digital|people|services)/))
+                    location.pathname === link.href || (link.hasMega && location.pathname.match(/^\/(finance|digital|people|services|rera|financial-modelling|project-finance)/))
                       ? 'text-aw-navy font-semibold'
                       : 'text-aw-mid hover:text-aw-navy',
                     link.hasMega && megaOpen ? 'text-aw-navy bg-aw-cream/80' : ''
@@ -185,12 +167,6 @@ export default function Navbar() {
               </>
             ) : (
               <>
-                {/* <button
-                  onClick={() => navigate('/login')}
-                  className="hidden md:block px-3 py-1.5 text-xs font-semibold tracking-wider uppercase text-aw-slate hover:text-aw-navy transition-colors whitespace-nowrap"
-                >
-                  Client Login
-                </button> */}
                 <Link
                   to="/contact"
                   className="flex items-center gap-1 px-3 sm:px-4 py-1.5 sm:py-2 bg-aw-navy text-white text-[11px] sm:text-xs font-semibold tracking-wider uppercase rounded-full hover:bg-aw-mid transition-colors duration-200 shadow-sm whitespace-nowrap shrink-0"
@@ -236,42 +212,28 @@ export default function Navbar() {
                   </Link>
                 </div>
 
-                <div className="grid grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
                   {pillars.map((pillar) => {
                     const Icon = pillar.icon
                     return (
-                      <div key={pillar.id} className="space-y-4">
-                        <Link
-                          to={pillar.href}
-                          className="group flex items-start gap-3 hover:opacity-80 transition-opacity"
+                      <Link
+                        key={pillar.id}
+                        to={pillar.href}
+                        className="group flex items-start gap-4 hover:opacity-80 transition-opacity"
+                      >
+                        <div
+                          className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+                          style={{ background: `${pillar.color}15`, border: `1px solid ${pillar.color}30` }}
                         >
-                          <div
-                            className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
-                            style={{ background: `${pillar.color}15`, border: `1px solid ${pillar.color}30` }}
-                          >
-                            <Icon className="w-4 h-4" style={{ color: pillar.color }} />
-                          </div>
-                          <div>
-                            <h4 className="font-display font-semibold text-aw-navy text-base leading-tight group-hover:text-aw-tan transition-colors">
-                              {pillar.name}
-                            </h4>
-                            <p className="text-aw-slate text-xs font-normal mt-0.5">{pillar.sub}</p>
-                          </div>
-                        </Link>
-
-                        <ul className="space-y-2.5 border-l border-aw-light ml-4 pl-4 pt-1">
-                          {pillar.services.map((svc) => (
-                            <li key={svc.label}>
-                              <Link
-                                to={svc.href}
-                                className="block text-xs font-medium text-aw-slate hover:text-aw-navy transition-colors link-underline"
-                              >
-                                {svc.label}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                          <Icon className="w-5 h-5" style={{ color: pillar.color }} />
+                        </div>
+                        <div>
+                          <h4 className="font-display font-semibold text-aw-navy text-base leading-tight group-hover:text-aw-tan transition-colors">
+                            {pillar.name}
+                          </h4>
+                          <p className="text-aw-slate text-xs font-normal mt-1 leading-relaxed">{pillar.sub}</p>
+                        </div>
+                      </Link>
                     )
                   })}
                 </div>
@@ -331,7 +293,7 @@ export default function Navbar() {
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25 }}
-                      className="overflow-hidden space-y-5 pt-3"
+                      className="overflow-hidden space-y-4 pt-3"
                     >
                       {pillars.map((pillar) => {
                         const Icon = pillar.icon
@@ -339,23 +301,14 @@ export default function Navbar() {
                           <div key={pillar.id} className="pl-3 border-l border-white/15">
                             <button
                               onClick={() => handleNavClick(pillar.href)}
-                              className="flex items-center gap-2 mb-2 text-aw-tan font-semibold text-sm text-left w-full"
+                              className="flex flex-col items-start gap-1 text-left w-full hover:opacity-80 transition-opacity"
                             >
-                              <Icon className="w-4 h-4 shrink-0 text-aw-tan" />
-                              <span>{pillar.name}</span>
+                              <div className="flex items-center gap-2 text-aw-tan font-semibold text-sm">
+                                <Icon className="w-4 h-4 shrink-0 text-aw-tan" />
+                                <span>{pillar.name}</span>
+                              </div>
+                              <span className="text-white/50 text-[11px] leading-snug pl-6">{pillar.sub}</span>
                             </button>
-
-                            <div className="space-y-2.5 pl-6">
-                              {pillar.services.map((svc) => (
-                                <button
-                                  key={svc.label}
-                                  onClick={() => handleNavClick(svc.href)}
-                                  className="block text-white/70 hover:text-white text-xs text-left w-full py-1 leading-snug font-normal"
-                                >
-                                  {svc.label}
-                                </button>
-                              ))}
-                            </div>
                           </div>
                         )
                       })}

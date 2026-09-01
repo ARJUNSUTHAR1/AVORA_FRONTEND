@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowDown, ArrowUpRight, TrendingUp, Cpu, Users, CheckCircle2 } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, TrendingUp, Cpu, Users, CheckCircle2, Shield } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const trustPoints = [
@@ -13,6 +13,7 @@ const pillars = [
   { icon: TrendingUp, label: 'Finance', color: '#B8A996', href: '/finance' },
   { icon: Cpu, label: 'Digital', color: '#334155', href: '/digital' },
   { icon: Users, label: 'People', color: '#64748B', href: '/people' },
+  { icon: Shield, label: 'RERA', color: '#0F766E', href: '/rera' },
 ]
 
 const stats = [
