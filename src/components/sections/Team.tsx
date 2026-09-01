@@ -41,6 +41,18 @@ const teamMembers: TeamMember[] = [
     expertise: ['Partner', 'Business Development', 'Global Partnerships'],
     quote: 'Building long-term client trust through transparent, scalable solutions.',
   },
+  {
+    name: 'Ganesh Gupta',
+    role: 'Partner',
+    category: 'leadership',
+    categoryLabel: 'Partners & Leadership',
+    pillar: 'Leadership',
+    Icon: Award,
+    color: '#B8A996',
+    image: '/ganesh.jpeg',
+    expertise: ['Partner', 'Strategic Planning', 'Operational Excellence'],
+    quote: 'Driving strategic initiatives and fostering sustainable business growth.',
+  },
 
   // 2. Legal Advisory & Land Facilitation
   {
