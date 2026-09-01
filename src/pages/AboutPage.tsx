@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import Founder from '@/components/sections/Founder'
 import Team from '@/components/sections/Team'
 import GlobalPresence from '@/components/sections/GlobalPresence'
 import { ArrowUpRight, MapPin, Building2, Globe } from 'lucide-react'
@@ -164,6 +165,7 @@ export default function AboutPage() {
       </section>
 
       <GlobalPresence />
+      <Founder />
       <Team />
     </motion.div>
   )

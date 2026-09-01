@@ -18,8 +18,8 @@ export interface TeamMember {
 const teamMembers: TeamMember[] = [
   // 1. Leadership & Partners (First)
   {
-    name: 'Neha Rathor',
-    role: 'Partner',
+    name: 'Neha Rathore',
+    role: 'Managing Partner & Chief Communications Officer (CCO)',
     category: 'leadership',
     categoryLabel: 'Partners & Leadership',
     pillar: 'Leadership',
@@ -30,22 +30,22 @@ const teamMembers: TeamMember[] = [
     quote: 'Empowering enterprise growth with absolute integrity and clear direction.',
   },
   {
-    name: 'Ganesh Gupta',
+    name: 'Krunal Bhojaraj Navanage',
     role: 'Partner',
     category: 'leadership',
     categoryLabel: 'Partners & Leadership',
     pillar: 'Leadership',
     Icon: Award,
     color: '#B8A996',
-    image: '/ganesh.jpeg',
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=85',
     expertise: ['Partner', 'Business Development', 'Global Partnerships'],
     quote: 'Building long-term client trust through transparent, scalable solutions.',
   },
 
   // 2. Legal Advisory & Land Facilitation
   {
-    name: 'Mr. Giriraj Kumar Rathor',
-    role: 'Legal Advisor',
+    name: 'Adv. Giriraj Ji',
+    role: 'Chairperson & Legal Advisor',
     category: 'legal',
     categoryLabel: 'Legal & Land Advisory',
     pillar: 'Legal',
@@ -57,15 +57,27 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Vaibhav Mishra',
-    role: 'Land Facilitator',
+    role: 'Legal Advisory',
     category: 'legal',
     categoryLabel: 'Legal & Land Advisory',
     pillar: 'Legal',
     Icon: Shield,
     color: '#D97706',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85',
-    expertise: ['Land Facilitation', 'Property Due Diligence', 'Regulatory Liaison'],
-    quote: 'Seamless land and property facilitation navigating regulatory frameworks with precision.',
+    expertise: ['Legal Advisory', 'Property Due Diligence', 'Regulatory Liaison'],
+    quote: 'Seamless legal and property facilitation navigating regulatory frameworks with precision.',
+  },
+  {
+    name: 'Shardha Yadav',
+    role: 'MahaRERA Compliance Specialist',
+    category: 'legal',
+    categoryLabel: 'Legal & Land Advisory',
+    pillar: 'Legal',
+    Icon: Shield,
+    color: '#D97706',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=85',
+    expertise: ['MahaRERA Registration', 'Form 3 & Form 5', 'Quarterly Compliance & QPR'],
+    quote: 'Ensuring absolute compliance and seamless regulatory adherence across real estate operations.',
   },
 
   // 3. Accounts & Tax Team
@@ -82,6 +94,18 @@ const teamMembers: TeamMember[] = [
     quote: 'Financial clarity and compliance are non-negotiable pillars of business health.',
   },
   {
+    name: 'CA Prasant Inani',
+    role: 'Chartered Accountant',
+    category: 'accounts',
+    categoryLabel: 'Accounts & Tax Team',
+    pillar: 'Finance',
+    Icon: TrendingUp,
+    color: '#B8A996',
+    image: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=85',
+    expertise: ['Tax Strategy', 'Audit & Compliance', 'Financial Advisory'],
+    quote: 'Precision in every ledger entry powers sound executive decisions.',
+  },
+  {
     name: 'Yash Sawant',
     role: 'Accounting Executive',
     category: 'accounts',
@@ -89,11 +113,10 @@ const teamMembers: TeamMember[] = [
     pillar: 'Finance',
     Icon: TrendingUp,
     color: '#B8A996',
-    image: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=85',
+    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=85',
     expertise: ['Bookkeeping', 'GST Filing', 'MIS Reporting'],
-    quote: 'Precision in every ledger entry powers sound executive decisions.',
+    quote: 'Accurate and timely accounting to support business operations.',
   },
-
 
   // 4. IT Team
   {
@@ -108,10 +131,6 @@ const teamMembers: TeamMember[] = [
     expertise: ['Web Engineering', 'Mobile Apps', 'ERP & CRM'],
     quote: 'Tech should eliminate operational friction and accelerate growth.',
   },
-
-
-
-
 ]
 
 const categories = [

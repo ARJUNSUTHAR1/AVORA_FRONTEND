@@ -6,6 +6,7 @@ import ServicesGrid from '@/components/sections/ServicesGrid'
 import Stats from '@/components/sections/Stats'
 import WhoWeServe from '@/components/sections/WhoWeServe'
 import Insights from '@/components/sections/Insights'
+import Founder from '@/components/sections/Founder'
 import Team from '@/components/sections/Team'
 import CTASection from '@/components/sections/CTASection'
 
@@ -24,6 +25,7 @@ export default function Home() {
       <Stats />
       <WhoWeServe />
       <Insights />
+      <Founder />
       <Team />
       <CTASection />
     </motion.div>

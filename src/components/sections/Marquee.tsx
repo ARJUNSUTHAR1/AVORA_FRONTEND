@@ -33,7 +33,7 @@ const showcaseItems = [
   },
 ]
 
-const locations = ['15 Global Markets', '9 India Hubs', 'Worldwide Operations']
+const locations = ['15 Global Markets', '6 India Hubs', 'Worldwide Operations']
 
 export default function Marquee() {
   const [activeTab, setActiveTab] = useState(0)

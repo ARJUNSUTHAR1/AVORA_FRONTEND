@@ -22,13 +22,10 @@ const globalMarkets = [
 const indiaHubs = [
   { state: 'Rajasthan', city: 'Chittorgarh' },
   { state: 'Maharashtra', city: 'Mumbai' },
-  { state: '', city: 'Delhi NCR' },
-  { state: 'Gujarat', city: 'Ahmedabad' },
-  { state: 'Karnataka', city: 'Bengaluru' },
-  { state: 'Tamil Nadu', city: 'Chennai' },
+  { state: 'Maharashtra', city: 'Nagpur' },
   { state: 'Telangana', city: 'Hyderabad' },
-  { state: 'Maharashtra', city: 'Pune' },
-  { state: 'West Bengal', city: 'Kolkata' },
+  { state: 'Gujarat', city: 'Ahmedabad' },
+  { state: 'Tamil Nadu', city: 'Chennai' },
 ]
 
 export default function GlobalPresence() {
@@ -49,7 +46,7 @@ export default function GlobalPresence() {
             Worldwide <span className="font-semibold italic text-gradient-tan">Services</span>
           </h2>
           <p className="text-white/60 text-sm md:text-base leading-relaxed font-normal">
-            Awooraa operates across 15 Global Markets and 9 India Hubs, providing unified Finance, Digital, and People solutions to growing businesses anywhere in the world.
+            Awooraa operates across 15 Global Markets and 6 India Hubs, providing unified Finance, Digital, and People solutions to growing businesses anywhere in the world.
           </p>
         </div>
 
@@ -105,7 +102,7 @@ export default function GlobalPresence() {
                 <MapPin className="w-5 h-5 text-aw-tan" />
               </div>
               <div>
-                <h3 className="text-xl font-display font-semibold text-white">9 India Hubs</h3>
+                <h3 className="text-xl font-display font-semibold text-white">6 India Hubs</h3>
                 <p className="text-xs text-white/50 font-medium">Domestic Operations</p>
               </div>
             </div>

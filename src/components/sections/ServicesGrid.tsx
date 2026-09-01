@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { TrendingUp, Cpu, Users, ArrowUpRight, CheckCircle2, BarChart3, Globe, Smartphone } from 'lucide-react'
+import { TrendingUp, Cpu, Users, ArrowUpRight, CheckCircle2, BarChart3, Globe, Smartphone, Shield } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 
@@ -74,6 +74,31 @@ const pillars = [
     image: '/neha.jpeg',
     team: { name: 'Neha Rathor', role: 'Partner', img: '/neha.jpeg' },
   },
+  {
+    id: 'maharera',
+    href: '/maharera',
+    pillar: 'MahaRERA Advisory',
+    Icon: Shield,
+    accentColor: '#D97706',
+    dark: false,
+    headline: 'Real Estate Compliance, Perfected.',
+    subline: 'Navigate MahaRERA regulations with absolute certainty.',
+    body: 'Real estate developers face immense regulatory scrutiny. From initial project registration to quarterly updates and final closure, non-compliance can halt your project. We manage the entire MahaRERA lifecycle, ensuring you stay compliant and penalty-free.',
+    painLine: 'Because a single regulatory misstep can stall your entire real estate project.',
+    callout: { icon: Shield, value: '100+', label: 'Projects Registered' },
+    services: [
+      'MahaRERA Project Registration Services',
+      'MahaRERA CA Certificate – Form 3 & Form 5',
+      'MahaRERA Project Extension Services',
+      'MahaRERA Project Correction / Rectification Services',
+      'MahaRERA Project & Profile Updation Services',
+      'MahaRERA Quarterly Compliance & QPR Services',
+      'MahaRERA Annual Compliance',
+      'MahaRERA Project Completion / Closure Update Services',
+    ],
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80',
+    team: { name: 'Shardha Yadav', role: 'MahaRERA Compliance Specialist', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80' },
+  },
 ]
 
 export default function ServicesGrid() {
@@ -93,7 +118,7 @@ export default function ServicesGrid() {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="w-10 h-px bg-aw-tan" />
-            <span className="text-aw-tan text-xs font-semibold tracking-[0.2em] uppercase">Three Pillars. One Partner.</span>
+            <span className="text-aw-tan text-xs font-semibold tracking-[0.2em] uppercase">Core Pillars. One Partner.</span>
           </div>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
             <h2 className="font-display font-light text-3xl sm:text-4xl md:text-5xl text-aw-navy leading-tight max-w-xl">

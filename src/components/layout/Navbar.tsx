@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ArrowUpRight, ChevronDown, TrendingUp, Cpu, Users, ChevronRight } from 'lucide-react'
+import { X, ArrowUpRight, ChevronDown, TrendingUp, Cpu, Users, ChevronRight, Shield } from 'lucide-react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 import { useAuth } from '@/context/AuthContext'
@@ -54,6 +54,24 @@ const pillars = [
       { label: 'Performance & Growth Strategy', href: '/people#performance' },
       { label: 'Contract Staffing', href: '/people#staffing' },
       { label: 'Executive Search', href: '/people#executive' },
+    ],
+  },
+  {
+    id: 'maharera',
+    icon: Shield,
+    name: 'MahaRERA Advisory',
+    sub: 'Compliance & Registration',
+    href: '/maharera',
+    color: '#D97706',
+    services: [
+      { label: 'Project Registration', href: '/maharera#registration' },
+      { label: 'CA Certificate – Form 3 & 5', href: '/maharera#certificates' },
+      { label: 'Project Extension', href: '/maharera#extension' },
+      { label: 'Correction / Rectification', href: '/maharera#correction' },
+      { label: 'Profile Updation', href: '/maharera#updation' },
+      { label: 'Quarterly Compliance (QPR)', href: '/maharera#qpr' },
+      { label: 'Annual Compliance', href: '/maharera#annual' },
+      { label: 'Project Completion / Closure', href: '/maharera#closure' },
     ],
   },
 ]
@@ -218,7 +236,7 @@ export default function Navbar() {
                   </Link>
                 </div>
 
-                <div className="grid grid-cols-3 gap-10">
+                <div className="grid grid-cols-4 gap-6">
                   {pillars.map((pillar) => {
                     const Icon = pillar.icon
                     return (
@@ -258,11 +276,7 @@ export default function Navbar() {
                   })}
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-aw-light/60 flex items-center justify-between text-xs text-aw-slate">
-                  <div className="flex items-center gap-2 font-medium">
-                    <span className="w-1.5 h-1.5 rounded-full bg-aw-tan" />
-                    <span>Serving Clients: Worldwide (USA, Canada, UK, Europe, Australia, Dubai) · Chittorgarh (Rajasthan) · Mumbai · Nagpur</span>
-                  </div>
+                <div className="mt-8 pt-4 border-t border-aw-light/60 flex items-center justify-end text-xs text-aw-slate">
                   <Link
                     to="/contact"
                     className="text-aw-navy font-semibold hover:text-aw-tan transition-colors flex items-center gap-1"
