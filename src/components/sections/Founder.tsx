@@ -20,7 +20,7 @@ export default function Founder() {
           >
             <div className="relative rounded-2xl overflow-hidden aspect-[4/5] border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
               <img 
-                src="/ankit.jpg" 
+                src="/founder.png" 
                 alt="Ankit Narwal - Founder & CEO" 
                 className="w-full h-full object-cover"
                 onError={(e) => {
@@ -36,7 +36,6 @@ export default function Founder() {
             </div>
             
             {/* Decorative element */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 border border-aw-tan/20 rounded-full blur-[1px] pointer-events-none" />
             <div className="absolute -top-4 -left-4 w-20 h-20 border border-white/10 rounded-full blur-[1px] pointer-events-none" />
           </motion.div>
 
@@ -78,7 +77,7 @@ export default function Founder() {
               <img src="/signature.png" alt="Signature" className="h-12 opacity-80 invert" onError={(e) => e.currentTarget.style.display = 'none'} />
               <div>
                 <p className="text-white font-semibold text-sm">Ankit Narwal</p>
-                <p className="text-white/40 text-xs">Founder, CEO & Head of Sales and Marketing</p>
+                <p className="text-white/40 text-xs">Founder & CEO</p>
               </div>
             </div>
           </motion.div>

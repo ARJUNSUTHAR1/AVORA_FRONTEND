@@ -68,7 +68,7 @@ const teamMembers: TeamMember[] = [
 
   // 2. Legal Advisory & Land Facilitation
   {
-    name: 'Adv. Giriraj Ji',
+    name: 'Adv Giriraj Kumar Rathore',
     role: 'Chairperson & Legal Advisor',
     category: 'legal',
     categoryLabel: 'Legal & Land Advisory',

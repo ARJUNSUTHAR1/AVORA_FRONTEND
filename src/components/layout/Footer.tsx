@@ -46,11 +46,13 @@ export default function Footer() {
       <div className="aw-container relative z-10">
 
         {/* Top Brand + Links Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 md:gap-12 mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 md:gap-12 mb-14">
 
           {/* Brand Block & 2 Physical Company Addresses */}
           <div className="lg:col-span-2 space-y-6">
-            <Logo dark size="lg" />
+            <div className="inline-block bg-white px-5 py-3 rounded-xl">
+              <Logo dark={false} size="xl" />
+            </div>
 
             <p className="text-white/50 text-sm leading-relaxed max-w-sm font-normal">
               Global Professional Services provides integrated Finance, Digital, and People solutions that empower companies to operate and scale worldwide.
@@ -72,16 +74,16 @@ export default function Footer() {
               <div className="flex items-start gap-3 text-white/70 text-xs font-medium">
                 <Building2 className="w-4 h-4 text-aw-tan shrink-0 mt-0.5" />
                 <div>
-                  <span className="text-white font-semibold block mb-0.5">Head Office (Mumbai)</span>
-                  <span className="text-white/50 font-normal">Mumbai, Maharashtra, India</span>
+                  <span className="text-white font-semibold block mb-0.5">Head Office (Chittorgarh)</span>
+                  <span className="text-white/50 font-normal">Chittorgarh, Rajasthan, India</span>
                 </div>
               </div>
 
               <div className="flex items-start gap-3 text-white/70 text-xs font-medium">
                 <MapPin className="w-4 h-4 text-aw-tan shrink-0 mt-0.5" />
                 <div>
-                  <span className="text-white font-semibold block mb-0.5">Rajasthan Office (Chittorgarh)</span>
-                  <span className="text-white/50 font-normal">Chittorgarh, Rajasthan, India</span>
+                  <span className="text-white font-semibold block mb-0.5">Maharashtra Office (Mumbai)</span>
+                  <span className="text-white/50 font-normal">Mumbai, Maharashtra, India</span>
                 </div>
               </div>
 
@@ -138,7 +140,6 @@ export default function Footer() {
         <div className="pt-6 border-t border-white/10 mb-8">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <span className="text-white/50 text-xs font-medium">Serving Clients Globally · 15 Global Markets & 3 India Hubs</span>
             </div>
             <div className="flex items-center gap-5 text-white/40 text-xs font-medium">
               <a
@@ -179,11 +180,14 @@ export default function Footer() {
 
         {/* Bottom Copyright Bar */}
         <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30 font-normal">
-          <p>© {new Date().getFullYear()} Awooraa Global Professional Services. All rights reserved.</p>
+          <div className="flex flex-col gap-1">
+            <p>© {new Date().getFullYear()} Global Professional Services. All rights reserved.</p>
+            <p>Designed and developed by Arjun Suthar</p>
+          </div>
           <div className="flex items-center gap-6">
-            <Link to="/privacy-policy" className="hover:text-white/60 cursor-pointer transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-white/60 cursor-pointer transition-colors">Terms of Service</Link>
-            <Link to="/cookie-policy" className="hover:text-white/60 cursor-pointer transition-colors">Cookie Policy</Link>
+            <span className="hover:text-white/60 cursor-pointer transition-colors">Privacy Policy</span>
+            <span className="hover:text-white/60 cursor-pointer transition-colors">Terms of Service</span>
+            <span className="hover:text-white/60 cursor-pointer transition-colors">Cookie Policy</span>
           </div>
         </div>
       </div>

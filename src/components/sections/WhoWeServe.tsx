@@ -28,7 +28,7 @@ const segments = [
     headline: 'Seamless global business execution.',
     body: 'Whether you\'re an NRI investing back home or an international company expanding into new markets — we bridge the gap with FDI advisory, entity setup, land acquisition, and cross-border tax.',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80',
-    tags: ['FDI Advisory', 'Cross-border Tax', 'Entity Setup', 'Land Acquisition'],
+    tags: ['FDI Advisory', 'Cross-border Tax', 'Entity Setup'],
     location: 'International & NRI Clients',
   },
 ]

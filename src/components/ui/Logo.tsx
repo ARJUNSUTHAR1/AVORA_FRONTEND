@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 interface LogoProps {
   dark?: boolean
   className?: string
-  size?: 'sm' | 'md' | 'lg'
+  size?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
 export default function Logo({ dark = false, className, size = 'md' }: LogoProps) {
@@ -21,21 +21,16 @@ export default function Logo({ dark = false, className, size = 'md' }: LogoProps
       onMouseLeave={() => setIsHovered(false)}
       className={cn('relative flex items-center gap-2.5 group select-none shrink-0', className)}
     >
-      {/* Monogram Icon */}
+      {/* Brand Logo Image */}
       <div className="relative shrink-0 flex items-center justify-center">
-        <svg
-          width={size === 'sm' ? '20' : size === 'lg' ? '32' : '26'}
-          height={size === 'sm' ? '20' : size === 'lg' ? '32' : '26'}
-          viewBox="0 0 40 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="transition-transform duration-300 group-hover:scale-105"
-        >
-          {/* Left leg (Navy / White) */}
-          <path d="M8 32L21 8H26L13 32H8Z" fill={primaryColor} />
-          {/* Right leg (Tan) */}
-          <path d="M23 16L31 32H26L20 20L23 16Z" fill={tanColor} />
-        </svg>
+        <img
+          src="/logo.png"
+          alt="Global Professional Services Logo"
+          className={cn(
+            "transition-transform duration-300 group-hover:scale-105 object-contain",
+            size === 'sm' ? 'w-8 h-8' : size === 'lg' ? 'w-14 h-14' : size === 'xl' ? 'w-24 h-24' : 'w-10 h-10'
+          )}
+        />
       </div>
 
       {/* Logo Text - Fixed width container preventing flex shift */}
@@ -43,7 +38,7 @@ export default function Logo({ dark = false, className, size = 'md' }: LogoProps
         <span
           className={cn(
             'font-display font-semibold tracking-[0.26em] uppercase transition-colors duration-200 whitespace-nowrap',
-            size === 'sm' ? 'text-sm' : size === 'lg' ? 'text-2xl' : 'text-base sm:text-lg',
+            size === 'sm' ? 'text-sm' : size === 'lg' ? 'text-2xl' : size === 'xl' ? 'text-4xl' : 'text-base sm:text-lg',
             dark ? 'text-white' : 'text-aw-navy'
           )}
         >
