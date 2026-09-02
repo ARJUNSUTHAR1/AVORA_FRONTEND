@@ -11,9 +11,6 @@ interface LogoProps {
 
 export default function Logo({ dark = false, className, size = 'md' }: LogoProps) {
   const [isHovered, setIsHovered] = useState(false)
-  const primaryColor = dark ? '#FFFFFF' : '#0D1B2A'
-  const tanColor = '#B8A996'
-
   return (
     <Link
       to="/"
