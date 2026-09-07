@@ -25,7 +25,7 @@ export default function Logo({ dark = false, className, size = 'md' }: LogoProps
           alt="Global Professional Services Logo"
           className={cn(
             "transition-transform duration-300 group-hover:scale-105 object-contain",
-            size === 'sm' ? 'w-8 h-8' : size === 'lg' ? 'w-14 h-14' : size === 'xl' ? 'w-24 h-24' : 'w-10 h-10'
+            size === 'sm' ? 'w-8 h-8' : size === 'lg' ? 'w-14 h-14' : size === 'xl' ? 'w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24' : 'w-10 h-10'
           )}
         />
       </div>
@@ -34,8 +34,8 @@ export default function Logo({ dark = false, className, size = 'md' }: LogoProps
       <div className="relative flex flex-col justify-center leading-none">
         <span
           className={cn(
-            'font-display font-semibold tracking-[0.26em] uppercase transition-colors duration-200 whitespace-nowrap',
-            size === 'sm' ? 'text-sm' : size === 'lg' ? 'text-2xl' : size === 'xl' ? 'text-4xl' : 'text-base sm:text-lg',
+            'font-display font-semibold tracking-[0.26em] uppercase transition-colors duration-200 whitespace-nowrap pr-[0.26em]',
+            size === 'sm' ? 'text-sm' : size === 'lg' ? 'text-2xl' : size === 'xl' ? 'text-2xl sm:text-3xl md:text-4xl' : 'text-base sm:text-lg',
             dark ? 'text-white' : 'text-aw-navy'
           )}
         >
@@ -57,7 +57,7 @@ export default function Logo({ dark = false, className, size = 'md' }: LogoProps
                 <span
                   className={cn(
                     'font-display font-semibold tracking-[0.14em] uppercase text-aw-tan whitespace-nowrap',
-                    size === 'sm' ? 'text-[6px]' : size === 'lg' ? 'text-[9.5px]' : 'text-[7.5px]'
+                    size === 'sm' ? 'text-[6px]' : size === 'md' ? 'text-[7.5px]' : size === 'lg' ? 'text-[9.5px]' : 'text-[9px] sm:text-[11px] md:text-[13px]'
                   )}
                 >
                   GLOBAL — PROFESSIONAL SERVICES

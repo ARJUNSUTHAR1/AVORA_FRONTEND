@@ -29,7 +29,7 @@ export default function DigitalPage() {
           >
             <div className="flex items-center gap-3 mb-5">
               <span className="w-10 h-px bg-aw-tan" />
-              <span className="text-aw-tan text-xs font-semibold tracking-[0.2em] uppercase">Awooraa Digital</span>
+              <span className="text-aw-tan text-xs font-semibold tracking-[0.2em] uppercase">Digital</span>
             </div>
             <h1 className="font-display text-5xl sm:text-6xl md:text-7xl text-aw-navy leading-tight mb-6">
               Modern Technology &<br />
@@ -83,7 +83,7 @@ export default function DigitalPage() {
               transition={{ duration: 0.8, delay: 0.15 }}
               className="rounded-2xl overflow-hidden aspect-[4/3]"
             >
-              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80" alt="Awooraa Digital" className="w-full h-full object-cover" />
+              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80" alt="Digital" className="w-full h-full object-cover" />
             </motion.div>
           </div>
         </div>

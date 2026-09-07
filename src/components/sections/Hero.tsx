@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowDown, ArrowUpRight, TrendingUp, Cpu, Users, CheckCircle2, Shield } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, TrendingUp, Cpu, Users, CheckCircle2, Shield, Globe, BarChart3, PieChart } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const trustPoints = [
@@ -14,6 +14,9 @@ const pillars = [
   { icon: Cpu, label: 'Digital', color: '#334155', href: '/digital' },
   { icon: Users, label: 'People', color: '#64748B', href: '/people' },
   { icon: Shield, label: 'RERA', color: '#0F766E', href: '/rera' },
+  { icon: Globe, label: 'Trade', color: '#0284C7', href: '/import-export' },
+  { icon: BarChart3, label: 'Financial Modelling', color: '#0369A1', href: '/financial-modelling' },
+  { icon: PieChart, label: 'Project Finance', color: '#4338CA', href: '/project-finance' },
 ]
 
 const stats = [
@@ -33,39 +36,42 @@ export default function Hero() {
       ref={containerRef}
       className="relative min-h-[90vh] lg:min-h-screen bg-aw-cream overflow-hidden flex flex-col justify-between"
     >
-      {/* Modern Subtle Grid Background with Radial Glow Mask */}
-      <div className="absolute inset-0 modern-grid radial-mask opacity-80 pointer-events-none" />
+      {/* Full-width backgrounds */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Modern Subtle Grid Background with Radial Glow Mask */}
+        <div className="absolute inset-0 modern-grid radial-mask opacity-80" />
 
-      {/* Ambient Gradient Glows */}
-      <div className="absolute top-[-5%] right-[-5%] w-[500px] h-[500px] rounded-full bg-aw-tan/[0.07] blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[10%] left-[-5%] w-[400px] h-[400px] rounded-full bg-aw-mid/[0.04] blur-[100px] pointer-events-none" />
+        {/* Ambient Gradient Glows */}
+        <div className="absolute top-[-5%] right-[-5%] w-[500px] h-[500px] rounded-full bg-aw-tan/[0.07] blur-[120px]" />
+        <div className="absolute bottom-[10%] left-[-5%] w-[400px] h-[400px] rounded-full bg-aw-mid/[0.04] blur-[100px]" />
 
-      {/* Desktop Architectural Corporate Building Image Panel */}
-      <div className="absolute top-0 right-0 w-[46%] h-full hidden lg:block pointer-events-none overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.2 }}
-          className="h-full relative"
-        >
+        {/* Desktop Architectural Corporate Building Image Panel */}
+        <div className="absolute top-0 right-0 w-[46%] h-full hidden lg:block overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, scale: 1.04 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.2 }}
+            className="h-full relative"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=85"
+              alt="Global Professional Services Headquarters"
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-aw-cream via-aw-cream/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-aw-cream/40 via-transparent to-aw-cream/50" />
+          </motion.div>
+        </div>
+
+        {/* Mobile Screen Background: Architectural Building with Low Opacity strictly matching request */}
+        <div className="absolute inset-0 lg:hidden overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=85"
-            alt="Global Professional Services Headquarters"
-            className="w-full h-full object-cover object-center"
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=75"
+            alt=""
+            className="w-full h-full object-cover object-center opacity-15"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-aw-cream via-aw-cream/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-aw-cream/40 via-transparent to-aw-cream/50" />
-        </motion.div>
-      </div>
-
-      {/* Mobile Screen Background: Architectural Building with Low Opacity strictly matching request */}
-      <div className="absolute inset-0 lg:hidden pointer-events-none overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=75"
-          alt=""
-          className="w-full h-full object-cover object-center opacity-15"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-aw-cream/80 via-aw-cream/90 to-aw-cream" />
+          <div className="absolute inset-0 bg-gradient-to-b from-aw-cream/80 via-aw-cream/90 to-aw-cream" />
+        </div>
       </div>
 
       {/* Main Hero Content */}
@@ -168,14 +174,14 @@ export default function Hero() {
             ))}
           </div>
 
-          <div className="flex items-center justify-center flex-wrap gap-2 w-full sm:w-auto">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center sm:justify-center gap-2 w-full sm:w-auto">
             {pillars.map((p) => {
               const Icon = p.icon
               return (
                 <Link
                   key={p.label}
                   to={p.href}
-                  className="flex items-center gap-1.5 bg-white border border-aw-light rounded-full px-3 sm:px-3.5 py-1.5 shadow-card hover:border-aw-tan/60 hover:shadow-md transition-all duration-200"
+                  className="flex items-center justify-center sm:justify-start gap-1.5 bg-white border border-aw-light rounded-full px-3 sm:px-3.5 py-2 sm:py-1.5 shadow-card hover:border-aw-tan/60 hover:shadow-md transition-all duration-200"
                 >
                   <Icon className="w-3.5 h-3.5 shrink-0" style={{ color: p.color }} />
                   <span className="font-medium text-aw-navy text-xs whitespace-nowrap">{p.label}</span>

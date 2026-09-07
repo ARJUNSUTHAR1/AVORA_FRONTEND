@@ -5,19 +5,19 @@ import toast from 'react-hot-toast'
 import api from '../api/auth'
 
 const services = [
-  'Awooraa Finance — Accounting & Bookkeeping',
-  'Awooraa Finance — GST & Tax Filing',
-  'Awooraa Finance — Virtual CFO Services',
-  'Awooraa Finance — MIS Reporting & Financial Planning',
-  'Awooraa Finance — ROC & Corporate Compliance',
-  'Awooraa Digital — Full-Stack Web Development',
-  'Awooraa Digital — Software & Mobile Apps',
-  'Awooraa Digital — SEO & Growth Management',
-  'Awooraa Digital — ERP & CRM Implementation',
-  'Awooraa People — Recruitment & Talent Acquisition',
-  'Awooraa People — Payroll & Employee Management',
-  'Awooraa People — HR Compliance & Policies',
-  'Awooraa People — Performance & Growth Strategy',
+  'Finance — Accounting & Bookkeeping',
+  'Finance — GST & Tax Filing',
+  'Finance — Virtual CFO Services',
+  'Finance — MIS Reporting & Financial Planning',
+  'Finance — ROC & Corporate Compliance',
+  'Digital — Full-Stack Web Development',
+  'Digital — Software & Mobile Apps',
+  'Digital — SEO & Growth Management',
+  'Digital — ERP & CRM Implementation',
+  'People — Recruitment & Talent Acquisition',
+  'People — Payroll & Employee Management',
+  'People — HR Compliance & Policies',
+  'People — Performance & Growth Strategy',
   'Integrated Solutions / Not Sure Yet',
 ]
 
@@ -314,7 +314,7 @@ export default function ContactPage() {
                   <MapPin className="w-4 h-4 text-aw-tan shrink-0" />
                   <span>Rajasthan Office (Chittorgarh)</span>
                 </div>
-                <p className="text-aw-slate text-xs pl-6 font-normal">Chittorgarh, Rajasthan, India</p>
+                <p className="text-aw-slate text-xs pl-6 font-normal">68 nagar palika colony sec 5 pratap nagar chittorgarh pin 312001</p>
               </div>
 
               {/* Contact Channels */}

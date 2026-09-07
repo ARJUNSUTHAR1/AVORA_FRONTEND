@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { TrendingUp, Cpu, Users, ArrowUpRight, CheckCircle2, BarChart3, Globe, Smartphone, Shield } from 'lucide-react'
+import { TrendingUp, Cpu, Users, ArrowUpRight, CheckCircle2, BarChart3, Globe, Smartphone, Shield, PieChart } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 
@@ -8,7 +8,7 @@ const pillars = [
   {
     id: 'finance',
     href: '/finance',
-    pillar: 'Awooraa Finance',
+    pillar: 'Finance',
     Icon: TrendingUp,
     accentColor: '#B8A996',
     dark: true,
@@ -32,7 +32,7 @@ const pillars = [
   {
     id: 'digital',
     href: '/digital',
-    pillar: 'Awooraa Digital',
+    pillar: 'Digital',
     Icon: Cpu,
     accentColor: '#334155',
     dark: false,
@@ -49,12 +49,12 @@ const pillars = [
       'AI Automation & Chatbot Development',
     ],
     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&q=80',
-    team: { name: 'Arjun Suthar', role: 'Technology Lead', img: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=200&q=80' },
+    team: { name: 'CTO', role: 'Chief Technology Officer', img: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=200&q=80' },
   },
   {
     id: 'people',
     href: '/people',
-    pillar: 'Awooraa People',
+    pillar: 'People',
     Icon: Users,
     accentColor: '#64748B',
     dark: true,
@@ -72,7 +72,7 @@ const pillars = [
       'Executive Search',
     ],
     image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80',
-    team: { name: 'Dr. Nidhi Saxena', role: 'Chief Human Resource Officer (CHRO)', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80' },
+    team: { name: 'Dr. Nidhi Saxena', role: 'Chief Human Resource Officer (CHRO)', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80' },
   },
   {
     id: 'rera',
@@ -97,7 +97,68 @@ const pillars = [
       'RERA Project Completion / Closure Update Services',
     ],
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=80', // Changed image
-    team: { name: 'Shardha Yadav', role: 'RERA Compliance Specialist', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80' },
+    team: { name: 'Shardha Yadav', role: 'RERA Compliance Specialist', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80' },
+  },
+  {
+    id: 'import-export',
+    href: '/import-export',
+    pillar: 'Import & Export',
+    Icon: Globe,
+    accentColor: '#0284C7',
+    dark: true,
+    headline: 'Global trade, simplified.',
+    subline: 'Seamless import and export solutions.',
+    body: 'Navigating international trade regulations can be complex. We handle customs clearance, freight forwarding, and international trade compliance so you can expand your market globally without the friction.',
+    painLine: 'Because border delays and compliance penalties should not dictate your international growth.',
+    callout: { icon: Globe, value: '25+', label: 'Countries traded' },
+    services: [
+      'Customs Clearance',
+      'Freight Forwarding',
+      'Trade Compliance',
+      'Logistics Management',
+    ],
+    image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=900&q=80',
+    team: { name: 'Vaibhav Mishra', role: 'International Trade Executive', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80' },
+  },
+  {
+    id: 'financial-modelling',
+    href: '/financial-modelling',
+    pillar: 'Financial Modelling',
+    Icon: BarChart3,
+    accentColor: '#0369A1',
+    dark: false,
+    headline: 'Data-driven foresight.',
+    subline: 'Robust financial models for strategic decision making.',
+    body: 'We build comprehensive financial models that help you simulate scenarios, assess valuations, and plan for growth. Our models are tailored to your business, providing the quantitative backing needed for pivotal decisions.',
+    painLine: 'Because gut feelings are not enough when millions are at stake.',
+    callout: { icon: BarChart3, value: '99%', label: 'Forecast Accuracy' },
+    services: [
+      'Scenario Planning & Forecasting',
+      'Valuation Modeling',
+      'M&A Modeling',
+      'Cash Flow Analysis',
+    ],
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80',
+  },
+  {
+    id: 'project-finance',
+    href: '/project-finance',
+    pillar: 'Project Finance',
+    Icon: PieChart,
+    accentColor: '#4338CA',
+    dark: true,
+    headline: 'Structure your capital effectively.',
+    subline: 'Securing optimal project funding.',
+    body: 'Capital intensive projects require sophisticated financing structures. We advise on debt and equity structuring, manage lender relationships, and ensure your project secures the most favorable financing terms available.',
+    painLine: 'Because poor capital structure can cripple an otherwise profitable project.',
+    callout: { icon: PieChart, value: '₹500Cr+', label: 'Funding Secured' },
+    services: [
+      'Debt Syndication',
+      'Equity Structuring',
+      'Lender Negotiations',
+      'Feasibility Studies',
+    ],
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80',
   },
 ]
 
@@ -253,18 +314,20 @@ export default function ServicesGrid() {
                       </Link>
 
                       {/* Associated Team Member */}
-                      <div className="flex items-center gap-2.5">
-                        <img
-                          src={p.team.img}
-                          alt={p.team.name}
-                          className="w-8 h-8 rounded-full object-cover border"
-                          style={{ borderColor: `${p.accentColor}60` }}
-                        />
-                        <div>
-                          <div className={cn('text-xs font-semibold', p.dark ? 'text-white/85' : 'text-aw-navy')}>{p.team.name}</div>
-                          <div className={cn('text-[10px]', p.dark ? 'text-white/40' : 'text-aw-slate')}>{p.team.role}</div>
+                      {p.team && (
+                        <div className="flex items-center gap-2.5">
+                          <img
+                            src={p.team.img}
+                            alt={p.team.name}
+                            className="w-8 h-8 rounded-full object-cover border"
+                            style={{ borderColor: `${p.accentColor}60` }}
+                          />
+                          <div>
+                            <div className={cn('text-xs font-semibold', p.dark ? 'text-white/85' : 'text-aw-navy')}>{p.team.name}</div>
+                            <div className={cn('text-[10px]', p.dark ? 'text-white/40' : 'text-aw-slate')}>{p.team.role}</div>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                   </div>
                 </div>

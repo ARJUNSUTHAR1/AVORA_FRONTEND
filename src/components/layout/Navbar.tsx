@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ArrowUpRight, ChevronDown, TrendingUp, Cpu, Users, ChevronRight, Shield, BarChart3, PieChart } from 'lucide-react'
+import { X, ArrowUpRight, ChevronDown, TrendingUp, Cpu, Users, ChevronRight, Shield, BarChart3, PieChart, Globe } from 'lucide-react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 import { useAuth } from '@/context/AuthContext'
@@ -11,7 +11,7 @@ const pillars = [
   {
     id: 'finance',
     icon: TrendingUp,
-    name: 'Awooraa Finance',
+    name: 'Finance',
     sub: 'Comprehensive Finance & Accounting Solutions',
     href: '/finance',
     color: '#B8A996',
@@ -19,7 +19,7 @@ const pillars = [
   {
     id: 'digital',
     icon: Cpu,
-    name: 'Awooraa Digital',
+    name: 'Digital',
     sub: 'End-to-End Digital & IT Solutions',
     href: '/digital',
     color: '#334155',
@@ -27,7 +27,7 @@ const pillars = [
   {
     id: 'people',
     icon: Users,
-    name: 'Awooraa People',
+    name: 'People',
     sub: 'Strategic HR, Hiring & Payroll',
     href: '/people',
     color: '#64748B',
@@ -55,6 +55,14 @@ const pillars = [
     sub: 'Structuring and securing optimal project funding',
     href: '/project-finance',
     color: '#4338CA', // Professional Indigo
+  },
+  {
+    id: 'import-export',
+    icon: Globe,
+    name: 'Import & Export',
+    sub: 'Seamless international trade & customs clearance',
+    href: '/import-export',
+    color: '#0284C7', // Professional Blue
   },
 ]
 
@@ -102,7 +110,7 @@ export default function Navbar() {
       {/* ─────── Desktop & Mobile Header ─────── */}
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          'fixed top-0 left-0 right-0 z-50 mx-auto max-w-[1920px] transition-all duration-300',
           scrolled
             ? 'bg-white/95 backdrop-blur-md border-b border-aw-light shadow-card'
             : 'bg-white/0'
@@ -126,7 +134,7 @@ export default function Navbar() {
                   to={link.href}
                   className={cn(
                     'flex items-center gap-1 px-3.5 py-2 text-sm font-medium tracking-normal transition-colors duration-200 rounded-lg whitespace-nowrap',
-                    location.pathname === link.href || (link.hasMega && location.pathname.match(/^\/(finance|digital|people|services|rera|financial-modelling|project-finance)/))
+                    location.pathname === link.href || (link.hasMega && location.pathname.match(/^\/(finance|digital|people|services|rera|financial-modelling|project-finance|import-export)/))
                       ? 'text-aw-navy font-semibold'
                       : 'text-aw-mid hover:text-aw-navy',
                     link.hasMega && megaOpen ? 'text-aw-navy bg-aw-cream/80' : ''

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import { ArrowUpRight, Mail, Phone, MapPin, TrendingUp, Cpu, Users, Building2, Globe } from 'lucide-react'
+import { ArrowUpRight, Mail, Phone, MapPin, TrendingUp, Cpu, Users, Building2, Globe, BarChart3, PieChart, Briefcase } from 'lucide-react'
 import Logo from '@/components/ui/Logo'
 
 const footerLinks = {
-  'Awooraa Finance': [
+  'Finance': [
     { label: 'Accounting & Bookkeeping', href: '/finance#accounting' },
     { label: 'GST & Tax Filing', href: '/finance#gst' },
     { label: 'Income Tax Return (ITR) Filing', href: '/finance#itr' },
@@ -12,14 +12,14 @@ const footerLinks = {
     { label: 'ROC & Corporate Compliance', href: '/finance#compliance' },
     { label: 'Company / LLP / Startup Registration', href: '/finance#registration' },
   ],
-  'Awooraa Digital': [
+  'Digital': [
     { label: 'Full-Stack Web Development', href: '/digital#web' },
     { label: 'Software & Mobile App Development', href: '/digital#app' },
     { label: 'SEO & Growth Management', href: '/digital#seo' },
     { label: 'ERP & CRM Implementation', href: '/digital#erp' },
     { label: 'AI Automation & Chatbot Development', href: '/digital#ai' },
   ],
-  'Awooraa People': [
+  'People': [
     { label: 'Recruitment & Talent Acquisition', href: '/people#recruitment' },
     { label: 'Payroll & Employee Management', href: '/people#payroll' },
     { label: 'HR Compliance & Policies', href: '/people#compliance' },
@@ -27,15 +27,46 @@ const footerLinks = {
     { label: 'Contract Staffing', href: '/people#staffing' },
     { label: 'Executive Search', href: '/people#executive' },
   ],
+  'RERA': [
+    { label: 'RERA Registration', href: '/rera' },
+    { label: 'RERA Compliance', href: '/rera' },
+    { label: 'RERA Advisory', href: '/rera' },
+  ],
+  'Import & Export': [
+    { label: 'Customs Clearance', href: '/import-export' },
+    { label: 'Freight Forwarding', href: '/import-export' },
+    { label: 'Trade Compliance', href: '/import-export' },
+  ],
+  'Financial Modelling': [
+    { label: 'Scenario Planning', href: '/financial-modelling' },
+    { label: 'Valuation Modeling', href: '/financial-modelling' },
+    { label: 'M&A Modeling', href: '/financial-modelling' },
+  ],
+  'Project Finance': [
+    { label: 'Debt Syndication', href: '/project-finance' },
+    { label: 'Equity Structuring', href: '/project-finance' },
+    { label: 'Lender Negotiations', href: '/project-finance' },
+  ],
   Company: [
     { label: 'Why We Exist', href: '/about' },
     { label: 'Our Team', href: '/about#team' },
     { label: 'Insights', href: '/insights' },
     { label: 'Contact Us', href: '/contact' },
   ],
+  'Industries': [
+    { label: 'Startups', href: '#' },
+    { label: 'Health & Medtech', href: '#' },
+    { label: 'Small Businesses', href: '#' },
+    { label: 'Professional Services', href: '#' },
+    { label: 'Creative Agencies', href: '#' },
+    { label: 'Law Firms', href: '#' },
+    { label: 'Consultancies', href: '#' },
+    { label: 'Consumer Goods & Retail', href: '#' },
+    { label: 'Franchise Bookkeeping', href: '#' },
+  ],
 }
 
-const pillarIcons = { 'Awooraa Finance': TrendingUp, 'Awooraa Digital': Cpu, 'Awooraa People': Users }
+const pillarIcons = { 'Finance': TrendingUp, 'Digital': Cpu, 'People': Users, 'RERA': Building2, 'Import & Export': Globe, 'Financial Modelling': BarChart3, 'Project Finance': PieChart, 'Industries': Briefcase }
 
 export default function Footer() {
   return (
@@ -50,7 +81,7 @@ export default function Footer() {
 
           {/* Brand Block & 2 Physical Company Addresses */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="inline-block bg-white px-5 py-3 rounded-xl">
+            <div className="inline-flex items-center justify-center bg-white py-4 px-6 sm:py-6 sm:px-12 rounded-xl sm:rounded-2xl">
               <Logo dark={false} size="xl" />
             </div>
 
@@ -66,7 +97,7 @@ export default function Footer() {
                   <span className="text-white font-semibold block mb-0.5">Global Markets & India Hubs</span>
                   <span className="text-white/50 font-normal leading-relaxed">
                     USA · Canada · UK · Germany · France · Italy · Netherlands · Switzerland · UAE · Saudi Arabia · South Africa · Singapore · Japan · Australia · New Zealand<br/>
-                    India: Chittorgarh (HQ), Mumbai, Nagpur
+                    India: Chittorgarh (HQ), Mumbai
                   </span>
                 </div>
               </div>
@@ -75,7 +106,7 @@ export default function Footer() {
                 <Building2 className="w-4 h-4 text-aw-tan shrink-0 mt-0.5" />
                 <div>
                   <span className="text-white font-semibold block mb-0.5">Head Office (Chittorgarh)</span>
-                  <span className="text-white/50 font-normal">Chittorgarh, Rajasthan, India</span>
+                  <span className="text-white/50 font-normal">68 nagar palika colony sec 5 pratap nagar chittorgarh pin 312001</span>
                 </div>
               </div>
 
@@ -84,14 +115,6 @@ export default function Footer() {
                 <div>
                   <span className="text-white font-semibold block mb-0.5">Maharashtra Office (Mumbai)</span>
                   <span className="text-white/50 font-normal">Mumbai, Maharashtra, India</span>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 text-white/70 text-xs font-medium">
-                <MapPin className="w-4 h-4 text-aw-tan shrink-0 mt-0.5" />
-                <div>
-                  <span className="text-white font-semibold block mb-0.5">Maharashtra Office (Nagpur)</span>
-                  <span className="text-white/50 font-normal">Nagpur, Maharashtra, India</span>
                 </div>
               </div>
 
@@ -109,31 +132,33 @@ export default function Footer() {
           </div>
 
           {/* Service Category Link Columns */}
-          {Object.entries(footerLinks).map(([category, links]) => {
-            const Icon = pillarIcons[category as keyof typeof pillarIcons]
-            return (
-              <div key={category} className="space-y-3.5">
-                <h4 className="text-aw-tan text-xs tracking-[0.18em] uppercase font-semibold flex items-center gap-2">
-                  {Icon && <Icon className="w-3.5 h-3.5" />}
-                  {category}
-                </h4>
-                <div className="w-6 h-[1px] bg-aw-tan/30" />
-                <ul className="space-y-2.5">
-                  {links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        to={link.href}
-                        className="text-white/50 hover:text-white text-xs transition-colors duration-200 flex items-center gap-1 group link-underline font-normal"
-                      >
-                        {link.label}
-                        <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )
-          })}
+          <div className="lg:col-span-4 grid grid-cols-2 md:grid-cols-4 gap-8">
+            {Object.entries(footerLinks).map(([category, links]) => {
+              const Icon = pillarIcons[category as keyof typeof pillarIcons]
+              return (
+                <div key={category} className="space-y-3.5">
+                  <h4 className="text-aw-tan text-xs tracking-[0.18em] uppercase font-semibold flex items-center gap-2">
+                    {Icon && <Icon className="w-3.5 h-3.5" />}
+                    {category}
+                  </h4>
+                  <div className="w-6 h-[1px] bg-aw-tan/30" />
+                  <ul className="space-y-2.5">
+                    {links.map((link) => (
+                      <li key={link.label}>
+                        <Link
+                          to={link.href}
+                          className="text-white/50 hover:text-white text-xs transition-colors duration-200 flex items-center gap-1 group link-underline font-normal"
+                        >
+                          {link.label}
+                          <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            })}
+          </div>
         </div>
 
         {/* Global Footprint Banner */}
@@ -184,10 +209,10 @@ export default function Footer() {
             <p>© {new Date().getFullYear()} Global Professional Services. All rights reserved.</p>
             <p>Designed and developed by Arjun Suthar</p>
           </div>
-          <div className="flex items-center gap-6">
-            <span className="hover:text-white/60 cursor-pointer transition-colors">Privacy Policy</span>
-            <span className="hover:text-white/60 cursor-pointer transition-colors">Terms of Service</span>
-            <span className="hover:text-white/60 cursor-pointer transition-colors">Cookie Policy</span>
+          <div className="flex flex-wrap justify-center sm:items-center gap-4 sm:gap-6">
+            <Link to="/privacy-policy" className="hover:text-white/60 cursor-pointer transition-colors block">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="hover:text-white/60 cursor-pointer transition-colors block">Terms of Service</Link>
+            <Link to="/cookie-policy" className="hover:text-white/60 cursor-pointer transition-colors block">Cookie Policy</Link>
           </div>
         </div>
       </div>

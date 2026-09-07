@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { TrendingUp, Cpu, Shield, Award, Users } from 'lucide-react'
+import { TrendingUp, Cpu, Shield, Award, Users, Globe } from 'lucide-react'
 
 export interface TeamMember {
   name: string
   role: string
-  category: 'leadership' | 'legal' | 'accounts' | 'it' | 'sales' | 'hr'
+  category: 'leadership' | 'legal' | 'accounts' | 'it' | 'sales' | 'hr' | 'import-export'
   categoryLabel: string
-  pillar: 'Leadership' | 'Legal' | 'Finance' | 'Digital' | 'Sales' | 'HR'
+  pillar: 'Leadership' | 'Legal' | 'Finance' | 'Digital' | 'Sales' | 'HR' | 'Trade'
   Icon: any
   color: string
   image: string
@@ -18,32 +18,20 @@ export interface TeamMember {
 const teamMembers: TeamMember[] = [
   // 1. Leadership & Partners (First)
   {
-    name: 'Neha Rathore',
-    role: 'Managing Partner & Chief Communications Officer (CCO)',
-    category: 'leadership',
-    categoryLabel: 'Partners & Leadership',
-    pillar: 'Leadership',
-    Icon: Award,
-    color: '#B8A996',
-    image: '/neha.jpeg',
-    expertise: ['Executive Leadership', 'Strategic Growth', 'Business Operations'],
-    quote: 'Empowering enterprise growth with absolute integrity and clear direction.',
-  },
-  {
     name: 'Krunal Bhojaraj Navanage',
-    role: 'Associate Partner, Nagpur',
+    role: 'Associate Partner',
     category: 'leadership',
     categoryLabel: 'Partners & Leadership',
     pillar: 'Leadership',
     Icon: Award,
     color: '#B8A996',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=85',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=85',
     expertise: ['Partner', 'Business Development', 'Global Partnerships'],
     quote: 'Building long-term client trust through transparent, scalable solutions.',
   },
   {
     name: 'Yash Sawant',
-    role: 'Associate Partner, Mumbai',
+    role: 'Associate Partner',
     category: 'leadership',
     categoryLabel: 'Partners & Leadership',
     pillar: 'Leadership',
@@ -81,15 +69,15 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Vaibhav Mishra',
-    role: 'Legal Advisory',
-    category: 'legal',
-    categoryLabel: 'Legal & Land Advisory',
-    pillar: 'Legal',
-    Icon: Shield,
-    color: '#0F766E',
+    role: 'International Trade Executive',
+    category: 'import-export',
+    categoryLabel: 'Import & Export',
+    pillar: 'Trade',
+    Icon: Globe,
+    color: '#0284C7', // New blue color for Trade
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85',
-    expertise: ['Legal Advisory', 'Property Due Diligence', 'Regulatory Liaison'],
-    quote: 'Seamless legal and property facilitation navigating regulatory frameworks with precision.',
+    expertise: ['Customs Clearance', 'Freight Forwarding', 'Trade Compliance'],
+    quote: 'Seamless global trade execution navigating international borders with precision.',
   },
   {
     name: 'Shardha Yadav',
@@ -133,7 +121,7 @@ const teamMembers: TeamMember[] = [
   // 4. IT Team
   {
     name: 'Arjun Suthar',
-    role: 'Chief Technology Officer (CTO)',
+    role: 'Chief Technology Officer',
     category: 'it',
     categoryLabel: 'IT & Digital Team',
     pillar: 'Digital',
@@ -144,19 +132,7 @@ const teamMembers: TeamMember[] = [
     quote: 'Tech should eliminate operational friction and accelerate growth.',
   },
 
-  // 5. Sales & Marketing
-  {
-    name: 'Ankit',
-    role: 'Sales & Marketing',
-    category: 'sales',
-    categoryLabel: 'Sales & Marketing',
-    pillar: 'Sales',
-    Icon: TrendingUp,
-    color: '#F59E0B',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=85',
-    expertise: ['Sales Strategy', 'Market Expansion', 'Client Relations'],
-    quote: 'Connecting businesses with the solutions they need to thrive.',
-  },
+
   {
     name: 'Ritesh Gaikwad',
     role: 'Sales & Marketing',
@@ -165,26 +141,18 @@ const teamMembers: TeamMember[] = [
     pillar: 'Sales',
     Icon: TrendingUp,
     color: '#F59E0B',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=85',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=85',
     expertise: ['Marketing Campaigns', 'Brand Development', 'Lead Generation'],
     quote: 'Crafting compelling narratives that drive engagement and conversions.',
   },
 ]
 
-const categories = [
-  { id: 'all', label: 'All Team Members' },
-  { id: 'leadership', label: 'Partners & Leadership' },
-  { id: 'legal', label: 'Legal & Land Advisory' },
-  { id: 'accounts', label: 'Accounts & Tax Team' },
-  { id: 'it', label: 'IT Team' },
-  { id: 'sales', label: 'Sales & Marketing' },
-  { id: 'hr', label: 'Human Resources' },
-]
+
 
 export default function Team() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-8%' })
-  const [activeCategory, setActiveCategory] = useState<string>('all')
+  const activeCategory = 'all'
   const [hoveredMember, setHoveredMember] = useState<string | null>(null)
 
   const filteredMembers = activeCategory === 'all'
@@ -199,6 +167,7 @@ export default function Team() {
     { title: 'IT & Digital Technology Team', items: teamMembers.filter(m => m.category === 'it') },
     { title: 'Sales & Marketing Team', items: teamMembers.filter(m => m.category === 'sales') },
     { title: 'Human Resources Team', items: teamMembers.filter(m => m.category === 'hr') },
+    { title: 'Import & Export Team', items: teamMembers.filter(m => m.category === 'import-export') },
   ]
 
   return (
@@ -232,7 +201,7 @@ export default function Team() {
           </div>
         </motion.div>
 
-        {/* Category Tabs */}
+        {/* Category Tabs
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -253,6 +222,7 @@ export default function Team() {
             </button>
           ))}
         </motion.div>
+        */}
 
         {/* Partitioned Team Rendering */}
         {activeCategory === 'all' ? (

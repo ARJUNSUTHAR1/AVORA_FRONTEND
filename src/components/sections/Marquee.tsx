@@ -7,7 +7,7 @@ const showcaseItems = [
   {
     id: 'finance',
     icon: TrendingUp,
-    badge: 'Awooraa Finance',
+    badge: 'Finance',
     title: 'Precision Accounting & Virtual CFO',
     desc: 'Audit-ready bookkeeping, GST filing, cash flow forecasts, and executive MIS reporting.',
     href: '/finance',
@@ -16,7 +16,7 @@ const showcaseItems = [
   {
     id: 'digital',
     icon: Cpu,
-    badge: 'Awooraa Digital',
+    badge: 'Digital',
     title: 'Full-Stack Web, Mobile Apps & ERP',
     desc: 'Custom web software, native mobile applications, SEO growth, and integrated CRM systems.',
     href: '/digital',
@@ -25,7 +25,7 @@ const showcaseItems = [
   {
     id: 'people',
     icon: Users,
-    badge: 'Awooraa People',
+    badge: 'People',
     title: 'Strategic Hiring, Payroll & HR',
     desc: 'Seamless recruitment, automated payroll, labor law compliance, and performance management.',
     href: '/people',
@@ -60,7 +60,7 @@ const showcaseItems = [
   },
 ]
 
-const locations = ['15 Global Markets', '3 India Hubs', 'Worldwide Operations']
+const locations = ['15 Global Markets', '2 India Hubs', 'Worldwide Operations']
 
 export default function Marquee() {
   const [activeTab, setActiveTab] = useState(0)

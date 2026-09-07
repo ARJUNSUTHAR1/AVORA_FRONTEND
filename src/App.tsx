@@ -18,6 +18,7 @@ import ProjectFinancePage from './pages/ProjectFinancePage'
 import TermsAndConditionsPage from './pages/TermsAndConditionsPage'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
 import CookiePolicyPage from './pages/CookiePolicyPage'
+import ImportExportPage from './pages/ImportExportPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -40,7 +41,7 @@ function App() {
   const isLoginPage = location.pathname === '/login'
 
   return (
-    <div className="flex flex-col min-h-screen bg-aw-cream">
+    <div className="flex flex-col min-h-screen bg-aw-cream max-w-[1920px] mx-auto w-full relative overflow-hidden">
       <ScrollToTop />
       {!isLoginPage && <Navbar />}
       <main className="flex-1">
@@ -61,6 +62,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/insights" element={<InsightsPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/import-export" element={<ImportExportPage />} />
           </Routes>
         </AnimatePresence>
       </main>

@@ -5,7 +5,7 @@ const services = [
   {
     id: 'finance',
     icon: TrendingUp,
-    title: 'Awooraa Finance',
+    title: 'Finance',
     tagline: 'Finance & Accounting Solutions',
     description: 'From day-to-day bookkeeping to strategic financial planning, our certified finance team gives you complete visibility, audit-ready compliance, and control over your business growth.',
     features: [
@@ -22,7 +22,7 @@ const services = [
   {
     id: 'digital',
     icon: Cpu,
-    title: 'Awooraa Digital',
+    title: 'Digital',
     tagline: 'Digital & Technology Infrastructure',
     description: 'High-converting web design, custom mobile software, seamless ERP/CRM integrations, and cutting-edge AI automation engineered to give your brand a competitive edge.',
     features: [
@@ -37,7 +37,7 @@ const services = [
   {
     id: 'people',
     icon: Users,
-    title: 'Awooraa People',
+    title: 'People',
     tagline: 'HR, Talent & Payroll Excellence',
     description: 'Hiring the right talent, managing complex payrolls, ensuring total statutory compliance, and crafting growth strategies so your team thrives at scale.',
     features: [
