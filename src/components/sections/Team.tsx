@@ -5,7 +5,7 @@ import { TrendingUp, Cpu, Shield, Award, Users, Globe } from 'lucide-react'
 export interface TeamMember {
   name: string
   role: string
-  category: 'leadership' | 'legal' | 'accounts' | 'it' | 'sales' | 'hr' | 'import-export'
+  category: 'leadership' | 'legal' | 'accounts' | 'it' | 'sales' | 'hr' | 'import-export' | 'financial-modelling'
   categoryLabel: string
   pillar: 'Leadership' | 'Legal' | 'Finance' | 'Digital' | 'Sales' | 'HR' | 'Trade'
   Icon: any
@@ -19,7 +19,7 @@ const teamMembers: TeamMember[] = [
   // 1. Leadership & Partners (First)
   {
     name: 'Krunal Bhojaraj Navanage',
-    role: 'Associate Partner',
+    role: 'Partner & Business Developer',
     category: 'leadership',
     categoryLabel: 'Partners & Leadership',
     pillar: 'Leadership',
@@ -30,16 +30,16 @@ const teamMembers: TeamMember[] = [
     quote: 'Building long-term client trust through transparent, scalable solutions.',
   },
   {
-    name: 'Yash Sawant',
-    role: 'Associate Partner',
+    name: 'Ganesh Gupta',
+    role: 'Partner & Business Developer',
     category: 'leadership',
     categoryLabel: 'Partners & Leadership',
     pillar: 'Leadership',
     Icon: Award,
     color: '#B8A996',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=85',
-    expertise: ['Bookkeeping', 'GST Filing', 'MIS Reporting'],
-    quote: 'Accurate and timely accounting to support business operations.',
+    image: '/ganesh.jpeg',
+    expertise: ['Partner', 'Business Development', 'Client Relations'],
+    quote: 'Forging strategic partnerships to drive mutual growth and success.',
   },
   {
     name: 'Dr. Nidhi Saxena',
@@ -117,6 +117,18 @@ const teamMembers: TeamMember[] = [
     expertise: ['Tax Strategy', 'Audit & Compliance', 'Financial Advisory'],
     quote: 'Precision in every ledger entry powers sound executive decisions.',
   },
+  {
+    name: 'Yash Sawant',
+    role: 'Accounting Executive',
+    category: 'accounts',
+    categoryLabel: 'Accounts & Tax Team',
+    pillar: 'Finance',
+    Icon: TrendingUp,
+    color: '#B8A996',
+    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=85',
+    expertise: ['Bookkeeping', 'GST Filing', 'MIS Reporting'],
+    quote: 'Accurate and timely accounting to support business operations.',
+  },
 
   // 4. IT Team
   {
@@ -145,6 +157,20 @@ const teamMembers: TeamMember[] = [
     expertise: ['Marketing Campaigns', 'Brand Development', 'Lead Generation'],
     quote: 'Crafting compelling narratives that drive engagement and conversions.',
   },
+  
+  // 6. Financial Modelling Team
+  {
+    name: 'Ankit Narwal',
+    role: 'Financial Analyst',
+    category: 'financial-modelling',
+    categoryLabel: 'Financial Modelling',
+    pillar: 'Finance',
+    Icon: TrendingUp,
+    color: '#B8A996',
+    image: '/ankit.png',
+    expertise: ['Financial Modelling', 'Data Analysis', 'Valuation'],
+    quote: 'Transforming data into actionable financial strategies for growth.',
+  },
 ]
 
 
@@ -168,6 +194,7 @@ export default function Team() {
     { title: 'Sales & Marketing Team', items: teamMembers.filter(m => m.category === 'sales') },
     { title: 'Human Resources Team', items: teamMembers.filter(m => m.category === 'hr') },
     { title: 'Import & Export Team', items: teamMembers.filter(m => m.category === 'import-export') },
+    { title: 'Financial Modelling Team', items: teamMembers.filter(m => m.category === 'financial-modelling') },
   ]
 
   return (

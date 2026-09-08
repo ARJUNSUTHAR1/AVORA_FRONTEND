@@ -19,6 +19,7 @@ import TermsAndConditionsPage from './pages/TermsAndConditionsPage'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
 import CookiePolicyPage from './pages/CookiePolicyPage'
 import ImportExportPage from './pages/ImportExportPage'
+import IndustryPage from './pages/IndustryPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -63,6 +64,7 @@ function App() {
             <Route path="/insights" element={<InsightsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/import-export" element={<ImportExportPage />} />
+            <Route path="/industries/:id" element={<IndustryPage />} />
           </Routes>
         </AnimatePresence>
       </main>

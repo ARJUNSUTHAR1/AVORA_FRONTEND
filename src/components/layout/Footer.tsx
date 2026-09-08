@@ -54,15 +54,15 @@ const footerLinks = {
     { label: 'Contact Us', href: '/contact' },
   ],
   'Industries': [
-    { label: 'Startups', href: '#' },
-    { label: 'Health & Medtech', href: '#' },
-    { label: 'Small Businesses', href: '#' },
-    { label: 'Professional Services', href: '#' },
-    { label: 'Creative Agencies', href: '#' },
-    { label: 'Law Firms', href: '#' },
-    { label: 'Consultancies', href: '#' },
-    { label: 'Consumer Goods & Retail', href: '#' },
-    { label: 'Franchise Bookkeeping', href: '#' },
+    { label: 'Startups', href: '/industries/startups' },
+    { label: 'Health & Medtech', href: '/industries/health-medtech' },
+    { label: 'Small Businesses', href: '/industries/small-businesses' },
+    { label: 'Professional Services', href: '/industries/professional-services' },
+    { label: 'Creative Agencies', href: '/industries/creative-agencies' },
+    { label: 'Law Firms', href: '/industries/law-firms' },
+    { label: 'Consultancies', href: '/industries/consultancies' },
+    { label: 'Consumer Goods & Retail', href: '/industries/consumer-goods-retail' },
+    { label: 'Franchise Bookkeeping', href: '/industries/franchise-bookkeeping' },
   ],
 }
 
@@ -86,7 +86,7 @@ export default function Footer() {
             </div>
 
             <p className="text-white/50 text-sm leading-relaxed max-w-sm font-normal">
-              Global Professional Services provides integrated Finance, Digital, and People solutions that empower companies to operate and scale worldwide.
+              Global Professional Services provides integrated Finance, Digital, People, RERA, Import & Export, Financial Modelling, and Project Finance solutions that empower companies to operate and scale worldwide.
             </p>
 
             {/* Physical Company Offices and Global Reach */}

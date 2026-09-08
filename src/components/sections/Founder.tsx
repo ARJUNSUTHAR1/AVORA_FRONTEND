@@ -77,7 +77,7 @@ export default function Founder() {
               <img src="/signature.png" alt="Signature" className="h-12 opacity-80 invert" onError={(e) => e.currentTarget.style.display = 'none'} />
               <div>
                 <p className="text-white font-semibold text-sm">Neha Rathore</p>
-                <p className="text-white/40 text-xs">Founder & Managing Director</p>
+                <p className="text-white/40 text-xs">Founder & Managing Partner</p>
               </div>
             </div>
           </motion.div>

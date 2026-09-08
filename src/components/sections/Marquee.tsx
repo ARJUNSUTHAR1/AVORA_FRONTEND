@@ -58,6 +58,15 @@ const showcaseItems = [
     href: '/project-finance',
     accent: '#4338CA',
   },
+  {
+    id: 'import-export',
+    icon: Globe2,
+    badge: 'Import & Export',
+    title: 'Global Trade, Simplified.',
+    desc: 'Seamless customs clearance, freight forwarding, and international trade compliance.',
+    href: '/import-export',
+    accent: '#0284C7',
+  },
 ]
 
 const locations = ['15 Global Markets', '2 India Hubs', 'Worldwide Operations']
