@@ -29,18 +29,7 @@ const teamMembers: TeamMember[] = [
     expertise: ['Partner', 'Business Development', 'Global Partnerships'],
     quote: 'Building long-term client trust through transparent, scalable solutions.',
   },
-  {
-    name: 'Ganesh Gupta',
-    role: 'Partner & Business Developer',
-    category: 'leadership',
-    categoryLabel: 'Partners & Leadership',
-    pillar: 'Leadership',
-    Icon: Award,
-    color: '#B8A996',
-    image: '/ganesh.jpeg',
-    expertise: ['Partner', 'Business Development', 'Client Relations'],
-    quote: 'Forging strategic partnerships to drive mutual growth and success.',
-  },
+
   {
     name: 'Dr. Nidhi Saxena',
     role: 'Chief Human Resource Officer (CHRO)',
@@ -158,19 +147,7 @@ const teamMembers: TeamMember[] = [
     quote: 'Crafting compelling narratives that drive engagement and conversions.',
   },
   
-  // 6. Financial Modelling Team
-  {
-    name: 'Ankit Narwal',
-    role: 'Financial Analyst',
-    category: 'financial-modelling',
-    categoryLabel: 'Financial Modelling',
-    pillar: 'Finance',
-    Icon: TrendingUp,
-    color: '#B8A996',
-    image: '/ankit.png',
-    expertise: ['Financial Modelling', 'Data Analysis', 'Valuation'],
-    quote: 'Transforming data into actionable financial strategies for growth.',
-  },
+
 ]
 
 
