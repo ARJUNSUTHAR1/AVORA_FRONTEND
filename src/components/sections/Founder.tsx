@@ -21,7 +21,7 @@ export default function Founder() {
             <div className="relative rounded-2xl overflow-hidden aspect-[4/5] border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
               <img
                 src="/neha.jpeg"
-                alt="Neha Rathore - Founder & Managing Director"
+                alt="Neha Rathor - Founder & Managing Director"
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   e.currentTarget.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80"
@@ -30,7 +30,7 @@ export default function Founder() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#050A11] via-transparent to-transparent opacity-90" />
 
               <div className="absolute bottom-6 left-6 right-6">
-                <h3 className="text-white font-display text-2xl font-semibold mb-1">Neha Rathore</h3>
+                <h3 className="text-white font-display text-2xl font-semibold mb-1">Neha Rathor</h3>
                 <p className="text-aw-tan text-sm font-medium tracking-wide">Founder & Managing Partner</p>
               </div>
             </div>
@@ -76,7 +76,7 @@ export default function Founder() {
             <div className="mt-10 pt-8 border-t border-white/10 flex items-center gap-4">
               <img src="/signature.png" alt="Signature" className="h-12 opacity-80 invert" onError={(e) => e.currentTarget.style.display = 'none'} />
               <div>
-                <p className="text-white font-semibold text-sm">Neha Rathore</p>
+                <p className="text-white font-semibold text-sm">Neha Rathor</p>
                 <p className="text-white/40 text-xs">Founder & Managing Partner</p>
               </div>
             </div>
