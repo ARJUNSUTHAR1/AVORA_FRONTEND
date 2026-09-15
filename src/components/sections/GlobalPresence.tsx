@@ -2,15 +2,15 @@ import { motion } from 'framer-motion'
 import { Globe2, MapPin } from 'lucide-react'
 
 const globalMarkets = [
-  { country: 'USA', flag: '🇺🇸' },
+  { country: 'United States', flag: '🇺🇸' },
   { country: 'Canada', flag: '🇨🇦' },
-  { country: 'UK', flag: '🇬🇧' },
+  { country: 'United Kingdom', flag: '🇬🇧' },
   { country: 'Germany', flag: '🇩🇪' },
   { country: 'France', flag: '🇫🇷' },
   { country: 'Italy', flag: '🇮🇹' },
   { country: 'Netherlands', flag: '🇳🇱' },
   { country: 'Switzerland', flag: '🇨🇭' },
-  { country: 'UAE', flag: '🇦🇪' },
+  { country: 'United Arab Emirates', flag: '🇦🇪' },
   { country: 'Saudi Arabia', flag: '🇸🇦' },
   { country: 'South Africa', flag: '🇿🇦' },
   { country: 'Singapore', flag: '🇸🇬' },
@@ -113,7 +113,7 @@ export default function GlobalPresence() {
                     </span>
                     {hub.state && (
                       <span className="block text-xs text-white/50 font-medium mt-0.5">
-                        {hub.state}
+                        {hub.state}, India 🇮🇳
                       </span>
                     )}
                   </div>

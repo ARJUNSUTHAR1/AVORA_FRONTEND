@@ -1,11 +1,11 @@
 import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { TrendingUp, Cpu, Shield, Award, Users, Globe } from 'lucide-react'
+import { TrendingUp, Cpu, Shield, Award, Users } from 'lucide-react'
 
 export interface TeamMember {
   name: string
   role: string
-  category: 'leadership' | 'legal' | 'accounts' | 'it' | 'sales' | 'hr' | 'import-export' | 'financial-modelling'
+  category: 'leadership' | 'legal' | 'accounts' | 'it' | 'sales' | 'hr'
   categoryLabel: string
   pillar: 'Leadership' | 'Legal' | 'Finance' | 'Digital' | 'Sales' | 'HR' | 'Trade'
   Icon: any
@@ -17,6 +17,18 @@ export interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   // 1. Leadership & Partners (First)
+  {
+    name: 'Neha Rathor',
+    role: 'Managing Partner & CCO',
+    category: 'leadership',
+    categoryLabel: 'Partners & Leadership',
+    pillar: 'Leadership',
+    Icon: Award,
+    color: '#B8A996',
+    image: '/neha.jpeg',
+    expertise: ['Managing Partner', 'Chief Communication Officer', 'Global Leadership'],
+    quote: 'Communication is the bridge between strategy and success.',
+  },
   {
     name: 'Krunal Bhojaraj Navanage',
     role: 'Partner & Business Developer',
@@ -58,15 +70,15 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Vaibhav Mishra',
-    role: 'International Trade Executive',
-    category: 'import-export',
-    categoryLabel: 'Import & Export',
-    pillar: 'Trade',
-    Icon: Globe,
-    color: '#0284C7', // New blue color for Trade
+    role: 'Compliance & Legal Team',
+    category: 'legal',
+    categoryLabel: 'Legal & Land Advisory',
+    pillar: 'Legal',
+    Icon: Shield,
+    color: '#0F766E', 
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85',
-    expertise: ['Customs Clearance', 'Freight Forwarding', 'Trade Compliance'],
-    quote: 'Seamless global trade execution navigating international borders with precision.',
+    expertise: ['Compliance', 'Legal Advisory', 'Statutory Norms'],
+    quote: 'Ensuring operations remain perfectly aligned with legal structures.',
   },
   {
     name: 'Shardha Yadav',
@@ -170,8 +182,6 @@ export default function Team() {
     { title: 'IT & Digital Technology Team', items: teamMembers.filter(m => m.category === 'it') },
     { title: 'Sales & Marketing Team', items: teamMembers.filter(m => m.category === 'sales') },
     { title: 'Human Resources Team', items: teamMembers.filter(m => m.category === 'hr') },
-    { title: 'Import & Export Team', items: teamMembers.filter(m => m.category === 'import-export') },
-    { title: 'Financial Modelling Team', items: teamMembers.filter(m => m.category === 'financial-modelling') },
   ]
 
   return (

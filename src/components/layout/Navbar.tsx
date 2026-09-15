@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ArrowUpRight, ChevronDown, TrendingUp, Cpu, Users, ChevronRight, Shield, BarChart3, PieChart, Globe } from 'lucide-react'
+import { X, ArrowUpRight, ChevronDown, TrendingUp, Cpu, Users, ChevronRight, Shield, BarChart3, PieChart } from 'lucide-react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 import { useAuth } from '@/context/AuthContext'
@@ -56,14 +56,7 @@ const pillars = [
     href: '/project-finance',
     color: '#4338CA', // Professional Indigo
   },
-  {
-    id: 'import-export',
-    icon: Globe,
-    name: 'Import & Export',
-    sub: 'Seamless international trade & customs clearance',
-    href: '/import-export',
-    color: '#0284C7', // Professional Blue
-  },
+
 ]
 
 const navLinks = [
@@ -134,7 +127,7 @@ export default function Navbar() {
                   to={link.href}
                   className={cn(
                     'flex items-center gap-1 px-3.5 py-2 text-sm font-medium tracking-normal transition-colors duration-200 rounded-lg whitespace-nowrap',
-                    location.pathname === link.href || (link.hasMega && location.pathname.match(/^\/(finance|digital|people|services|rera|financial-modelling|project-finance|import-export)/))
+                    location.pathname === link.href || (link.hasMega && location.pathname.match(/^\/(finance|digital|people|services|rera|financial-modelling|project-finance)/))
                       ? 'text-aw-navy font-semibold'
                       : 'text-aw-mid hover:text-aw-navy',
                     link.hasMega && megaOpen ? 'text-aw-navy bg-aw-cream/80' : ''

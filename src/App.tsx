@@ -18,7 +18,6 @@ import ProjectFinancePage from './pages/ProjectFinancePage'
 import TermsAndConditionsPage from './pages/TermsAndConditionsPage'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
 import CookiePolicyPage from './pages/CookiePolicyPage'
-import ImportExportPage from './pages/ImportExportPage'
 import IndustryPage from './pages/IndustryPage'
 
 function ScrollToTop() {
@@ -63,7 +62,6 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/insights" element={<InsightsPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/import-export" element={<ImportExportPage />} />
             <Route path="/industries/:id" element={<IndustryPage />} />
           </Routes>
         </AnimatePresence>

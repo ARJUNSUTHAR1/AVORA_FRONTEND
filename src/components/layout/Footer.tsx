@@ -32,20 +32,21 @@ const footerLinks = {
     { label: 'RERA Compliance', href: '/rera' },
     { label: 'RERA Advisory', href: '/rera' },
   ],
-  'Import & Export': [
-    { label: 'Customs Clearance', href: '/import-export' },
-    { label: 'Freight Forwarding', href: '/import-export' },
-    { label: 'Trade Compliance', href: '/import-export' },
-  ],
+
   'Financial Modelling': [
     { label: 'Scenario Planning', href: '/financial-modelling' },
     { label: 'Valuation Modeling', href: '/financial-modelling' },
     { label: 'M&A Modeling', href: '/financial-modelling' },
   ],
   'Project Finance': [
-    { label: 'Debt Syndication', href: '/project-finance' },
-    { label: 'Equity Structuring', href: '/project-finance' },
-    { label: 'Lender Negotiations', href: '/project-finance' },
+    { label: 'Working Capital Advisory', href: '/project-finance' },
+    { label: 'Project Finance', href: '/project-finance' },
+    { label: 'Debt / Bank Finance', href: '/project-finance' },
+    { label: 'CFO Advisory', href: '/project-finance' },
+    { label: 'Treasury', href: '/project-finance' },
+    { label: 'Banking Relationships', href: '/project-finance' },
+    { label: 'Investment Proposals', href: '/project-finance' },
+    { label: 'Due Diligence', href: '/project-finance' },
   ],
   Company: [
     { label: 'Why We Exist', href: '/about' },
@@ -66,7 +67,7 @@ const footerLinks = {
   ],
 }
 
-const pillarIcons = { 'Finance': TrendingUp, 'Digital': Cpu, 'People': Users, 'RERA': Building2, 'Import & Export': Globe, 'Financial Modelling': BarChart3, 'Project Finance': PieChart, 'Industries': Briefcase }
+const pillarIcons = { 'Finance': TrendingUp, 'Digital': Cpu, 'People': Users, 'RERA': Building2, 'Financial Modelling': BarChart3, 'Project Finance': PieChart, 'Industries': Briefcase }
 
 export default function Footer() {
   return (

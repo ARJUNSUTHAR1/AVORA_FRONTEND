@@ -99,27 +99,7 @@ const pillars = [
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=80', // Changed image
     team: { name: 'Shardha Yadav', role: 'RERA Compliance Specialist', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80' },
   },
-  {
-    id: 'import-export',
-    href: '/import-export',
-    pillar: 'Import & Export',
-    Icon: Globe,
-    accentColor: '#0284C7',
-    dark: true,
-    headline: 'Global trade, simplified.',
-    subline: 'Seamless import and export solutions.',
-    body: 'Navigating international trade regulations can be complex. We handle customs clearance, freight forwarding, and international trade compliance so you can expand your market globally without the friction.',
-    painLine: 'Because border delays and compliance penalties should not dictate your international growth.',
-    callout: { icon: Globe, value: '25+', label: 'Countries traded' },
-    services: [
-      'Customs Clearance',
-      'Freight Forwarding',
-      'Trade Compliance',
-      'Logistics Management',
-    ],
-    image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=900&q=80',
-    team: { name: 'Vaibhav Mishra', role: 'International Trade Executive', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80' },
-  },
+
   {
     id: 'financial-modelling',
     href: '/financial-modelling',
@@ -153,10 +133,14 @@ const pillars = [
     painLine: 'Because poor capital structure can cripple an otherwise profitable project.',
     callout: { icon: PieChart, value: '₹500Cr+', label: 'Funding Secured' },
     services: [
-      'Debt Syndication',
-      'Equity Structuring',
-      'Lender Negotiations',
-      'Feasibility Studies',
+      'Working Capital & Cash Flow Advisory',
+      'Project Finance',
+      'Debt / Bank Finance',
+      'CFO Advisory',
+      'Treasury',
+      'Banking relationships',
+      'Investment / funding proposals',
+      'Due Diligence support'
     ],
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80',
   },

@@ -3,12 +3,14 @@ import { PieChart, ArrowUpRight, Check } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const features = [
-  'Project Feasibility & Structuring',
-  'Debt Syndication',
-  'Private Equity & Venture Capital',
-  'Working Capital Solutions',
-  'Infrastructure & Real Estate Funding',
-  'Financial Risk Mitigation',
+  'Working Capital & Cash Flow Advisory',
+  'Project Finance',
+  'Debt / Bank Finance',
+  'CFO Advisory',
+  'Treasury',
+  'Banking relationships',
+  'Investment / funding proposals',
+  'Due Diligence support'
 ]
 
 export default function ProjectFinancePage() {
