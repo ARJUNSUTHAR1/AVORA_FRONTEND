@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import { TrendingUp, Cpu, Shield, Award } from 'lucide-react'
 
 export interface TeamMember {
@@ -115,7 +115,6 @@ export default function Team() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-8%' })
   const activeCategory = 'all'
-  const [hoveredMember, setHoveredMember] = useState<string | null>(null)
 
   const filteredMembers = activeCategory === 'all'
     ? teamMembers
@@ -178,9 +177,6 @@ export default function Team() {
                       member={member}
                       index={i + idx * 2}
                       inView={inView}
-                      isHovered={hoveredMember === member.name}
-                      onHover={() => setHoveredMember(member.name)}
-                      onLeave={() => setHoveredMember(null)}
                     />
                   ))}
                 </div>
@@ -195,9 +191,6 @@ export default function Team() {
                 member={member}
                 index={i}
                 inView={inView}
-                isHovered={hoveredMember === member.name}
-                onHover={() => setHoveredMember(member.name)}
-                onLeave={() => setHoveredMember(null)}
               />
             ))}
           </div>
@@ -211,16 +204,10 @@ function MemberCard({
   member,
   index,
   inView,
-  isHovered,
-  onHover,
-  onLeave,
 }: {
   member: TeamMember
   index: number
   inView: boolean
-  isHovered: boolean
-  onHover: () => void
-  onLeave: () => void
 }) {
   const PillarIcon = member.Icon
   return (
@@ -228,8 +215,6 @@ function MemberCard({
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: 0.04 + index * 0.05, ease: [0.2, 0.8, 0.2, 1] }}
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
       className="group relative rounded-2xl cursor-pointer bg-[#0A111A] border border-white/[0.08] hover:border-white/[0.2] transition-all duration-500 hover:-translate-y-1.5 shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_30px_rgba(255,255,255,0.05)] overflow-hidden"
       style={{ minHeight: '220px' }}
     >
