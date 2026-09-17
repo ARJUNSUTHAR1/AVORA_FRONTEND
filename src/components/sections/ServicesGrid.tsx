@@ -27,7 +27,6 @@ const pillars = [
       'Company / LLP / Startup Registration',
     ],
     image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80',
-    team: { name: 'Yash Sawant', role: 'Accounting Executive', img: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=200&q=80' },
   },
   {
     id: 'digital',
@@ -72,7 +71,6 @@ const pillars = [
       'Executive Search',
     ],
     image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80',
-    team: { name: 'Dr. Nidhi Saxena', role: 'Chief Human Resource Officer (CHRO)', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80' },
   },
   {
     id: 'rera',
