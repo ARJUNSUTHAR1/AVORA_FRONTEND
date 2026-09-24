@@ -1,14 +1,21 @@
 import { motion } from 'framer-motion'
-import { Shield, BarChart3, PieChart, ArrowRight } from 'lucide-react'
+import { TrendingUp, Cpu, BarChart3, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const featuredServices = [
   {
-    title: 'RERA Compliance & Advisory',
-    description: 'Navigate RERA regulations with absolute certainty. Seamless project registration and ongoing compliance.',
-    icon: Shield,
-    color: '#0F766E', // Teal
-    href: '/rera'
+    title: 'Finance',
+    description: 'From day-to-day bookkeeping to strategic financial planning, our certified finance team gives you complete visibility.',
+    icon: TrendingUp,
+    color: '#B8A996', // Tan
+    href: '/finance'
+  },
+  {
+    title: 'Digital',
+    description: 'High-converting web design, custom mobile software, seamless ERP/CRM integrations, and cutting-edge AI automation.',
+    icon: Cpu,
+    color: '#334155', // Slate
+    href: '/digital'
   },
   {
     title: 'Financial Modelling',
@@ -16,13 +23,6 @@ const featuredServices = [
     icon: BarChart3,
     color: '#0369A1', // Blue
     href: '/financial-modelling'
-  },
-  {
-    title: 'Project Finance',
-    description: 'Structuring and securing optimal project funding. We guide you through the complexities of project finance.',
-    icon: PieChart,
-    color: '#4338CA', // Indigo
-    href: '/project-finance'
   }
 ]
 

@@ -31,15 +31,7 @@ const showcaseItems = [
     href: '/people',
     accent: '#64748B',
   },
-  {
-    id: 'rera',
-    icon: ShieldCheck,
-    badge: 'RERA Compliance & Advisory',
-    title: 'Real Estate Compliance, Perfected.',
-    desc: 'Navigate RERA regulations with absolute certainty. Seamless project registration and ongoing compliance.',
-    href: '/rera',
-    accent: '#0F766E',
-  },
+
   {
     id: 'financial-modelling',
     icon: TrendingUp,
@@ -49,15 +41,7 @@ const showcaseItems = [
     href: '/financial-modelling',
     accent: '#0369A1',
   },
-  {
-    id: 'project-finance',
-    icon: Globe2,
-    badge: 'Project Finance',
-    title: 'Empowering Capital, Realized.',
-    desc: 'Structuring and securing optimal project funding. We guide you through the complexities of project finance.',
-    href: '/project-finance',
-    accent: '#4338CA',
-  },
+
 
 ]
 

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowUpRight, Mail, Phone, MapPin, TrendingUp, Cpu, Users, Building2, Globe, BarChart3, PieChart, Briefcase } from 'lucide-react'
+import { ArrowUpRight, Mail, Phone, MapPin, TrendingUp, Cpu, Users, Building2, Globe, BarChart3, Briefcase } from 'lucide-react'
 import Logo from '@/components/ui/Logo'
 
 const footerLinks = {
@@ -27,26 +27,18 @@ const footerLinks = {
     { label: 'Contract Staffing', href: '/people#staffing' },
     { label: 'Executive Search', href: '/people#executive' },
   ],
-  'RERA': [
-    { label: 'RERA Registration', href: '/rera' },
-    { label: 'RERA Compliance', href: '/rera' },
-    { label: 'RERA Advisory', href: '/rera' },
-  ],
-
   'Financial Modelling': [
     { label: 'Scenario Planning', href: '/financial-modelling' },
     { label: 'Valuation Modeling', href: '/financial-modelling' },
     { label: 'M&A Modeling', href: '/financial-modelling' },
-  ],
-  'Project Finance': [
-    { label: 'Working Capital Advisory', href: '/project-finance' },
-    { label: 'Project Finance', href: '/project-finance' },
-    { label: 'Debt / Bank Finance', href: '/project-finance' },
-    { label: 'CFO Advisory', href: '/project-finance' },
-    { label: 'Treasury', href: '/project-finance' },
-    { label: 'Banking Relationships', href: '/project-finance' },
-    { label: 'Investment Proposals', href: '/project-finance' },
-    { label: 'Due Diligence', href: '/project-finance' },
+    { label: 'Working Capital Advisory', href: '/financial-modelling' },
+    { label: 'Project Finance', href: '/financial-modelling' },
+    { label: 'Debt / Bank Finance', href: '/financial-modelling' },
+    { label: 'CFO Advisory', href: '/financial-modelling' },
+    { label: 'Treasury', href: '/financial-modelling' },
+    { label: 'Banking Relationships', href: '/financial-modelling' },
+    { label: 'Investment Proposals', href: '/financial-modelling' },
+    { label: 'Due Diligence', href: '/financial-modelling' },
   ],
   Company: [
     { label: 'Why We Exist', href: '/about' },
@@ -67,7 +59,7 @@ const footerLinks = {
   ],
 }
 
-const pillarIcons = { 'Finance': TrendingUp, 'Digital': Cpu, 'People': Users, 'RERA': Building2, 'Financial Modelling': BarChart3, 'Project Finance': PieChart, 'Industries': Briefcase }
+const pillarIcons = { 'Finance': TrendingUp, 'Digital': Cpu, 'People': Users, 'Financial Modelling': BarChart3, 'Industries': Briefcase }
 
 export default function Footer() {
   return (
@@ -87,7 +79,7 @@ export default function Footer() {
             </div>
 
             <p className="text-white/50 text-sm leading-relaxed max-w-sm font-normal">
-              Global Professional Services provides integrated Finance, Digital, People, RERA, Import & Export, Financial Modelling, and Project Finance solutions that empower companies to operate and scale worldwide.
+              Global Professional Services provides integrated Finance, Digital, People, Import & Export, and Financial Modelling solutions that empower companies to operate and scale worldwide.
             </p>
 
             {/* Physical Company Offices and Global Reach */}

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ArrowUpRight, ChevronDown, TrendingUp, Cpu, Users, ChevronRight, Shield, BarChart3, PieChart } from 'lucide-react'
+import { X, ArrowUpRight, ChevronDown, TrendingUp, Cpu, Users, ChevronRight, BarChart3 } from 'lucide-react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 import { useAuth } from '@/context/AuthContext'
@@ -33,14 +33,6 @@ const pillars = [
     color: '#64748B',
   },
   {
-    id: 'rera',
-    icon: Shield,
-    name: 'RERA Compliance & Advisory',
-    sub: 'Navigate RERA regulations with absolute certainty',
-    href: '/rera',
-    color: '#0F766E', // Professional Teal
-  },
-  {
     id: 'financial-modelling',
     icon: BarChart3,
     name: 'Financial Modelling',
@@ -48,15 +40,6 @@ const pillars = [
     href: '/financial-modelling',
     color: '#0369A1', // Professional Blue
   },
-  {
-    id: 'project-finance',
-    icon: PieChart,
-    name: 'Project Finance',
-    sub: 'Structuring and securing optimal project funding',
-    href: '/project-finance',
-    color: '#4338CA', // Professional Indigo
-  },
-
 ]
 
 const navLinks = [
@@ -127,7 +110,7 @@ export default function Navbar() {
                   to={link.href}
                   className={cn(
                     'flex items-center gap-1 px-3.5 py-2 text-sm font-medium tracking-normal transition-colors duration-200 rounded-lg whitespace-nowrap',
-                    location.pathname === link.href || (link.hasMega && location.pathname.match(/^\/(finance|digital|people|services|rera|financial-modelling|project-finance)/))
+                    location.pathname === link.href || (link.hasMega && location.pathname.match(/^\/(finance|digital|people|services|financial-modelling)/))
                       ? 'text-aw-navy font-semibold'
                       : 'text-aw-mid hover:text-aw-navy',
                     link.hasMega && megaOpen ? 'text-aw-navy bg-aw-cream/80' : ''

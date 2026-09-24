@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { TrendingUp, Cpu, Users, ArrowUpRight, CheckCircle2, BarChart3, Globe, Smartphone, Shield, PieChart } from 'lucide-react'
+import { TrendingUp, Cpu, Users, ArrowUpRight, CheckCircle2, BarChart3, Globe, Smartphone } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 
@@ -73,32 +73,6 @@ const pillars = [
     image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80',
   },
   {
-    id: 'rera',
-    href: '/rera',
-    pillar: 'RERA Compliance & Advisory',
-    Icon: Shield,
-    accentColor: '#0F766E', // Changed from #D97706 to Professional Teal
-    dark: false,
-    headline: 'Real Estate Compliance, Perfected.',
-    subline: 'Navigate RERA regulations with absolute certainty.',
-    body: 'Real estate developers face immense regulatory scrutiny. From initial project registration to quarterly updates and final closure, non-compliance can halt your project. We manage the entire RERA lifecycle, ensuring you stay compliant and penalty-free.',
-    painLine: 'Because a single regulatory misstep can stall your entire real estate project.',
-    callout: { icon: Shield, value: '100+', label: 'Projects Registered' },
-    services: [
-      'RERA Project Registration Services',
-      'RERA CA Certificate – Form 3 & Form 5',
-      'RERA Project Extension Services',
-      'RERA Project Correction / Rectification Services',
-      'RERA Project & Profile Updation Services',
-      'RERA Quarterly Compliance & QPR Services',
-      'RERA Annual Compliance',
-      'RERA Project Completion / Closure Update Services',
-    ],
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=80', // Changed image
-    team: { name: 'Shardha Yadav', role: 'RERA Compliance Specialist', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80' },
-  },
-
-  {
     id: 'financial-modelling',
     href: '/financial-modelling',
     pillar: 'Financial Modelling',
@@ -115,22 +89,6 @@ const pillars = [
       'Valuation Modeling',
       'M&A Modeling',
       'Cash Flow Analysis',
-    ],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80',
-  },
-  {
-    id: 'project-finance',
-    href: '/project-finance',
-    pillar: 'Project Finance',
-    Icon: PieChart,
-    accentColor: '#4338CA',
-    dark: true,
-    headline: 'Structure your capital effectively.',
-    subline: 'Securing optimal project funding.',
-    body: 'Capital intensive projects require sophisticated financing structures. We advise on debt and equity structuring, manage lender relationships, and ensure your project secures the most favorable financing terms available.',
-    painLine: 'Because poor capital structure can cripple an otherwise profitable project.',
-    callout: { icon: PieChart, value: '₹500Cr+', label: 'Funding Secured' },
-    services: [
       'Working Capital & Cash Flow Advisory',
       'Project Finance',
       'Debt / Bank Finance',
@@ -140,7 +98,7 @@ const pillars = [
       'Investment / funding proposals',
       'Due Diligence support'
     ],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80',
   },
 ]
 

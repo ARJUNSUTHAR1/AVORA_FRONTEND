@@ -5,9 +5,9 @@ import { TrendingUp, Cpu, Shield, Award } from 'lucide-react'
 export interface TeamMember {
   name: string
   role: string
-  category: 'leadership' | 'legal' | 'accounts' | 'it'
+  category: 'leadership' | 'legal' | 'accounts' | 'it' | 'hr'
   categoryLabel: string
-  pillar: 'Leadership' | 'Legal' | 'Finance' | 'Digital' | 'Trade'
+  pillar: 'Leadership' | 'Legal' | 'Finance' | 'Digital' | 'Trade' | 'People'
   Icon: any
   color: string
   expertise: string[]
@@ -26,6 +26,18 @@ const teamMembers: TeamMember[] = [
     expertise: ['Partner', 'Business Development', 'Global Partnerships'],
     quote: 'Building long-term client trust through transparent, scalable solutions.',
   },
+  {
+    name: 'Dr. Nidhi Saxena',
+    role: 'Chief Human Resource Officer',
+    category: 'hr',
+    categoryLabel: 'HR Operations Team',
+    pillar: 'People',
+    Icon: Award,
+    color: '#B8A996',
+    expertise: ['Human Resources', 'Talent Strategy', 'Organizational Development'],
+    quote: 'People are the foundation of every successful enterprise. We build cultures that empower growth.',
+  },
+
 
   // 2. Legal Advisory & Land Facilitation
   {
@@ -50,28 +62,17 @@ const teamMembers: TeamMember[] = [
     expertise: ['Compliance', 'Legal Advisory', 'Statutory Norms'],
     quote: 'Ensuring operations remain perfectly aligned with legal structures.',
   },
-  {
-    name: 'Shardha Yadav',
-    role: 'RERA Compliance Specialist',
-    category: 'legal',
-    categoryLabel: 'Legal & Land Advisory',
-    pillar: 'Legal',
-    Icon: Shield,
-    color: '#0F766E',
-    expertise: ['RERA Registration', 'Form 3 & Form 5', 'Quarterly Compliance & QPR'],
-    quote: 'Ensuring absolute compliance and seamless regulatory adherence across real estate operations.',
-  },
 
   // 3. Accounts & Tax Team
   {
     name: 'CA Kala Maheshwari',
-    role: 'Lead CA & Financial Advisor',
+    role: 'Financial Advisor',
     category: 'accounts',
     categoryLabel: 'Accounts & Tax Team',
     pillar: 'Finance',
     Icon: TrendingUp,
     color: '#B8A996',
-    expertise: ['Chartered Accountant', 'Tax Strategy', 'Audit & Compliance'],
+    expertise: ['Financial Advisory', 'Financial Modelling', 'Project Funding'],
     quote: 'Financial clarity and compliance are non-negotiable pillars of business health.',
   },
   {
@@ -82,7 +83,7 @@ const teamMembers: TeamMember[] = [
     pillar: 'Finance',
     Icon: TrendingUp,
     color: '#B8A996',
-    expertise: ['Tax Strategy', 'Audit & Compliance', 'Financial Advisory'],
+    expertise: ['Tax Strategy', 'Audit & Compliance'],
     quote: 'Precision in every ledger entry powers sound executive decisions.',
   },
 
@@ -120,9 +121,9 @@ export default function Team() {
     ? teamMembers
     : teamMembers.filter((m) => m.category === activeCategory)
 
-  // Group by category when 'all' is selected for partitioned layout
   const groupedSections = [
     { title: 'Partners & Leadership', items: teamMembers.filter(m => m.category === 'leadership') },
+    { title: 'HR Operations Team', items: teamMembers.filter(m => m.category === 'hr') },
     { title: 'Legal & Land Advisory', items: teamMembers.filter(m => m.category === 'legal') },
     { title: 'Accounts & Tax Advisory Team', items: teamMembers.filter(m => m.category === 'accounts') },
     { title: 'IT & Digital Technology Team', items: teamMembers.filter(m => m.category === 'it') },
