@@ -75,17 +75,7 @@ const teamMembers: TeamMember[] = [
     expertise: ['Financial Advisory', 'Financial Modelling', 'Project Funding'],
     quote: 'Financial clarity and compliance are non-negotiable pillars of business health.',
   },
-  {
-    name: 'CA Prasant Inani',
-    role: 'Tax Advisor',
-    category: 'accounts',
-    categoryLabel: 'Accounts & Tax Team',
-    pillar: 'Finance',
-    Icon: TrendingUp,
-    color: '#B8A996',
-    expertise: ['Tax Strategy', 'Audit & Compliance'],
-    quote: 'Precision in every ledger entry powers sound executive decisions.',
-  },
+
 
   // 4. IT Team
   {
