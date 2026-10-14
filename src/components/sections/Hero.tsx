@@ -88,7 +88,7 @@ export default function Hero() {
             >
               <span className="aw-pill font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-aw-tan animate-pulse" />
-                Global Professional Services
+                International Business Advisory & Professional Services
               </span>
             </motion.div>
 

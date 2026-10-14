@@ -60,7 +60,7 @@ export default function Logo({ dark = false, className, size = 'md' }: LogoProps
                     size === 'sm' ? 'text-[6px]' : size === 'md' ? 'text-[7.5px]' : size === 'lg' ? 'text-[9.5px]' : 'text-[9px] sm:text-[11px] md:text-[13px]'
                   )}
                 >
-                  GLOBAL — PROFESSIONAL SERVICES
+                  INTERNATIONAL BUSINESS ADVISORY & PROFESSIONAL SERVICES
                 </span>
                 <span className="h-[0.5px] w-1.5 bg-aw-tan" />
               </div>

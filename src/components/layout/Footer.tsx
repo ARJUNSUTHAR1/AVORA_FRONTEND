@@ -79,7 +79,7 @@ export default function Footer() {
             </div>
 
             <p className="text-white/50 text-sm leading-relaxed max-w-sm font-normal">
-              Global Professional Services provides integrated Finance, Digital, People, Import & Export, and Financial Modelling solutions that empower companies to operate and scale worldwide.
+              Awooraa Global LLP — International Business Advisory & Professional Services Firm — providing integrated Finance, Digital, People, and Financial Modelling solutions that empower companies to operate and scale worldwide.
             </p>
 
             {/* Physical Company Offices and Global Reach */}
@@ -199,7 +199,7 @@ export default function Footer() {
         {/* Bottom Copyright Bar */}
         <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30 font-normal">
           <div className="flex flex-col gap-1">
-            <p>© {new Date().getFullYear()} Global Professional Services. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Awooraa Global LLP. All rights reserved.</p>
             <p>Designed and developed by Arjun Suthar</p>
           </div>
           <div className="flex flex-wrap justify-center sm:items-center gap-4 sm:gap-6">

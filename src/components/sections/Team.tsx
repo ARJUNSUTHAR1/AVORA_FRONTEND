@@ -1,13 +1,13 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { TrendingUp, Cpu, Shield, Award } from 'lucide-react'
+import { TrendingUp, Shield, Award } from 'lucide-react'
 
 export interface TeamMember {
   name: string
   role: string
-  category: 'leadership' | 'legal' | 'accounts' | 'it' | 'hr'
+  category: 'leadership' | 'legal' | 'accounts' | 'hr' | 'operations'
   categoryLabel: string
-  pillar: 'Leadership' | 'Legal' | 'Finance' | 'Digital' | 'Trade' | 'People'
+  pillar: 'Leadership' | 'Legal' | 'Finance' | 'Digital' | 'Trade' | 'People' | 'Operations'
   Icon: any
   color: string
   expertise: string[]
@@ -15,6 +15,17 @@ export interface TeamMember {
 }
 
 const teamMembers: TeamMember[] = [
+  {
+    name: 'Neha Rathore',
+    role: 'Chairperson',
+    category: 'leadership',
+    categoryLabel: 'Partners & Leadership',
+    pillar: 'Leadership',
+    Icon: Award,
+    color: '#B8A996',
+    expertise: ['Strategic Leadership', 'Corporate Governance', 'Global Advisory'],
+    quote: 'True leadership means building institutions that outlast individuals — with integrity at every step.',
+  },
   {
     name: 'Krunal Bhojaraj Navanage',
     role: 'Partner & Business Developer',
@@ -41,8 +52,8 @@ const teamMembers: TeamMember[] = [
 
   // 2. Legal Advisory & Land Facilitation
   {
-    name: 'Adv. Giriraj Kumar Rathor',
-    role: 'Chairperson & Legal Advisor',
+    name: 'Adv. Giriraj Rathore',
+    role: 'Designated Partner & Chief Legal Advisor',
     category: 'legal',
     categoryLabel: 'Legal & Land Advisory',
     pillar: 'Legal',
@@ -77,28 +88,17 @@ const teamMembers: TeamMember[] = [
   },
 
 
-  // 4. IT Team
+  // 4. Operations Team
   {
     name: 'Arjun Suthar',
-    role: 'Chief Technology Officer',
-    category: 'it',
-    categoryLabel: 'IT & Digital Team',
-    pillar: 'Digital',
-    Icon: Cpu,
-    color: '#38BDF8',
-    expertise: ['Web Engineering', 'Mobile Apps', 'ERP & CRM'],
-    quote: 'Tech should eliminate operational friction and accelerate growth.',
-  },
-  {
-    name: 'Mihir Nebani',
-    role: 'Senior Platform Engineer',
-    category: 'it',
-    categoryLabel: 'IT & Digital Team',
-    pillar: 'Digital',
-    Icon: Cpu,
-    color: '#38BDF8',
-    expertise: ['Platform Engineering', 'Cloud Infrastructure', 'System Architecture'],
-    quote: 'Building scalable and resilient digital foundations for enterprise growth.',
+    role: 'Operations Executive',
+    category: 'operations',
+    categoryLabel: 'Operations Team',
+    pillar: 'Operations',
+    Icon: Award,
+    color: '#B8A996',
+    expertise: ['Business Operations', 'Process Management', 'Digital Systems'],
+    quote: 'Streamlined operations are the silent engine behind every successful enterprise.',
   },
 ]
 
@@ -116,7 +116,7 @@ export default function Team() {
     { title: 'HR Operations Team', items: teamMembers.filter(m => m.category === 'hr') },
     { title: 'Legal & Land Advisory', items: teamMembers.filter(m => m.category === 'legal') },
     { title: 'Accounts & Tax Advisory Team', items: teamMembers.filter(m => m.category === 'accounts') },
-    { title: 'IT & Digital Technology Team', items: teamMembers.filter(m => m.category === 'it') },
+    { title: 'Operations Team', items: teamMembers.filter(m => m.category === 'operations') },
   ]
 
   return (

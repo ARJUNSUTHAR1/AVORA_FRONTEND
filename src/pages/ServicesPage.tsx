@@ -103,7 +103,7 @@ export default function ServicesPage() {
               <em className="not-italic text-gradient-tan">One Global Partner</em>
             </h1>
             <p className="text-aw-slate text-lg leading-relaxed max-w-xl">
-              We don't believe in partial solutions. Global Professional Services brings together Finance, Digital, and People — under one roof, with one relationship.
+              We don't believe in partial solutions. Awooraa Global LLP — an International Business Advisory & Professional Services Firm — brings together Finance, Digital, and People — under one roof, with one relationship.
             </p>
           </motion.div>
         </div>
