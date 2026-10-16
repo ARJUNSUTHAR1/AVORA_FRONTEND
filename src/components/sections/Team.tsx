@@ -15,17 +15,17 @@ export interface TeamMember {
 }
 
 const teamMembers: TeamMember[] = [
-  {
-    name: 'Neha Rathore',
-    role: 'Chairperson',
-    category: 'leadership',
-    categoryLabel: 'Partners & Leadership',
-    pillar: 'Leadership',
-    Icon: Award,
-    color: '#B8A996',
-    expertise: ['Strategic Leadership', 'Corporate Governance', 'Global Advisory'],
-    quote: 'True leadership means building institutions that outlast individuals — with integrity at every step.',
-  },
+  // {
+  //   name: 'Neha Rathore',
+  //   role: 'Chairperson',
+  //   category: 'leadership',
+  //   categoryLabel: 'Partners & Leadership',
+  //   pillar: 'Leadership',
+  //   Icon: Award,
+  //   color: '#B8A996',
+  //   expertise: ['Strategic Leadership', 'Corporate Governance', 'Global Advisory'],
+  //   quote: 'True leadership means building institutions that outlast individuals — with integrity at every step.',
+  // },
   {
     name: 'Krunal Bhojaraj Navanage',
     role: 'Partner & Business Developer',
@@ -69,7 +69,7 @@ const teamMembers: TeamMember[] = [
     categoryLabel: 'Legal & Land Advisory',
     pillar: 'Legal',
     Icon: Shield,
-    color: '#0F766E', 
+    color: '#0F766E',
     expertise: ['Compliance', 'Legal Advisory', 'Statutory Norms'],
     quote: 'Ensuring operations remain perfectly aligned with legal structures.',
   },
@@ -91,9 +91,9 @@ const teamMembers: TeamMember[] = [
   // 4. Operations Team
   {
     name: 'Arjun Suthar',
-    role: 'Operations Executive',
+    role: 'IT & Operations Executive',
     category: 'operations',
-    categoryLabel: 'Operations Team',
+    categoryLabel: 'IT & Operations Team',
     pillar: 'Operations',
     Icon: Award,
     color: '#B8A996',
